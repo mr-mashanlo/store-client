@@ -3,10 +3,8 @@ import ky from 'ky';
 // @ts-expect-error env
 const url = import.meta.env.VITE_REACT_APP_BACK_URL;
 
-const original = ky.create( {
+const defaultInstance = ky.create( {
   prefixUrl: url,
-  credentials: 'include',
-  headers: { 'Content-Type': 'application/json' },
   hooks: {
     beforeError: [
       async ( error ) => {
@@ -22,4 +20,4 @@ const original = ky.create( {
   }
 } );
 
-export default original;
+export default defaultInstance;

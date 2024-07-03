@@ -1,4 +1,5 @@
 import { HomePage } from '@/pages/home';
+import { EditProfilePage } from '@/pages/profile';
 import MainLayout from '@/shared/layouts/mainLayout';
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -9,6 +10,10 @@ const router = createBrowserRouter( [
       {
         path: '/',
         element: <HomePage />
+      },
+      {
+        path: '/profile/edit',
+        element: <EditProfilePage />
       }
     ]
   }

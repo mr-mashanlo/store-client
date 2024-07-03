@@ -1,4 +1,7 @@
-import extended from './extended';
-import original from './original';
+import defaultInstance from './defaultInstance';
+import authInstance from './authInstance';
 
-export { extended, original };
+import jsonInstance from './jsonInstance';
+import authJsonInstance from './authJsonInstance';
+
+export { defaultInstance, authInstance, jsonInstance, authJsonInstance };
