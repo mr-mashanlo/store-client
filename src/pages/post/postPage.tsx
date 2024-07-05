@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-const HomePage: FC = () => {
+const PostPage: FC = () => {
   return (
     <>
       <header className="py-10">
@@ -45,4 +45,4 @@ const HomePage: FC = () => {
   );
 };
 
-export default HomePage;
+export default PostPage;

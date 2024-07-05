@@ -1,4 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap')
+
+@tailwind base
+@tailwind components
+@tailwind utilities
+
 html
   font-size: calc(100vw / 320 * 16)
   @media ( min-width: 500px )
     font-size: calc(100vw / 1440 * 16)
+
+body
+  font-family: 'Roboto Mono', monospace
+  line-height: 1.88
+
+.container-block
+  max-width: 46rem
+  margin: 0 auto
+  padding: 0 1.1rem

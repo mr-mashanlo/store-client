@@ -1,7 +1,9 @@
-import { HomePage } from '@/pages/home';
-import { EditProfilePage } from '@/pages/profile';
-import MainLayout from '@/shared/layouts/mainLayout';
 import { createBrowserRouter } from 'react-router-dom';
+
+import MainLayout from '@/shared/layouts/mainLayout';
+
+import { PostPage, SinglePostPage } from '@/pages/post';
+import { EditProfilePage } from '@/pages/profile';
 
 const router = createBrowserRouter( [
   {
@@ -9,7 +11,11 @@ const router = createBrowserRouter( [
     children: [
       {
         path: '/',
-        element: <HomePage />
+        element: <PostPage />
+      },
+      {
+        path: '/post/:id',
+        element: <SinglePostPage />
       },
       {
         path: '/profile/edit',
