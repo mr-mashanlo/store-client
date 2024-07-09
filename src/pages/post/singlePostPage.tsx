@@ -5,7 +5,7 @@ const SinglePostPage: FC = () => {
     <>
       <div className="pb-14 bg-[#363636]">
         <header className="py-10">
-          <div className="container-block">
+          <div className="container-block container-block--small">
             <div className="flex items-center justify-between gap-5">
               <p className="text-xl font-medium uppercase text-[#FFCCCC]">Back</p>
               <nav>
@@ -19,7 +19,7 @@ const SinglePostPage: FC = () => {
           </div>
         </header>
         <div className="mt-20">
-          <div className="container-block">
+          <div className="container-block container-block--small">
             <div>
               <p>Javascript</p>
               <h1 className="mt-4 text-3xl font-bold uppercase text-[#FFCCCC]">Optio saepe debitis</h1>
@@ -34,7 +34,7 @@ const SinglePostPage: FC = () => {
       </div>
 
       <div className="py-14">
-        <div className="container-block">
+        <div className="container-block container-block--small">
           <div className="flex flex-col gap-6">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat sequi minus hic aperiam eaque distinctio asperiores quas. Vitae sint dignissimos soluta quisquam amet dolore iusto deleniti eum, doloremque et dicta mollitia labore commodi ea voluptates odio.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat sequi minus hic aperiam eaque distinctio asperiores quas. Vitae sint dignissimos soluta quisquam amet dolore iusto deleniti eum, doloremque et dicta mollitia labore commodi ea voluptates odio.</p>

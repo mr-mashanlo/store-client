@@ -2,8 +2,10 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import MainLayout from '@/shared/layouts/mainLayout';
 
-import { PostPage, SinglePostPage } from '@/pages/post';
+import { HomePage } from '@/pages/home';
+import { SinglePostPage } from '@/pages/post';
 import { EditProfilePage } from '@/pages/profile';
+import { MediaPage } from '@/pages/media';
 
 const router = createBrowserRouter( [
   {
@@ -11,7 +13,7 @@ const router = createBrowserRouter( [
     children: [
       {
         path: '/',
-        element: <PostPage />
+        element: <HomePage />
       },
       {
         path: '/post/:id',
@@ -20,6 +22,10 @@ const router = createBrowserRouter( [
       {
         path: '/profile/edit',
         element: <EditProfilePage />
+      },
+      {
+        path: '/media',
+        element: <MediaPage />
       }
     ]
   }

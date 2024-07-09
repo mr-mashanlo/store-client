@@ -4,7 +4,7 @@ const PostPage: FC = () => {
   return (
     <>
       <header className="py-10">
-        <div className="container-block">
+        <div className="container-block container-block--small">
           <div className="flex items-center justify-between gap-5">
             <p className="text-xl font-medium uppercase text-[#FFCCCC]">Lee Mashanlo</p>
             <nav>
@@ -19,7 +19,7 @@ const PostPage: FC = () => {
       </header>
 
       <section className="py-10">
-        <div className="container-block">
+        <div className="container-block container-block--small">
           <ul className="mt-10 flex items-center gap-12 font-medium">
             <li>Recent</li>
             <li>Javascript</li>
