@@ -34,7 +34,7 @@ const SigninPage: FC = () => {
   return (
     <Form method="post" className="min-w-96 flex flex-col gap-7">
       <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="email" name="email" label={errorName === 'email' ? errorMessage : 'Email'} type="text" placeholder="one@company.com" required />
-      <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="password" name="password" label={errorName === 'password' ? errorMessage : 'Password'} type="password" placeholder="one1234" required />
+      <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="password" name="password" label={errorName === 'password' ? errorMessage : 'Password'} type="password" placeholder="••••••••" required />
       <Button loading={navigation.state === 'submitting'}>Sign in</Button>
     </Form>
   );
