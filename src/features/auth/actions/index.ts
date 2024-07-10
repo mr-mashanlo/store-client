@@ -1,3 +1,4 @@
-import registerUserAction from './registerUserAction';
+import signinAction from './signinAction';
+import signupAction from './signupAction';
 
-export { registerUserAction };
+export { signinAction, signupAction };

@@ -8,7 +8,7 @@ import { PostPage, SinglePostPage } from '@/pages/post';
 import { MediaPage } from '@/pages/media';
 import { SigninPage, SignupPage } from '@/pages/auth';
 
-import { registerUserAction } from '@/features/auth/actions';
+import { signinAction, signupAction } from '@/features/auth/actions';
 
 const router = createBrowserRouter( [
   {
@@ -31,11 +31,12 @@ const router = createBrowserRouter( [
       {
         path: '/signin',
         element: <SigninPage />,
-        action: registerUserAction
+        action: signinAction
       },
       {
         path: '/signup',
-        element: <SignupPage />
+        element: <SignupPage />,
+        action: signupAction
       }
     ]
   },
