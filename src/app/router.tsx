@@ -1,7 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import MainLayout from '@/shared/layouts/mainLayout';
-import AuthLayout from '@/shared/layouts/authLayout';
+import { MainLayout } from '@/shared/layouts';
+import { AuthLayout } from '@/shared/layouts';
+
+import { RequestAuth } from '@/shared/hoc';
+import { NotRequestAuth } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { PostPage, SinglePostPage } from '@/pages/post';
@@ -20,7 +23,7 @@ const router = createBrowserRouter( [
       },
       {
         path: '/media',
-        element: <MediaPage />
+        element: <RequestAuth><MediaPage /></RequestAuth>
       }
     ]
   },
@@ -30,12 +33,12 @@ const router = createBrowserRouter( [
     children: [
       {
         path: '/signin',
-        element: <SigninPage />,
+        element: <NotRequestAuth><SigninPage /></NotRequestAuth>,
         action: signinAction
       },
       {
         path: '/signup',
-        element: <SignupPage />,
+        element: <NotRequestAuth><SignupPage /></NotRequestAuth>,
         action: signupAction
       }
     ]

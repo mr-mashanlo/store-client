@@ -1,5 +1,6 @@
 import { ActionFunctionArgs } from 'react-router-dom';
 import { authService } from '../services';
+import { useAuthStore } from '@/entities/auth/model';
 
 const signinAction = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();
@@ -12,6 +13,7 @@ const signinAction = async ( { request }: ActionFunctionArgs ) => {
 
   try {
     await authService.signin( email, password );
+    useAuthStore.setState( { auth: true } );
     return { success: true };
   } catch ( error ) {
     return { success: false, error };
