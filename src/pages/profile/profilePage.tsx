@@ -1,10 +1,10 @@
-import { MainHeader } from '@/features/header/ui';
+import { ProfileHeader } from '@/features/header/ui';
 import { FC } from 'react';
 
-const HomePage: FC = () => {
+const ProfilePage: FC = () => {
   return (
     <>
-      <MainHeader />
+      <ProfileHeader title="John Doe" />
 
       <section className="py-14">
         <div className="container-block container-block--normal">
@@ -15,4 +15,4 @@ const HomePage: FC = () => {
   );
 };
 
-export default HomePage;
+export default ProfilePage;

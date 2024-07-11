@@ -1,9 +1,16 @@
+import { PageHeader } from '@/features/header/ui';
 import { FC } from 'react';
 
 const MediaPage: FC = () => {
   return (
     <>
-      MediaPage
+      <PageHeader title="Media Page" />
+
+      <section className="py-14">
+        <div className="container-block container-block--normal">
+          <p>Hello</p>
+        </div>
+      </section>
     </>
   );
 };

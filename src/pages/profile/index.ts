@@ -1,3 +1,4 @@
+import ProfilePage from './profilePage';
 import EditProfilePage from './editProfilePage';
 
-export { EditProfilePage };
+export { ProfilePage, EditProfilePage };
