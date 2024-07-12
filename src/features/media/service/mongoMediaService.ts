@@ -3,9 +3,9 @@ import { authInstance } from '@/shared/api';
 
 export class MongoMediaService implements IMediaService {
 
-  create = async ( name: string, alt: string ) => {
+  create = async ( image: FormData ) => {
     try {
-      const response = await authInstance( 'media/create', { method: 'post', body: JSON.stringify( { name, alt } ) } );
+      const response = await authInstance( 'media/upload', { method: 'post', body: image, timeout: 60000 } );
       return await response.json() as IMedia;
     } catch ( error ) {
       return Promise.reject( error );
@@ -14,7 +14,7 @@ export class MongoMediaService implements IMediaService {
 
   delete = async ( name: string ) => {
     try {
-      const response = await authInstance( `auth/signup/${name}`, { method: 'get' } );
+      const response = await authInstance( `media/delete/${name}`, { method: 'get' } );
       return await response.json() as IMedia;
     } catch ( error ) {
       return Promise.reject( error );

@@ -5,7 +5,7 @@ const authInstance = defaultInstance.extend( {
     afterResponse: [
       async ( _request, _options, response ) => {
         if ( response.status === 401 ) {
-          await defaultInstance( 'auth/refresh', { method: 'get' } );
+          await defaultInstance( 'auth/token', { method: 'get' } );
           return;
         }
         return response;

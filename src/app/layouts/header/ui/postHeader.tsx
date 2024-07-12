@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { headerLinks } from '../config/headerLinks';
 
 const PostHeader: FC = () => {
   const navigate = useNavigate();
@@ -12,7 +13,9 @@ const PostHeader: FC = () => {
             <p className="text-xl font-medium uppercase text-[#FFCCCC]"><button onClick={() => navigate( -1 )} className="uppercase">Back</button></p>
             <nav>
               <ul className="flex items-center justify-between gap-10">
-                <li><Link to="/profile">Account</Link></li>
+                {headerLinks.map( item => (
+                  <li key={item.url}><Link to={item.url}>{item.name}</Link></li>
+                ) )}
               </ul>
             </nav>
           </div>

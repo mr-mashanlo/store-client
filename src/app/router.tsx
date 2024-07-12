@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { MainLayout, AuthLayout } from '@/shared/layouts';
+import { MainLayout } from './layouts/main';
+import { AuthLayout } from './layouts/auth';
 
 import { RequestAuth } from '@/shared/hoc';
 import { NotRequestAuth } from '@/shared/hoc';
@@ -12,6 +13,7 @@ import { MediaPage } from '@/pages/media';
 import { ProfilePage } from '@/pages/profile';
 
 import { signinAction, signupAction } from '@/features/auth/actions';
+import { uploadAction } from '@/features/media/actions';
 
 const router = createBrowserRouter( [
   {
@@ -23,7 +25,8 @@ const router = createBrowserRouter( [
       },
       {
         path: '/media',
-        element: <RequestAuth><MediaPage /></RequestAuth>
+        element: <RequestAuth><MediaPage /></RequestAuth>,
+        action: uploadAction
       },
       {
         path: '/profile',

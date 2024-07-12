@@ -1,5 +1,5 @@
-import { ProfileHeader } from '@/features/header/ui';
 import { FC } from 'react';
+import { ProfileHeader } from '@/app/layouts/header/ui';
 
 const ProfilePage: FC = () => {
   return (

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { headerLinks } from '../config/headerLinks';
 
 const MainHeader: FC = () => {
   return (
@@ -9,7 +10,9 @@ const MainHeader: FC = () => {
           <p className="text-xl font-medium uppercase text-[#FFCCCC]">Lee Mashanlo</p>
           <nav>
             <ul className="flex items-center justify-between gap-10">
-              <li><Link to="/profile">Account</Link></li>
+              {headerLinks.map( item => (
+                <li key={item.url}><Link to={item.url}>{item.name}</Link></li>
+              ) )}
             </ul>
           </nav>
         </div>

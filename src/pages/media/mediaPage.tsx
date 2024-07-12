@@ -1,5 +1,6 @@
-import { PageHeader } from '@/features/header/ui';
 import { FC } from 'react';
+import { PageHeader } from '@/app/layouts/header/ui';
+import { UploadForm } from '@/features/media/ui';
 
 const MediaPage: FC = () => {
   return (
@@ -8,7 +9,7 @@ const MediaPage: FC = () => {
 
       <section className="py-14">
         <div className="container-block container-block--normal">
-          <p>Hello</p>
+          <UploadForm />
         </div>
       </section>
     </>

@@ -1,6 +1,6 @@
 import { IMedia } from './IMedia';
 
 export interface IMediaService {
-  create: ( name: string, alt: string ) => Promise<IMedia>
+  create: ( image: FormData ) => Promise<IMedia>
   delete: ( name: string ) => Promise<IMedia>
 }

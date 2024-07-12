@@ -8,8 +8,8 @@ export class MediaService {
     this.service = service;
   }
 
-  create = ( name: string, alt: string ) => {
-    return this.service.create( name, alt );
+  create = ( image: FormData ) => {
+    return this.service.create( image );
   };
 
   delete = ( name: string ) => {

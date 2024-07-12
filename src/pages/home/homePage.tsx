@@ -1,5 +1,5 @@
-import { MainHeader } from '@/features/header/ui';
 import { FC } from 'react';
+import { MainHeader } from '@/app/layouts/header/ui';
 
 const HomePage: FC = () => {
   return (
