@@ -71,9 +71,9 @@ const UploadForm: FC = () => {
         <If condition={image !== null}>
           <Then>
             <div className="text-center">
-              <p className="font-medium text-xl">{image ? image.name : 'default-file.png'}</p>
-              <p className="mt-4">{Math.floor( image ? image.size / 1024 : 1 )} KB</p>
-              <div className="mt-5 flex gap-6">
+              <p className="font-medium text-xl">The file {image ? image.name : 'default-file.png'} is ready for upload.</p>
+              <p className="mt-4">Its size is {Math.floor( image ? image.size / 1024 : 1 )} KB and it's prepared for transfer.</p>
+              <div className="mt-5 flex justify-center gap-6">
                 <Button onClick={() => handleImageClear()} type="reset" disabled={navigation.state === 'submitting'}>Clear</Button>
                 <Button type="submit" loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Save</Button>
               </div>
@@ -83,8 +83,8 @@ const UploadForm: FC = () => {
             <If condition={isSuccess}>
               <Then>
                 <div className="text-center">
-                  <p className="font-medium text-xl">File</p>
-                  <p className="mt-4">was saved</p>
+                  <p className="font-medium text-xl">The file was successfully uploaded to the server.</p>
+                  <p className="mt-4">The process completed smoothly and efficiently.</p>
                   <Button onClick={() => setIsSuccess( false )} type="button" className="mt-5">Done</Button>
                 </div>
               </Then>

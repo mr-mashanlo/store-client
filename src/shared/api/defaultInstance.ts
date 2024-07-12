@@ -4,7 +4,7 @@ import ky from 'ky';
 const url = import.meta.env.VITE_REACT_APP_BACK_URL;
 
 const defaultInstance = ky.create( {
-  retry: 1,
+  retry: 3,
   prefixUrl: url,
   credentials: 'include',
   hooks: {

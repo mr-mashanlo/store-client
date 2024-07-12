@@ -13,7 +13,8 @@ import { MediaPage } from '@/pages/media';
 import { ProfilePage } from '@/pages/profile';
 
 import { signinAction, signupAction } from '@/features/auth/actions';
-import { uploadAction } from '@/features/media/actions';
+import { deleteAction, uploadAction } from '@/features/media/actions';
+import { getLoader } from '@/features/media/loaders';
 
 const router = createBrowserRouter( [
   {
@@ -26,7 +27,14 @@ const router = createBrowserRouter( [
       {
         path: '/media',
         element: <RequestAuth><MediaPage /></RequestAuth>,
-        action: uploadAction
+        loader: getLoader,
+        action: uploadAction,
+        children: [
+          {
+            path: 'delete/:name',
+            action: deleteAction
+          }
+        ]
       },
       {
         path: '/profile',
