@@ -1,5 +1,5 @@
 const headerLinks = [
-  { name: 'Admin', url: '/media' },
+  { name: 'Dashboard', url: '/dashboard/media' },
   { name: 'Account', url: '/profile' }
 ];
 

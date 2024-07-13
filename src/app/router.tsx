@@ -13,8 +13,11 @@ import { MediaPage, OrdersPage, ProductsPage, UsersPage } from '@/pages/dashboar
 import { ProfilePage } from '@/pages/profile';
 
 import { signinAction, signupAction } from '@/features/auth/actions';
-import { deleteAction, uploadAction } from '@/features/media/actions';
-import { getLoader } from '@/features/media/loaders';
+import { deleteImage, uploadImage } from '@/features/media/actions';
+import { deleteUser, updateUser } from '@/features/user/actions';
+
+import { getImages } from '@/features/media/loaders';
+import { getUsers } from '@/features/user/loaders';
 
 const router = createBrowserRouter( [
   {
@@ -54,22 +57,36 @@ const router = createBrowserRouter( [
       {
         path: 'media',
         element: <RequestAuth><MediaPage /></RequestAuth>,
-        loader: getLoader,
-        action: uploadAction,
+        loader: getImages,
         children: [
           {
+            path: 'upload/:name',
+            action: uploadImage
+          },
+          {
             path: 'delete/:name',
-            action: deleteAction
+            action: deleteImage
+          }
+        ]
+      },
+      {
+        path: 'users',
+        element: <RequestAuth><UsersPage /></RequestAuth>,
+        loader: getUsers,
+        children: [
+          {
+            path: 'update/:id',
+            action: updateUser
+          },
+          {
+            path: 'delete/:id',
+            action: deleteUser
           }
         ]
       },
       {
         path: 'products',
         element: <RequestAuth><ProductsPage /></RequestAuth>
-      },
-      {
-        path: 'users',
-        element: <RequestAuth><UsersPage /></RequestAuth>
       },
       {
         path: 'orders',

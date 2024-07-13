@@ -1,7 +1,7 @@
 import { ActionFunctionArgs } from 'react-router-dom';
 import { mediaService } from '../service';
 
-const uploadAction = async ( { request }: ActionFunctionArgs ) => {
+const uploadImage = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();
   const image = formData.get( 'image' );
 
@@ -20,4 +20,4 @@ const uploadAction = async ( { request }: ActionFunctionArgs ) => {
   }
 };
 
-export default uploadAction;
+export default uploadImage;

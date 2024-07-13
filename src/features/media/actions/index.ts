@@ -1,4 +1,4 @@
-import uploadAction from './uploadAction';
-import deleteAction from './deleteAction';
+import uploadImage from './uploadImage';
+import deleteImage from './deleteImage';
 
-export { uploadAction, deleteAction };
+export { uploadImage, deleteImage };

@@ -1,3 +1,3 @@
-import getLoader from './getLoader';
+import getImages from './getImages';
 
-export { getLoader };
+export { getImages };

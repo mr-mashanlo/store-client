@@ -1,6 +1,6 @@
 import { mediaService } from '../service';
 
-const getLoader = async () => {
+const getImages = async () => {
   try {
     const images = await mediaService.get();
     return { success: true, data: images };
@@ -9,4 +9,4 @@ const getLoader = async () => {
   }
 };
 
-export default getLoader;
+export default getImages;

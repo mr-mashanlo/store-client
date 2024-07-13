@@ -1,7 +1,7 @@
 import { ActionFunctionArgs } from 'react-router-dom';
 import { mediaService } from '../service';
 
-const deleteAction = async ( { params }: ActionFunctionArgs ) => {
+const deleteImage = async ( { params }: ActionFunctionArgs ) => {
 
   if ( typeof params.name !== 'string' ) {
     return { success: false };
@@ -15,4 +15,4 @@ const deleteAction = async ( { params }: ActionFunctionArgs ) => {
   }
 };
 
-export default deleteAction;
+export default deleteImage;
