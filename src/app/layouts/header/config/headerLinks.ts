@@ -1,5 +1,6 @@
-export const headerLinks = [
-  { name: 'Home', url: '/' },
-  { name: 'Media', url: '/media' },
+const headerLinks = [
+  { name: 'Admin', url: '/media' },
   { name: 'Account', url: '/profile' }
 ];
+
+export default headerLinks;

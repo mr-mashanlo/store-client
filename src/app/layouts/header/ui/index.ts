@@ -3,4 +3,6 @@ import PageHeader from './pageHeader';
 import PostHeader from './postHeader';
 import ProfileHeader from './profileHeader';
 
-export { MainHeader, PageHeader, PostHeader, ProfileHeader };
+import Header from './header';
+
+export { Header, MainHeader, PageHeader, PostHeader, ProfileHeader };

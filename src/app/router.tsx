@@ -2,14 +2,14 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { MainLayout } from './layouts/main';
 import { AuthLayout } from './layouts/auth';
+import { DashboardLayout } from './layouts/dashboard';
 
 import { RequestAuth } from '@/shared/hoc';
 import { NotRequestAuth } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
-import { PostPage, SinglePostPage } from '@/pages/post';
-import { MediaPage } from '@/pages/media';
+import { MediaPage, OrdersPage, ProductsPage, UsersPage } from '@/pages/dashboard';
 import { ProfilePage } from '@/pages/profile';
 
 import { signinAction, signupAction } from '@/features/auth/actions';
@@ -23,18 +23,6 @@ const router = createBrowserRouter( [
       {
         path: '/',
         element: <HomePage />
-      },
-      {
-        path: '/media',
-        element: <RequestAuth><MediaPage /></RequestAuth>,
-        loader: getLoader,
-        action: uploadAction,
-        children: [
-          {
-            path: 'delete/:name',
-            action: deleteAction
-          }
-        ]
       },
       {
         path: '/profile',
@@ -60,15 +48,32 @@ const router = createBrowserRouter( [
   },
 
   {
-    element: <MainLayout />,
+    element: <DashboardLayout />,
+    path: '/dashboard',
     children: [
       {
-        path: '/posts',
-        element: <PostPage />
+        path: 'media',
+        element: <RequestAuth><MediaPage /></RequestAuth>,
+        loader: getLoader,
+        action: uploadAction,
+        children: [
+          {
+            path: 'delete/:name',
+            action: deleteAction
+          }
+        ]
       },
       {
-        path: '/post/:id',
-        element: <SinglePostPage />
+        path: 'products',
+        element: <RequestAuth><ProductsPage /></RequestAuth>
+      },
+      {
+        path: 'users',
+        element: <RequestAuth><UsersPage /></RequestAuth>
+      },
+      {
+        path: 'orders',
+        element: <RequestAuth><OrdersPage /></RequestAuth>
       }
     ]
   }

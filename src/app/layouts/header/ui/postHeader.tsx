@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { headerLinks } from '../config/headerLinks';
+import { headerLinks } from '../config';
 
 const PostHeader: FC = () => {
   const navigate = useNavigate();
