@@ -15,6 +15,7 @@ const DashboardLayout: FC = () => {
           <li><NavLink to="/dashboard/media" className={setActiveClass}>Media</NavLink></li>
           <li><NavLink to="/dashboard/users" className={setActiveClass}>Users</NavLink></li>
           <li><NavLink to="/dashboard/products" className={setActiveClass}>Products</NavLink></li>
+          <li><NavLink to="/dashboard/categories" className={setActiveClass}>Categories</NavLink></li>
           <li><NavLink to="/dashboard/orders" className={setActiveClass}>Orders</NavLink></li>
         </ul>
       </div>

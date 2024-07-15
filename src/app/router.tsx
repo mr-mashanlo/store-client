@@ -9,7 +9,7 @@ import { NotRequestAuth } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
-import { MediaPage, OrdersPage, ProductsPage, UsersPage } from '@/pages/dashboard';
+import { CategoriesPage, MediaPage, OrdersPage, ProductsPage, UsersPage } from '@/pages/dashboard';
 import { ProfilePage } from '@/pages/profile';
 
 import { signinAction, signupAction } from '@/features/auth/actions';
@@ -18,6 +18,7 @@ import { deleteUser, updateUser } from '@/features/user/actions';
 
 import { getImages } from '@/features/media/loaders';
 import { getUsers } from '@/features/user/loaders';
+import { getProducts } from '@/features/product/loaders';
 
 const router = createBrowserRouter( [
   {
@@ -86,7 +87,12 @@ const router = createBrowserRouter( [
       },
       {
         path: 'products',
-        element: <RequestAuth><ProductsPage /></RequestAuth>
+        element: <RequestAuth><ProductsPage /></RequestAuth>,
+        loader: getProducts
+      },
+      {
+        path: 'categories',
+        element: <RequestAuth><CategoriesPage /></RequestAuth>
       },
       {
         path: 'orders',

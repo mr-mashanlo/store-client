@@ -6,7 +6,7 @@ const UserList: FC = () => {
   const users = useLoaderData() as { success: boolean, data: Array<IUser> };
 
   return (
-    <ul className="">
+    <ul>
       {users.data.map( user => (
         <li key={user._id} className="p-3 grid grid-cols-4 gap-4 items-center even:bg-[#363636]">
           <span>{user._id}</span>
