@@ -15,6 +15,7 @@ import { ProfilePage } from '@/pages/profile';
 import { signinAction, signupAction } from '@/features/auth/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
 import { deleteUser, updateUser } from '@/features/user/actions';
+import { createProduct, deleteProduct } from '@/features/product/actions';
 
 import { getImages } from '@/features/media/loaders';
 import { getUsers } from '@/features/user/loaders';
@@ -59,11 +60,8 @@ const router = createBrowserRouter( [
         path: 'media',
         element: <RequestAuth><MediaPage /></RequestAuth>,
         loader: getImages,
+        action: uploadImage,
         children: [
-          {
-            path: 'upload/:name',
-            action: uploadImage
-          },
           {
             path: 'delete/:name',
             action: deleteImage
@@ -88,7 +86,14 @@ const router = createBrowserRouter( [
       {
         path: 'products',
         element: <RequestAuth><ProductsPage /></RequestAuth>,
-        loader: getProducts
+        loader: getProducts,
+        action: createProduct,
+        children: [
+          {
+            path: 'delete/:id',
+            action: deleteProduct
+          }
+        ]
       },
       {
         path: 'categories',

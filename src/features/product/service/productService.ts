@@ -16,6 +16,10 @@ export class ProductService {
     return this.service.getOne( id );
   };
 
+  create = ( product: IProduct ) => {
+    return this.service.create( product );
+  };
+
   update = ( id: string, updates: Partial<IProduct> ) => {
     return this.service.update( id, updates );
   };
