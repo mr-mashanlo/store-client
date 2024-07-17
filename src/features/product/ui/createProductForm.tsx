@@ -10,17 +10,20 @@ import Textarea from '@/shared/ui/textarea';
 
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
+import { IProduct } from '@/entities/product/types';
 
 interface Props {
   categories: Array<ICategory>
   images: Array<IMedia>
+  product?: IProduct
+  action: string
 }
 
-const CreateProductForm: FC<Props> = ( { categories, images } ) => {
-  const actionData = useActionData();
+const CreateProductForm: FC<Props> = ( { categories, images, product, action } ) => {
+  const actionData = useActionData() as { success: boolean };
 
   const form = useRef<HTMLFormElement>( null );
-  const [ gallery, setGallery ] = useState<Array<string>>( [] );
+  const [ gallery, setGallery ] = useState<Array<string>>( product ? product.images : [] );
   const [ isShowImages, setIsShowImages ] = useState<boolean>( false );
 
   const appendImage = ( image: string ) => {
@@ -40,23 +43,27 @@ const CreateProductForm: FC<Props> = ( { categories, images } ) => {
   };
 
   useEffect( () => {
-    setGallery( [] );
-    setIsShowImages( false );
+    if ( typeof actionData === 'object' ) {
+      setIsShowImages( false );
+    }
+
+    if ( !product ) {
+      setGallery( [] );
+    }
 
     if ( form.current ) {
       form.current.reset();
     }
-
-  }, [ actionData ] );
+  }, [ actionData, product ] );
 
   return (
-    <Form ref={form} method="post" action="/dashboard/products">
+    <Form ref={form} method="post" action={action}>
       <div className="grid grid-cols-2 gap-7">
         <div className="flex flex-col gap-7">
-          <TextInput id="name" name="name" label="Name" type="text" required />
+          <TextInput id="name" name="name" label="Name" type="text" defaultValue={product?.name} required />
           <div className="grid grid-cols-2 gap-7">
-            <TextInput id="price" name="price" label="Price" type="text" required />
-            <Select id="category" name="category" label="Category" options={categories} required />
+            <TextInput id="price" name="price" label="Price" type="text" defaultValue={product?.price} required />
+            <Select id="category" name="category" label="Category" options={categories} defaultValue={product?.category} required />
           </div>
           <div className="grid grid-cols-4 gap-7">
             <If condition={gallery[0]}>
@@ -109,7 +116,7 @@ const CreateProductForm: FC<Props> = ( { categories, images } ) => {
         <div>
           <div className={twMerge( 'h-[16.222rem] bg-[#363636] rounded-lg relative', isShowImages ? '' : 'hidden' )}>
             <button onClick={() => setIsShowImages( false )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-            <div className="h-[16.1rem] p-4 grid grid-cols-3 gap-4 overflow-x-auto hidden-scrollbar">
+            <div className="h-[16.1rem] p-4 grid grid-cols-3 gap-4 items-start overflow-x-auto hidden-scrollbar">
               {images.map( image => (
                 <button onClick={() => appendImage( image.url )} key={image._id} type="button">
                   <img src={image.url} alt={image.alt} className={twMerge( 'w-full aspect-square object-cover rounded-lg', gallery.indexOf( image.url ) !== -1 ? 'opacity-20' : '' )} />
@@ -117,11 +124,11 @@ const CreateProductForm: FC<Props> = ( { categories, images } ) => {
               ) )}
             </div>
           </div>
-          <Textarea id="about" name="about" label="About" rows={8} className={twMerge( isShowImages ? 'hidden' : '' )} required />
+          <Textarea id="about" name="about" label="About" rows={8} defaultValue={product?.about} className={twMerge( isShowImages ? 'hidden' : '' )} required />
         </div>
       </div>
       <div className="mt-7 text-center">
-        <Button type="submit">Create</Button>
+        <Button type="submit">{product ? 'Save' : 'Create'}</Button>
       </div>
     </Form>
   );

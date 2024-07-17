@@ -3,7 +3,7 @@ import { authInstance } from '@/shared/api';
 
 export class MongoMediaService implements IMediaService {
 
-  get = async () => {
+  getAll = async () => {
     try {
       const response = await authInstance( 'media', { method: 'get' } );
       return await response.json() as Array<IMedia>;

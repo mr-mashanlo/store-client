@@ -11,7 +11,7 @@ const ProductsPage: FC = () => {
   return (
     <div className="grid gap-14">
       <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Products page</h1>
-      <CreateProductForm categories={loaderData.data.categories} images={loaderData.data.images} />
+      <CreateProductForm action="/dashboard/products" categories={loaderData.data.categories} images={loaderData.data.images} />
       <ProductList products={loaderData.data.products} />
     </div>
   );

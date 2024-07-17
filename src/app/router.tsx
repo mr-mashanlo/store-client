@@ -9,18 +9,18 @@ import { NotRequestAuth } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
-import { CategoriesPage, MediaPage, OrdersPage, ProductsPage, UsersPage } from '@/pages/dashboard';
+import { CategoriesPage, MediaPage, OrdersPage, ProductsPage, SingleProductPage, UsersPage } from '@/pages/dashboard';
 import { ProfilePage } from '@/pages/profile';
 
 import { signinAction, signupAction } from '@/features/auth/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
 import { deleteUser, updateUser } from '@/features/user/actions';
-import { createProduct, deleteProduct } from '@/features/product/actions';
+import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
 import { createCategory, deleteCategory } from '@/features/category/actions';
 
 import { fetchImages } from '@/features/media/loaders';
 import { fetchUsers } from '@/features/user/loaders';
-import { fetchProducts } from '@/features/product/loaders';
+import { fetchProduct, fetchProducts } from '@/features/product/loaders';
 import { fetchCategories } from '@/features/category/loaders';
 
 const router = createBrowserRouter( [
@@ -96,6 +96,12 @@ const router = createBrowserRouter( [
             action: deleteProduct
           }
         ]
+      },
+      {
+        path: 'products/:id',
+        element: <RequestAuth><SingleProductPage /></RequestAuth>,
+        loader: fetchProduct,
+        action: updateProduct
       },
       {
         path: 'categories',

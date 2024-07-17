@@ -20,7 +20,7 @@ const ProductList: FC<Props> = ( { products } ) => {
               <div className="w-10 h-10 bg-[#363636]"></div>
             </Else>
           </If>
-          <p><Link to={`/dashboard/product/${product._id}`} className="hover:text-white hover:underline">{product.name}</Link></p>
+          <p><Link to={`/dashboard/products/${product._id}`} className="hover:text-white hover:underline">{product.name}</Link></p>
           <span>{product.price}</span>
           <span>{product.category}</span>
           <Form method="delete" action={`/dashboard/products/delete/${product._id}`} navigate={false} className="ml-auto">
