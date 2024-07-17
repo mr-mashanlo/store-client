@@ -104,7 +104,7 @@ const router = createBrowserRouter( [
         action: createCategory,
         children: [
           {
-            path: 'delete/:id',
+            path: 'delete/:slug',
             action: deleteCategory
           }
         ]

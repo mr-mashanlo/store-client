@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import { IMedia } from '@/entities/media/types';
 
-const ImageList: FC = () => {
-  const data = useLoaderData() as { success: boolean, error?: string, data?: Array<IMedia> };
+interface Props {
+  images: Array<IMedia>
+}
 
+const ImageList: FC<Props> = ( { images } ) => {
   return (
     <ul className="grid gap-5 grid-cols-6">
-      {data.data && data.data.map( image => (
+      {images.map( image => (
         <li key={image.name} className="relative group overflow-hidden">
           <img src={image.url} alt={image.alt} className="block aspect-square object-cover" />
           <Form method="DELETE" action={`/dashboard/media/delete/${image.name}`} navigate={false}>

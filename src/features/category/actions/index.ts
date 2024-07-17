@@ -1,4 +1,4 @@
 import createCategory from './createCategory';
-import deleteCategory from './deletecategory';
+import deleteCategory from './deleteCategory';
 
 export { createCategory, deleteCategory };

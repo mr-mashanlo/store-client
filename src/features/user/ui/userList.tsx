@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import { IUser } from '@/entities/auth/types';
 
-const UserList: FC = () => {
-  const users = useLoaderData() as { success: boolean, data: Array<IUser> };
+interface Props {
+  users: Array<IUser>
+}
 
+const UserList: FC<Props> = ( { users } ) => {
   return (
     <ul>
-      {users.data.map( user => (
+      {users.map( user => (
         <li key={user._id} className="p-3 grid grid-cols-3 gap-4 items-center even:bg-[#363636]">
           <span>{user.email}</span>
           <Form method="put" navigate={false} action={`/dashboard/users/update/${user._id}`} className="ml-auto flex items-center">

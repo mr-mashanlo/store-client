@@ -14,10 +14,10 @@ const ProductList: FC<Props> = ( { products } ) => {
         <li key={product._id} className="p-3 grid grid-cols-5 gap-4 items-center even:bg-[#363636]">
           <If condition={product.images[0]}>
             <Then>
-              <img src={product.images[0]} alt="" className="w-8 h-8 object-cover" />
+              <img src={product.images[0]} alt="" className="w-10 h-10 object-cover" />
             </Then>
             <Else>
-              <div className="w-8 h-8 bg-[#363636]"></div>
+              <div className="w-10 h-10 bg-[#363636]"></div>
             </Else>
           </If>
           <p><Link to={`/dashboard/product/${product._id}`} className="hover:text-white hover:underline">{product.name}</Link></p>
