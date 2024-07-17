@@ -4,9 +4,14 @@ import { IAuthStore } from '../types';
 
 const useAuthStore = create( persist<IAuthStore>( set => ( {
   auth: false,
+  role: 'USER',
 
-  setAuth( status ) {
-    set( () => ( { auth: status } ) );
+  setAuth( auth ) {
+    set( () => ( { auth } ) );
+  },
+
+  setRole( role ) {
+    set( () => ( { role } ) );
   }
 
 } ), { name: 'auth' } ) );

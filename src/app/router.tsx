@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { MainLayout } from './layouts/main';
 import { AuthLayout } from './layouts/auth';
 import { DashboardLayout } from './layouts/dashboard';
+import { AccountLayout } from './layouts/account';
 
 import { RequestAuth } from '@/shared/hoc';
 import { NotRequestAuth } from '@/shared/hoc';
@@ -10,7 +11,7 @@ import { NotRequestAuth } from '@/shared/hoc';
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
 import { CategoriesPage, MediaPage, OrdersPage, ProductsPage, SingleProductPage, UsersPage } from '@/pages/dashboard';
-import { ProfilePage } from '@/pages/profile';
+import { AddressPage, MyOrderPage, ProfilePage } from '@/pages/account';
 
 import { signinAction, signupAction } from '@/features/auth/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
@@ -30,10 +31,6 @@ const router = createBrowserRouter( [
       {
         path: '/',
         element: <HomePage />
-      },
-      {
-        path: '/profile',
-        element: <RequestAuth><ProfilePage /></RequestAuth>
       }
     ]
   },
@@ -55,8 +52,8 @@ const router = createBrowserRouter( [
   },
 
   {
-    element: <DashboardLayout />,
     path: '/dashboard',
+    element: <DashboardLayout />,
     children: [
       {
         path: 'media',
@@ -118,6 +115,25 @@ const router = createBrowserRouter( [
       {
         path: 'orders',
         element: <RequestAuth><OrdersPage /></RequestAuth>
+      }
+    ]
+  },
+
+  {
+    path: '/account',
+    element: <AccountLayout />,
+    children: [
+      {
+        path: 'me',
+        element: <ProfilePage />
+      },
+      {
+        path: 'address',
+        element: <AddressPage />
+      },
+      {
+        path: 'orders',
+        element: <MyOrderPage />
       }
     ]
   }

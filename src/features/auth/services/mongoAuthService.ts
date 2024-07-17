@@ -1,4 +1,4 @@
-import { IAuthService, IUser } from '@/entities/auth/types';
+import { IAuthService } from '@/entities/auth/types';
 import { authInstance, defaultInstance } from '@/shared/api';
 
 export class MongoAuthService implements IAuthService {
@@ -6,7 +6,7 @@ export class MongoAuthService implements IAuthService {
   signin = async ( email: string, password: string ) => {
     try {
       const response = await defaultInstance( 'auth/signin', { method: 'post', body: JSON.stringify( { email, password } ), headers: { 'content-type': 'application/json' } } );
-      return await response.json() as IUser;
+      return await response.json() as { RToken: string, AToken: string };
     } catch ( error ) {
       return Promise.reject( error );
     }
@@ -15,7 +15,7 @@ export class MongoAuthService implements IAuthService {
   signup = async ( email: string, password: string, confirm: string ) => {
     try {
       const response = await defaultInstance( 'auth/signup', { method: 'post', body: JSON.stringify( { email, password, confirm } ), headers: { 'content-type': 'application/json' } } );
-      return await response.json() as IUser;
+      return await response.json() as { RToken: string, AToken: string };
     } catch ( error ) {
       return Promise.reject( error );
     }

@@ -1,4 +1,6 @@
 export interface IAuthStore {
   auth: boolean
-  setAuth: ( status: boolean ) => void
+  role: string
+  setAuth: ( auth: boolean ) => void
+  setRole: ( role: 'USER' | 'ADMIN' ) => void
 }

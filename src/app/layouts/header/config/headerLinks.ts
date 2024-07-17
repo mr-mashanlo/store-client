@@ -1,6 +1,5 @@
 const headerLinks = [
-  { name: 'Dashboard', url: '/dashboard/media' },
-  { name: 'Account', url: '/profile' }
+  { name: 'Dashboard', url: '/dashboard/media' }
 ];
 
 export default headerLinks;

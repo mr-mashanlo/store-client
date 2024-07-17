@@ -8,7 +8,7 @@ const CategoriesPage: FC = () => {
 
   return (
     <div className="grid gap-14">
-      <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Categories page</h1>
+      <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Product categories page</h1>
       <CreateCategoryForm />
       <CategoryList categories={loaderData.data || []} />
     </div>
