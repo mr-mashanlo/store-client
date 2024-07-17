@@ -1,3 +1,3 @@
-import getProducts from './getProducts';
+import fetchProducts from './fetchProducts';
 
-export { getProducts };
+export { fetchProducts };

@@ -1,6 +1,6 @@
 import { userService } from '../service';
 
-const getUsers = async () => {
+const fetchUsers = async () => {
   try {
     const users = await userService.getAll();
     return { success: true, data: users };
@@ -9,4 +9,4 @@ const getUsers = async () => {
   }
 };
 
-export default getUsers;
+export default fetchUsers;

@@ -1,3 +1,3 @@
-import getImages from './getImages';
+import fetchImages from './fetchImages';
 
-export { getImages };
+export { fetchImages };

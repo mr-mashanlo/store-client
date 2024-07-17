@@ -1,3 +1,3 @@
-import getUsers from './getUsers';
+import fetchUsers from './fetchUsers';
 
-export { getUsers };
+export { fetchUsers };

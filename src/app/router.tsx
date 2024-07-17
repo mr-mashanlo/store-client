@@ -16,10 +16,12 @@ import { signinAction, signupAction } from '@/features/auth/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
 import { deleteUser, updateUser } from '@/features/user/actions';
 import { createProduct, deleteProduct } from '@/features/product/actions';
+import { createCategory, deleteCategory } from '@/features/category/actions';
 
-import { getImages } from '@/features/media/loaders';
-import { getUsers } from '@/features/user/loaders';
-import { getProducts } from '@/features/product/loaders';
+import { fetchImages } from '@/features/media/loaders';
+import { fetchUsers } from '@/features/user/loaders';
+import { fetchProducts } from '@/features/product/loaders';
+import { fetchCategories } from '@/features/category/loaders';
 
 const router = createBrowserRouter( [
   {
@@ -59,7 +61,7 @@ const router = createBrowserRouter( [
       {
         path: 'media',
         element: <RequestAuth><MediaPage /></RequestAuth>,
-        loader: getImages,
+        loader: fetchImages,
         action: uploadImage,
         children: [
           {
@@ -71,7 +73,7 @@ const router = createBrowserRouter( [
       {
         path: 'users',
         element: <RequestAuth><UsersPage /></RequestAuth>,
-        loader: getUsers,
+        loader: fetchUsers,
         children: [
           {
             path: 'update/:id',
@@ -86,7 +88,7 @@ const router = createBrowserRouter( [
       {
         path: 'products',
         element: <RequestAuth><ProductsPage /></RequestAuth>,
-        loader: getProducts,
+        loader: fetchProducts,
         action: createProduct,
         children: [
           {
@@ -97,7 +99,15 @@ const router = createBrowserRouter( [
       },
       {
         path: 'categories',
-        element: <RequestAuth><CategoriesPage /></RequestAuth>
+        element: <RequestAuth><CategoriesPage /></RequestAuth>,
+        loader: fetchCategories,
+        action: createCategory,
+        children: [
+          {
+            path: 'delete/:id',
+            action: deleteCategory
+          }
+        ]
       },
       {
         path: 'orders',

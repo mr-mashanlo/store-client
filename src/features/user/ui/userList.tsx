@@ -8,8 +8,7 @@ const UserList: FC = () => {
   return (
     <ul>
       {users.data.map( user => (
-        <li key={user._id} className="p-3 grid grid-cols-4 gap-4 items-center even:bg-[#363636]">
-          <span>{user._id}</span>
+        <li key={user._id} className="p-3 grid grid-cols-3 gap-4 items-center even:bg-[#363636]">
           <span>{user.email}</span>
           <Form method="put" navigate={false} action={`/dashboard/users/update/${user._id}`} className="ml-auto flex items-center">
             <select name="role" id="role" defaultValue={user.role} className="px-4 py-2 bg-transparent border-2 border-solid text-sm leading-normal appearance-none">

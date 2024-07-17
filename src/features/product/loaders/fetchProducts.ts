@@ -2,7 +2,7 @@ import { mediaService } from '@/features/media/service';
 import { productService } from '../service';
 import { categoryService } from '@/features/category/service';
 
-const getProducts = async () => {
+const fetchProducts = async () => {
   try {
     const products = await productService.getAll();
     const categories = await categoryService.getAll();
@@ -13,4 +13,4 @@ const getProducts = async () => {
   }
 };
 
-export default getProducts;
+export default fetchProducts;
