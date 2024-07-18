@@ -11,7 +11,7 @@ const updateUser = async ( { params, request }: ActionFunctionArgs ) => {
   }
 
   try {
-    await userService.update( id, { role } );
+    await userService.update( { role }, id );
     return { success: true };
   } catch ( error ) {
     return { success: false, error };

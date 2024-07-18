@@ -13,16 +13,19 @@ import { SigninPage, SignupPage } from '@/pages/auth';
 import { CategoriesPage, MediaPage, OrdersPage, ProductsPage, SingleProductPage, UsersPage } from '@/pages/dashboard';
 import { AddressPage, MyOrderPage, ProfilePage } from '@/pages/account';
 
-import { signinAction, signupAction } from '@/features/auth/actions';
+import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
 import { deleteUser, updateUser } from '@/features/user/actions';
 import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
 import { createCategory, deleteCategory } from '@/features/category/actions';
+import { createAddress } from '@/features/address/actions';
 
 import { fetchImages } from '@/features/media/loaders';
 import { fetchUsers } from '@/features/user/loaders';
 import { fetchProduct, fetchProducts } from '@/features/product/loaders';
 import { fetchCategories } from '@/features/category/loaders';
+import { fetchAddress } from '@/features/address/loadres';
+import { fetchMe } from '@/features/auth/loaders';
 
 const router = createBrowserRouter( [
   {
@@ -36,16 +39,16 @@ const router = createBrowserRouter( [
   },
 
   {
-    element: <AuthLayout />,
+    element: <NotRequestAuth><AuthLayout /></NotRequestAuth>,
     children: [
       {
         path: '/signin',
-        element: <NotRequestAuth><SigninPage /></NotRequestAuth>,
+        element: <SigninPage />,
         action: signinAction
       },
       {
         path: '/signup',
-        element: <NotRequestAuth><SignupPage /></NotRequestAuth>,
+        element: <SignupPage />,
         action: signupAction
       }
     ]
@@ -53,11 +56,11 @@ const router = createBrowserRouter( [
 
   {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: <RequestAuth><DashboardLayout /></RequestAuth>,
     children: [
       {
         path: 'media',
-        element: <RequestAuth><MediaPage /></RequestAuth>,
+        element: <MediaPage />,
         loader: fetchImages,
         action: uploadImage,
         children: [
@@ -69,7 +72,7 @@ const router = createBrowserRouter( [
       },
       {
         path: 'users',
-        element: <RequestAuth><UsersPage /></RequestAuth>,
+        element: <UsersPage />,
         loader: fetchUsers,
         children: [
           {
@@ -84,7 +87,7 @@ const router = createBrowserRouter( [
       },
       {
         path: 'products',
-        element: <RequestAuth><ProductsPage /></RequestAuth>,
+        element: <ProductsPage />,
         loader: fetchProducts,
         action: createProduct,
         children: [
@@ -96,13 +99,13 @@ const router = createBrowserRouter( [
       },
       {
         path: 'products/:id',
-        element: <RequestAuth><SingleProductPage /></RequestAuth>,
+        element: <SingleProductPage />,
         loader: fetchProduct,
         action: updateProduct
       },
       {
         path: 'categories',
-        element: <RequestAuth><CategoriesPage /></RequestAuth>,
+        element: <CategoriesPage />,
         loader: fetchCategories,
         action: createCategory,
         children: [
@@ -114,26 +117,34 @@ const router = createBrowserRouter( [
       },
       {
         path: 'orders',
-        element: <RequestAuth><OrdersPage /></RequestAuth>
+        element: <OrdersPage />
       }
     ]
   },
 
   {
     path: '/account',
-    element: <AccountLayout />,
+    element: <RequestAuth><AccountLayout /></RequestAuth>,
     children: [
       {
         path: 'me',
-        element: <ProfilePage />
+        element: <ProfilePage />,
+        loader: fetchMe,
+        action: updateMe
       },
       {
         path: 'address',
-        element: <AddressPage />
+        element: <AddressPage />,
+        loader: fetchAddress,
+        action: createAddress
       },
       {
         path: 'orders',
         element: <MyOrderPage />
+      },
+      {
+        path: 'logout',
+        action: logoutUser
       }
     ]
   }

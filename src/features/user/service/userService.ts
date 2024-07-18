@@ -12,12 +12,12 @@ export class UserService {
     return this.service.getAll();
   };
 
-  getOne = ( id: string ) => {
+  getOne = ( id?: string ) => {
     return this.service.getOne( id );
   };
 
-  update = ( id: string, updates: Partial<IUser> ) => {
-    return this.service.update( id, updates );
+  update = ( updates: Partial<IUser>, id?: string ) => {
+    return this.service.update( updates, id );
   };
 
   delete = ( id: string ) => {

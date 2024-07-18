@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { Form, useActionData, useNavigate, useNavigation } from 'react-router-dom';
+import { Form, Link, useActionData, useNavigate, useNavigation } from 'react-router-dom';
 import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
 
@@ -32,12 +32,15 @@ const SignupPage: FC = () => {
   }, [ actionData, navigate ] );
 
   return (
-    <Form method="post" className="min-w-96 flex flex-col gap-7">
-      <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="email" name="email" label={errorName === 'email' ? errorMessage : 'Email'} type="text" placeholder="one@company.com" required />
-      <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="password" name="password" label={errorName === 'password' ? errorMessage : 'Password'} type="password" placeholder="••••••••" required />
-      <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="confirm" name="confirm" label={errorName === 'confirm' ? errorMessage : 'Confirm'} type="password" placeholder="••••••••" required />
-      <Button loading={navigation.state === 'submitting'}>Sign up</Button>
-    </Form>
+    <div className="flex flex-col gap-7">
+      <Form method="post" className="min-w-96 flex flex-col gap-7">
+        <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="email" name="email" label={errorName === 'email' ? errorMessage : 'Email'} type="text" placeholder="one@company.com" required />
+        <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="password" name="password" label={errorName === 'password' ? errorMessage : 'Password'} type="password" placeholder="••••••••" required />
+        <TextInput onChange={() => {setErrorName( '' ); setErrorMessage( '' );}} id="confirm" name="confirm" label={errorName === 'confirm' ? errorMessage : 'Confirm'} type="password" placeholder="••••••••" required />
+        <Button loading={navigation.state === 'submitting'}>Sign up</Button>
+      </Form>
+      <p className="text-center">Already have an account? <Link to="/signin" className="hover:text-white hover:underline"><b>Sign in</b></Link></p>
+    </div>
   );
 };
 

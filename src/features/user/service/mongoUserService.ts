@@ -5,25 +5,25 @@ export class MongoUserService implements IUserService {
 
   getAll = async () => {
     try {
-      const response = await authInstance( 'user', { method: 'get' } );
+      const response = await authInstance( 'user', { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as Array<IUser>;
     } catch ( error ) {
       return Promise.reject( error );
     }
   };
 
-  getOne = async ( id: string ) => {
+  getOne = async ( id?: string ) => {
     try {
-      const response = await authInstance( `user/${id}`, { method: 'get' } );
+      const response = await authInstance( id ? `user/${id}` : 'user/me', { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as IUser;
     } catch ( error ) {
       return Promise.reject( error );
     }
   };
 
-  update = async ( id: string, updates: Partial<IUser> ) => {
+  update = async ( updates: Partial<IUser>, id?: string ) => {
     try {
-      const response = await authInstance( `user/${id}`, { method: 'put', body: JSON.stringify( { updates } ), headers: { 'content-type': 'application/json' } } );
+      const response = await authInstance( id ? `user/${id}` : 'user/me', { method: 'put', body: JSON.stringify( { updates } ), headers: { 'content-type': 'application/json' } } );
       return await response.json() as { success: boolean, msg: string };
     } catch ( error ) {
       return Promise.reject( error );
@@ -32,7 +32,7 @@ export class MongoUserService implements IUserService {
 
   delete = async ( id: string ) => {
     try {
-      const response = await authInstance( `user/${id}`, { method: 'delete' } );
+      const response = await authInstance( `user/${id}`, { method: 'delete', headers: { 'content-type': 'application/json' } } );
       return await response.json() as { success: boolean, msg: string };
     } catch ( error ) {
       return Promise.reject( error );
