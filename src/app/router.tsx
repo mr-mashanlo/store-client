@@ -10,8 +10,9 @@ import { NotRequestAuth } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
-import { CategoriesPage, MediaPage, OrdersPage, ProductsPage, SingleProductPage, UsersPage } from '@/pages/dashboard';
+import { CategoriesPage, MediaPage, OrdersPage, ProductsDashboardPage, SingleDashboardProductPage, UsersPage } from '@/pages/dashboard';
 import { AddressPage, MyOrderPage, ProfilePage } from '@/pages/account';
+import { SingleProductPage } from '@/pages/product';
 
 import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
@@ -22,7 +23,7 @@ import { createAddress } from '@/features/address/actions';
 
 import { fetchImages } from '@/features/media/loaders';
 import { fetchUsers } from '@/features/user/loaders';
-import { fetchProduct, fetchProducts } from '@/features/product/loaders';
+import { fetchProductDepends, fetchProductsDepends, fetchProducts, fetchProduct } from '@/features/product/loaders';
 import { fetchCategories } from '@/features/category/loaders';
 import { fetchAddress } from '@/features/address/loadres';
 import { fetchMe } from '@/features/auth/loaders';
@@ -33,7 +34,8 @@ const router = createBrowserRouter( [
     children: [
       {
         path: '/',
-        element: <HomePage />
+        element: <HomePage />,
+        loader: fetchProducts
       }
     ]
   },
@@ -87,8 +89,8 @@ const router = createBrowserRouter( [
       },
       {
         path: 'products',
-        element: <ProductsPage />,
-        loader: fetchProducts,
+        element: <ProductsDashboardPage />,
+        loader: fetchProductsDepends,
         action: createProduct,
         children: [
           {
@@ -99,8 +101,8 @@ const router = createBrowserRouter( [
       },
       {
         path: 'products/:id',
-        element: <SingleProductPage />,
-        loader: fetchProduct,
+        element: <SingleDashboardProductPage />,
+        loader: fetchProductDepends,
         action: updateProduct
       },
       {
@@ -147,6 +149,12 @@ const router = createBrowserRouter( [
         action: logoutUser
       }
     ]
+  },
+
+  {
+    path: '/product/:id',
+    element: <SingleProductPage />,
+    loader: fetchProduct
   }
 ] );
 

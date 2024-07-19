@@ -5,7 +5,7 @@ import { IProduct } from '@/entities/product/types';
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 
-const ProductsPage: FC = () => {
+const ProductsDashboardPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: { products: Array<IProduct>, categories: Array<ICategory>, images: Array<IMedia> }};
 
   return (
@@ -17,4 +17,4 @@ const ProductsPage: FC = () => {
   );
 };
 
-export default ProductsPage;
+export default ProductsDashboardPage;

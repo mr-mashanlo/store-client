@@ -4,15 +4,9 @@ import { If, Then, Else } from 'react-if';
 import { twMerge } from 'tailwind-merge';
 import Button from '@/shared/ui/button';
 
-interface Action {
-  success: boolean
-  error?: { errors: Array<{ path: string, msg: string }> }
-}
-
 const UploadForm: FC = () => {
-  const actionData = useActionData() as Action;
+  const actionData = useActionData() as { success: boolean, error?: { errors: Array<{ path: string, msg: string }> } };
   const navigation = useNavigation();
-
   const input = useRef<HTMLInputElement>( null );
   const [ image, setImage ] = useState<null | File>( null );
   const [ isDragging, setIsDragging ] = useState<boolean>( false );

@@ -11,7 +11,7 @@ const ProductList: FC<Props> = ( { products } ) => {
   return (
     <ul>
       {products.map( product => (
-        <li key={product._id} className="p-3 grid grid-cols-5 gap-4 items-center even:bg-[#363636]">
+        <li key={product._id} className="p-3 grid grid-cols-6 gap-4 items-center even:bg-[#363636]">
           <If condition={product.images[0]}>
             <Then>
               <img src={product.images[0]} alt="" className="w-10 h-10 object-cover" />
@@ -20,7 +20,7 @@ const ProductList: FC<Props> = ( { products } ) => {
               <div className="w-10 h-10 bg-[#363636]"></div>
             </Else>
           </If>
-          <p><Link to={`/dashboard/products/${product._id}`} className="hover:text-white hover:underline">{product.name}</Link></p>
+          <p className="col-span-2 line-clamp-1"><Link to={`/dashboard/products/${product._id}`} className="hover:text-white hover:underline">{product.name}</Link></p>
           <span>{product.price}</span>
           <span>{product.category}</span>
           <Form method="delete" action={`/dashboard/products/delete/${product._id}`} navigate={false} className="ml-auto">

@@ -5,7 +5,7 @@ import { IMedia } from '@/entities/media/types';
 import { IProduct } from '@/entities/product/types';
 import { CreateProductForm } from '@/features/product/ui';
 
-const SingleProductPage: FC = () => {
+const SingleDashboardProductPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: { product: IProduct, categories: Array<ICategory>, images: Array<IMedia> } };
 
   return (
@@ -16,4 +16,4 @@ const SingleProductPage: FC = () => {
   );
 };
 
-export default SingleProductPage;
+export default SingleDashboardProductPage;
