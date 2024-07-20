@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Form, Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { MainHeader } from '@/app/layouts/header/ui';
 import { IProduct } from '@/entities/product/types';
 import { Else, If, Then } from 'react-if';
@@ -26,9 +26,6 @@ const HomePage: FC = () => {
                       </Else>
                     </If>
                   </Link>
-                  <Form method="post" className="w-full absolute bottom-0 left-0">
-                    <button className="w-full p-4 text-center text-white bg-[#505050CC] text-xs uppercase transition translate-y-full group-hover:translate-y-0">Add to cart</button>
-                  </Form>
                 </div>
                 <p className="text-sm">{product.name}</p>
                 <p className="text-xs font-bold">{product.price} $</p>

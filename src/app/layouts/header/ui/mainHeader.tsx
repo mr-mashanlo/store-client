@@ -2,11 +2,13 @@ import { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
 import { useAuthStore } from '@/entities/auth/model';
+import { useCartStore } from '@/entities/cart/model';
 
 const MainHeader: FC = () => {
   const loacation = useLocation();
   const navigate = useNavigate();
   const { auth, role } = useAuthStore();
+  const { getTotalQuantity } = useCartStore();
 
   return (
     <header className="py-10">
@@ -18,7 +20,7 @@ const MainHeader: FC = () => {
           </If>
           <nav>
             <ul className="flex items-center justify-between gap-10">
-              <li><Link to="/cart">Cart (0)</Link></li>
+              <li><Link to="/cart">Cart ({getTotalQuantity()})</Link></li>
               <If condition={!auth}>
                 <Then><li><Link to="/signin">Sign in</Link></li></Then>
                 <Else><li><Link to="/account/me">Account</Link></li></Else>

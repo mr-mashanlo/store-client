@@ -6,7 +6,6 @@ import Button from '@/shared/ui/button';
 
 const SingleProductPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: IProduct };
-  console.log( loaderData );
 
   return (
     <>
@@ -20,10 +19,10 @@ const SingleProductPage: FC = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="sticky top-32 left-0">
+              <div className="sticky top-20 left-0">
                 <h1 className="text-2xl font-bold">{loaderData.data.name}</h1>
                 <p className="mt-4 text-6xl font-bold">{loaderData.data.price}$</p>
-                <Form method="post" action={`/product/${loaderData.data._id}`}>
+                <Form method="post" action={`/product/${loaderData.data._id}`} navigate={false} >
                   <Button className="w-full mt-10">Add to cart</Button>
                 </Form>
                 <p className="mt-10">{loaderData.data.category}</p>

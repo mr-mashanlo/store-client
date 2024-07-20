@@ -13,6 +13,7 @@ import { SigninPage, SignupPage } from '@/pages/auth';
 import { CategoriesPage, MediaPage, OrdersPage, ProductsDashboardPage, SingleDashboardProductPage, UsersPage } from '@/pages/dashboard';
 import { AddressPage, MyOrderPage, ProfilePage } from '@/pages/account';
 import { SingleProductPage } from '@/pages/product';
+import { CartPage } from '@/pages/cart';
 
 import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
@@ -20,6 +21,7 @@ import { deleteUser, updateUser } from '@/features/user/actions';
 import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
 import { createCategory, deleteCategory } from '@/features/category/actions';
 import { createAddress } from '@/features/address/actions';
+import { addToCart } from '@/features/cart/actions';
 
 import { fetchImages } from '@/features/media/loaders';
 import { fetchUsers } from '@/features/user/loaders';
@@ -30,12 +32,23 @@ import { fetchMe } from '@/features/auth/loaders';
 
 const router = createBrowserRouter( [
   {
+    path: '/',
     element: <MainLayout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
         loader: fetchProducts
+      },
+      {
+        path: 'cart',
+        element: <CartPage />
+      },
+      {
+        path: 'product/:id',
+        element: <SingleProductPage />,
+        loader: fetchProduct,
+        action: addToCart
       }
     ]
   },
@@ -149,12 +162,6 @@ const router = createBrowserRouter( [
         action: logoutUser
       }
     ]
-  },
-
-  {
-    path: '/product/:id',
-    element: <SingleProductPage />,
-    loader: fetchProduct
   }
 ] );
 
