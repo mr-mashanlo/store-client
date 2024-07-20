@@ -5,23 +5,37 @@ import { ICartStore } from '../types';
 const useCartStore = create( persist<ICartStore>( ( set, get ) => ( {
   products: [],
 
-  setProducts( productID ) {
+  addToProducts( product ) {
     const products = [ ...get().products ];
-    const existProduct = products.find( item => item.productID === productID );
-    const existProductIndex = products.findIndex( item => item.productID === productID );
+    const existProduct = products.find( item => item.product._id === product._id );
+    const existProductIndex = products.findIndex( item => item.product._id === product._id );
     if ( typeof existProduct === 'object' ) {
-      const updatedProduct = { productID, quantity: existProduct.quantity + 1 };
+      const updatedProduct = { product, quantity: existProduct.quantity + 1 };
       products.splice( existProductIndex, 1, updatedProduct );
       return set( () => ( { products } ) );
     } else {
-      products.push( { productID, quantity: 1 } );
+      products.push( { product, quantity: 1 } );
       return set( () => ( { products } ) );
     }
+  },
+
+  removeFromProducts( id ) {
+    const products = [ ...get().products ];
+    const filteredProducts = products.filter( item => item.product._id !== id );
+    return set( () => ( { products: filteredProducts } ) );
   },
 
   getTotalQuantity() {
     const total = get().products.reduce( ( acc, item ) => {
       acc = acc + item.quantity;
+      return acc;
+    }, 0 );
+    return total;
+  },
+
+  getTotalPrice() {
+    const total = get().products.reduce( ( acc, item ) => {
+      acc = acc + Number( item.product.price );
       return acc;
     }, 0 );
     return total;

@@ -23,6 +23,7 @@ const SingleProductPage: FC = () => {
                 <h1 className="text-2xl font-bold">{loaderData.data.name}</h1>
                 <p className="mt-4 text-6xl font-bold">{loaderData.data.price}$</p>
                 <Form method="post" action={`/product/${loaderData.data._id}`} navigate={false} >
+                  <input id="product" name="product" type="text" value={JSON.stringify( loaderData.data )} readOnly hidden />
                   <Button className="w-full mt-10">Add to cart</Button>
                 </Form>
                 <p className="mt-10">{loaderData.data.category}</p>

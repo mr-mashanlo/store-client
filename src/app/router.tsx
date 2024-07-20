@@ -21,7 +21,7 @@ import { deleteUser, updateUser } from '@/features/user/actions';
 import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
 import { createCategory, deleteCategory } from '@/features/category/actions';
 import { createAddress } from '@/features/address/actions';
-import { addToCart } from '@/features/cart/actions';
+import { addToCart, removeFromCart } from '@/features/cart/actions';
 
 import { fetchImages } from '@/features/media/loaders';
 import { fetchUsers } from '@/features/user/loaders';
@@ -42,7 +42,13 @@ const router = createBrowserRouter( [
       },
       {
         path: 'cart',
-        element: <CartPage />
+        element: <CartPage />,
+        children: [
+          {
+            path: 'remove/:id',
+            action: removeFromCart
+          }
+        ]
       },
       {
         path: 'product/:id',
