@@ -3,18 +3,18 @@ import { authInstance } from '@/shared/api';
 
 export class MongoOrderService implements IOrderService {
 
-  getAll = async () => {
+  getAll = async ( query?: string ) => {
     try {
-      const response = await authInstance( 'order', { method: 'get' } );
+      const response = await authInstance( query ? `order?${query}` : 'order', { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as Array<IOrder>;
     } catch ( error ) {
       return Promise.reject( error );
     }
   };
 
-  getOne = async ( id?: string ) => {
+  getOne = async ( id: string ) => {
     try {
-      const response = await authInstance( id ? `order/${id}` : 'order/own', { method: 'get' } );
+      const response = await authInstance( `order/${id}`, { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as IOrder;
     } catch ( error ) {
       return Promise.reject( error );

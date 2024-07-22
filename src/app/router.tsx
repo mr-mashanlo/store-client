@@ -31,7 +31,7 @@ import { fetchCategories } from '@/features/category/loaders';
 import { fetchImages } from '@/features/media/loaders';
 import { fetchMe } from '@/features/auth/loaders';
 import { fetchProductDepends, fetchProductsDepends, fetchProducts, fetchProduct } from '@/features/product/loaders';
-import { fetchOrders, fetchUserDepends } from '@/features/order/loaders';
+import { fetchAllOrders, fetchMyOrders, fetchUserDepends } from '@/features/order/loaders';
 import { fetchUsers } from '@/features/user/loaders';
 
 const router = createBrowserRouter( [
@@ -153,7 +153,7 @@ const router = createBrowserRouter( [
       {
         path: 'orders',
         element: <OrdersPage />,
-        loader: fetchOrders,
+        loader: fetchAllOrders,
         children: [
           {
             path: 'update/:id',
@@ -183,7 +183,7 @@ const router = createBrowserRouter( [
       {
         path: 'orders',
         element: <MyOrderPage />,
-        loader: fetchOrders
+        loader: fetchMyOrders
       },
       {
         path: 'logout',

@@ -8,11 +8,11 @@ export class OrderService {
     this.service = service;
   }
 
-  getAll = () => {
-    return this.service.getAll();
+  getAll = ( query?: string ) => {
+    return this.service.getAll( query );
   };
 
-  getOne = ( id?: string ) => {
+  getOne = ( id: string ) => {
     return this.service.getOne( id );
   };
 

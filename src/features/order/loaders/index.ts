@@ -1,4 +1,5 @@
-import fetchOrders from './fetchOrders';
+import fetchAllOrders from './fetchAllOrders';
+import fetchMyOrders from './fetchMyOrders';
 import fetchUserDepends from './fetchUserDepends';
 
-export { fetchOrders, fetchUserDepends };
+export { fetchAllOrders, fetchMyOrders, fetchUserDepends };

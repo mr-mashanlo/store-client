@@ -21,7 +21,6 @@ interface Props {
 
 const CreateProductForm: FC<Props> = ( { categories, images, product, action } ) => {
   const actionData = useActionData() as { success: boolean };
-
   const form = useRef<HTMLFormElement>( null );
   const [ gallery, setGallery ] = useState<Array<string>>( product ? product.images : [] );
   const [ isShowImages, setIsShowImages ] = useState<boolean>( false );

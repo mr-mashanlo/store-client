@@ -25,7 +25,11 @@ const createOrder = async ( { request }: ActionFunctionArgs ) => {
     const updatedProducts = product.map( item => ( { product: item.product._id || '', quantity: item.quantity } ) );
     const order = { products: updatedProducts };
 
-    const promises = Promise.allSettled( [ addressService.update( { district, city, street } ), userService.update( { fullname, phone } ), orderService.create( order ) ] );
+    const promises = Promise.allSettled( [
+      addressService.create( district, city, street ),
+      userService.update( { fullname, phone } ),
+      orderService.create( order )
+    ] );
     const responses = await promises;
     const isFulfilledResponses = responses.every( item => item.status === 'fulfilled' );
 

@@ -1,6 +1,6 @@
 import { orderService } from '../service';
 
-const fetchOrders = async () => {
+const fetchAllOrders = async () => {
   try {
     const orders = await orderService.getAll();
     return { success: true, data: orders };
@@ -9,4 +9,4 @@ const fetchOrders = async () => {
   }
 };
 
-export default fetchOrders;
+export default fetchAllOrders;
