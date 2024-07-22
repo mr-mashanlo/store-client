@@ -5,7 +5,7 @@ export class MongoAddressService implements IAddressService {
 
   getOne = async ( id?: string ) => {
     try {
-      const response = await authInstance( id ? `address/${id}` : 'address/me', { method: 'get', headers: { 'content-type': 'application/json' } } );
+      const response = await authInstance( id ? `address/${id}` : 'address/own', { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as IAddress;
     } catch ( error ) {
       return Promise.reject( error );
@@ -21,9 +21,9 @@ export class MongoAddressService implements IAddressService {
     }
   };
 
-  update = async ( id: string, updates: Partial<IAddress> ) => {
+  update = async ( updates: Partial<IAddress>, id?: string ) => {
     try {
-      const response = await authInstance( `address/${id}`, { method: 'put', body: JSON.stringify( { id, updates } ), headers: { 'content-type': 'application/json' } } );
+      const response = await authInstance( id ? `address/${id}` : 'address/own', { method: 'put', body: JSON.stringify( { updates, id } ), headers: { 'content-type': 'application/json' } } );
       return await response.json() as { success: boolean, msg: string };
     } catch ( error ) {
       return Promise.reject( error );

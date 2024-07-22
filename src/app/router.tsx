@@ -14,21 +14,25 @@ import { CategoriesPage, MediaPage, OrdersPage, ProductsDashboardPage, SingleDas
 import { AddressPage, MyOrderPage, ProfilePage } from '@/pages/account';
 import { SingleProductPage } from '@/pages/product';
 import { CartPage } from '@/pages/cart';
+import { CheckoutPage } from '@/pages/checkout';
+import { OrderPage } from '@/pages/order';
 
-import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
+import { addToCart, removeFromCart } from '@/features/cart/actions';
+import { createAddress } from '@/features/address/actions';
+import { createCategory, deleteCategory } from '@/features/category/actions';
+import { createOrder, updateOrder } from '@/features/order/actions';
+import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
 import { deleteUser, updateUser } from '@/features/user/actions';
-import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
-import { createCategory, deleteCategory } from '@/features/category/actions';
-import { createAddress } from '@/features/address/actions';
-import { addToCart, removeFromCart } from '@/features/cart/actions';
+import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
 
-import { fetchImages } from '@/features/media/loaders';
-import { fetchUsers } from '@/features/user/loaders';
-import { fetchProductDepends, fetchProductsDepends, fetchProducts, fetchProduct } from '@/features/product/loaders';
-import { fetchCategories } from '@/features/category/loaders';
 import { fetchAddress } from '@/features/address/loadres';
+import { fetchCategories } from '@/features/category/loaders';
+import { fetchImages } from '@/features/media/loaders';
 import { fetchMe } from '@/features/auth/loaders';
+import { fetchProductDepends, fetchProductsDepends, fetchProducts, fetchProduct } from '@/features/product/loaders';
+import { fetchOrders, fetchUserDepends } from '@/features/order/loaders';
+import { fetchUsers } from '@/features/user/loaders';
 
 const router = createBrowserRouter( [
   {
@@ -49,6 +53,16 @@ const router = createBrowserRouter( [
             action: removeFromCart
           }
         ]
+      },
+      {
+        path: 'checkout',
+        element: <CheckoutPage />,
+        loader: fetchUserDepends,
+        action: createOrder
+      },
+      {
+        path: 'order/:id',
+        element: <OrderPage />
       },
       {
         path: 'product/:id',
@@ -138,7 +152,14 @@ const router = createBrowserRouter( [
       },
       {
         path: 'orders',
-        element: <OrdersPage />
+        element: <OrdersPage />,
+        loader: fetchOrders,
+        children: [
+          {
+            path: 'update/:id',
+            action: updateOrder
+          }
+        ]
       }
     ]
   },
@@ -161,7 +182,8 @@ const router = createBrowserRouter( [
       },
       {
         path: 'orders',
-        element: <MyOrderPage />
+        element: <MyOrderPage />,
+        loader: fetchOrders
       },
       {
         path: 'logout',

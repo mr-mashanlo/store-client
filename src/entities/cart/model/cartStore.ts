@@ -25,6 +25,10 @@ const useCartStore = create( persist<ICartStore>( ( set, get ) => ( {
     return set( () => ( { products: filteredProducts } ) );
   },
 
+  resetCart() {
+    return set( () => ( { products: [] } ) );
+  },
+
   getTotalQuantity() {
     const total = get().products.reduce( ( acc, item ) => {
       acc = acc + item.quantity;

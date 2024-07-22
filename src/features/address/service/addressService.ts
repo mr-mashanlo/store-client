@@ -16,8 +16,8 @@ export class AddressService {
     return this.service.create( district, city, street );
   };
 
-  update = ( id: string, updates: Partial<IAddress> ) => {
-    return this.service.update( id, updates );
+  update = ( updates: Partial<IAddress>, id?: string  ) => {
+    return this.service.update( updates, id );
   };
 
   delete = ( id: string ) => {
