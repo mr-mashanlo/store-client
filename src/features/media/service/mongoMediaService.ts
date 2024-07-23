@@ -5,7 +5,7 @@ export class MongoMediaService implements IMediaService {
 
   getAll = async () => {
     try {
-      const response = await authInstance( 'media', { method: 'get' } );
+      const response = await authInstance( 'media/all', { method: 'get' } );
       return await response.json() as Array<IMedia>;
     } catch ( error ) {
       return Promise.reject( error );
@@ -14,7 +14,7 @@ export class MongoMediaService implements IMediaService {
 
   create = async ( image: FormData ) => {
     try {
-      const response = await authInstance( 'media/upload', { method: 'post', body: image, timeout: 60000 } );
+      const response = await authInstance( 'media', { method: 'post', body: image, timeout: 60000 } );
       return await response.json() as IMedia;
     } catch ( error ) {
       return Promise.reject( error );
@@ -23,7 +23,7 @@ export class MongoMediaService implements IMediaService {
 
   delete = async ( name: string ) => {
     try {
-      const response = await authInstance( `media/delete/${name}`, { method: 'delete' } );
+      const response = await authInstance( `media/${name}`, { method: 'delete' } );
       return await response.json() as IMedia;
     } catch ( error ) {
       return Promise.reject( error );

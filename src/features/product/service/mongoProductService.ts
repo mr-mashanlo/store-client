@@ -5,7 +5,7 @@ export class MongoProductService implements IProductService {
 
   getAll = async () => {
     try {
-      const response = await authInstance( 'product', { method: 'get' } );
+      const response = await authInstance( 'product/all', { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as Array<IProduct>;
     } catch ( error ) {
       return Promise.reject( error );
@@ -14,7 +14,7 @@ export class MongoProductService implements IProductService {
 
   getOne = async ( id: string ) => {
     try {
-      const response = await authInstance( `product/${id}`, { method: 'get' } );
+      const response = await authInstance( `product/${id}`, { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as IProduct;
     } catch ( error ) {
       return Promise.reject( error );
@@ -41,7 +41,7 @@ export class MongoProductService implements IProductService {
 
   delete = async ( id: string ) => {
     try {
-      const response = await authInstance( `product/${id}`, { method: 'delete' } );
+      const response = await authInstance( `product/${id}`, { method: 'delete', headers: { 'content-type': 'application/json' } } );
       return await response.json() as { success: boolean, msg: string };
     } catch ( error ) {
       return Promise.reject( error );

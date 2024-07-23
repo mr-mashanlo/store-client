@@ -5,12 +5,14 @@ import { AuthLayout } from './layouts/auth';
 import { DashboardLayout } from './layouts/dashboard';
 import { AccountLayout } from './layouts/account';
 
-import { RequestAuth } from '@/shared/hoc';
 import { NotRequestAuth } from '@/shared/hoc';
+import { RequestAdmin } from '@/shared/hoc';
+import { RequestAuth } from '@/shared/hoc';
+import { RequestCart } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
-import { CategoriesPage, MediaPage, OrdersPage, ProductsDashboardPage, SingleDashboardProductPage, UsersPage } from '@/pages/dashboard';
+import { CategoriesPage, MediaPage, OrdersPage, ProductsDashboardPage, SingleDashboardOrderPage, SingleDashboardProductPage, UsersPage } from '@/pages/dashboard';
 import { AddressPage, MyOrderPage, ProfilePage } from '@/pages/account';
 import { SingleProductPage } from '@/pages/product';
 import { CartPage } from '@/pages/cart';
@@ -31,7 +33,7 @@ import { fetchCategories } from '@/features/category/loaders';
 import { fetchImages } from '@/features/media/loaders';
 import { fetchMe } from '@/features/auth/loaders';
 import { fetchProductDepends, fetchProductsDepends, fetchProducts, fetchProduct } from '@/features/product/loaders';
-import { fetchAllOrders, fetchMyOrders, fetchUserDepends } from '@/features/order/loaders';
+import { fetchAllOrders, fetchMyOrders, fetchOrder, fetchUserDepends } from '@/features/order/loaders';
 import { fetchUsers } from '@/features/user/loaders';
 
 const router = createBrowserRouter( [
@@ -56,7 +58,7 @@ const router = createBrowserRouter( [
       },
       {
         path: 'checkout',
-        element: <CheckoutPage />,
+        element: <RequestCart><CheckoutPage /></RequestCart>,
         loader: fetchUserDepends,
         action: createOrder
       },
@@ -91,7 +93,7 @@ const router = createBrowserRouter( [
 
   {
     path: '/dashboard',
-    element: <RequestAuth><DashboardLayout /></RequestAuth>,
+    element: <RequestAuth><RequestAdmin><DashboardLayout /></RequestAdmin></RequestAuth>,
     children: [
       {
         path: 'media',
@@ -160,6 +162,11 @@ const router = createBrowserRouter( [
             action: updateOrder
           }
         ]
+      },
+      {
+        path: 'orders/:id',
+        element: <SingleDashboardOrderPage />,
+        loader: fetchOrder
       }
     ]
   },

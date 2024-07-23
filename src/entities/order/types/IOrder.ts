@@ -1,6 +1,8 @@
+import { IProduct } from '@/entities/product/types';
+
 export interface IOrder {
   _id?: string
   user?: string
   status?: 'Processing' | 'Delivering' | 'Done'
-  products: Array<{ product: string, quantity: number }>
+  products: Array<{ product: IProduct, quantity: number }>
 }

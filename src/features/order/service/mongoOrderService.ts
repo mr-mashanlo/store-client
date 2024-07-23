@@ -3,9 +3,18 @@ import { authInstance } from '@/shared/api';
 
 export class MongoOrderService implements IOrderService {
 
-  getAll = async ( query?: string ) => {
+  getAll = async () => {
     try {
-      const response = await authInstance( query ? `order?${query}` : 'order', { method: 'get', headers: { 'content-type': 'application/json' } } );
+      const response = await authInstance( 'order/all', { method: 'get', headers: { 'content-type': 'application/json' } } );
+      return await response.json() as Array<IOrder>;
+    } catch ( error ) {
+      return Promise.reject( error );
+    }
+  };
+
+  getOwn = async () => {
+    try {
+      const response = await authInstance( 'order/own', { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as Array<IOrder>;
     } catch ( error ) {
       return Promise.reject( error );

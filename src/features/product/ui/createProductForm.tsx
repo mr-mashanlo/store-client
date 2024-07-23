@@ -29,7 +29,6 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
     if ( gallery.indexOf( image ) !== -1 ) {
       return;
     }
-
     if ( gallery.length > 3 ) {
       setGallery( [ ...gallery.slice( 1 ), image ] );
     } else {
@@ -45,11 +44,9 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
     if ( typeof actionData === 'object' ) {
       setIsShowImages( false );
     }
-
     if ( !product ) {
       setGallery( [] );
     }
-
     if ( form.current ) {
       form.current.reset();
     }

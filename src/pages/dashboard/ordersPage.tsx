@@ -14,7 +14,7 @@ const OrdersPage: FC = () => {
           <ul>
             {loaderData.data.map( order => (
               <li key={order._id} className="p-3 grid grid-cols-4 gap-4 items-center even:bg-[#363636]">
-                <Link to={`/dashboard/order/${order._id}`} className="hover:text-white hover:underline">{order._id}</Link>
+                <Link to={`/dashboard/orders/${order._id}`} className="hover:text-white hover:underline">{order._id}</Link>
                 <Form method="put" navigate={false} action={`/dashboard/orders/update/${order._id}`} className="ml-auto flex items-center">
                   <select name="status" id="status" defaultValue={order.status} className="px-4 py-2 bg-transparent border-2 border-solid text-sm leading-normal appearance-none">
                     <option value="Processing">Processing</option>

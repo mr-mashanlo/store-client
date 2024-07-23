@@ -5,7 +5,7 @@ export class MongoCategoryService implements ICategoryService {
 
   getAll = async () => {
     try {
-      const response = await authInstance( 'category', { method: 'get' } );
+      const response = await authInstance( 'category/all', { method: 'get', headers: { 'content-type': 'application/json' } } );
       return await response.json() as Array<ICategory>;
     } catch ( error ) {
       return Promise.reject( error );
@@ -23,7 +23,7 @@ export class MongoCategoryService implements ICategoryService {
 
   delete = async ( id: string ) => {
     try {
-      const response = await authInstance( `category/${id}`, { method: 'delete' } );
+      const response = await authInstance( `category/${id}`, { method: 'delete', headers: { 'content-type': 'application/json' } } );
       return await response.json() as { success: boolean, msg: string };
     } catch ( error ) {
       return Promise.reject( error );
