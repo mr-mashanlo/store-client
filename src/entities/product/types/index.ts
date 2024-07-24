@@ -1,4 +1,5 @@
-import { IProduct } from './IProduct';
+import { IProductResponse } from './IProductResponse';
+import { IProductRequest } from './IProductRequest';
 import { IProductService } from './IProductService';
 
-export type { IProduct, IProductService };
+export type { IProductResponse, IProductRequest, IProductService };

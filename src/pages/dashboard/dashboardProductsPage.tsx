@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { CreateProductForm, ProductList } from '@/features/product/ui';
-import { IProduct } from '@/entities/product/types';
+import { IProductResponse } from '@/entities/product/types';
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 
-const ProductsDashboardPage: FC = () => {
-  const loaderData = useLoaderData() as { success: boolean, data: { products: Array<IProduct>, categories: Array<ICategory>, images: Array<IMedia> }};
+const DashboardProductsPage: FC = () => {
+  const loaderData = useLoaderData() as { success: boolean, data: { products: Array<IProductResponse>, categories: Array<ICategory>, images: Array<IMedia> }};
 
   return (
     <div className="grid gap-14">
@@ -17,4 +17,4 @@ const ProductsDashboardPage: FC = () => {
   );
 };
 
-export default ProductsDashboardPage;
+export default DashboardProductsPage;

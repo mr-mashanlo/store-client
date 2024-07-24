@@ -1,9 +1,9 @@
-import CategoriesPage from './categoriesPage';
-import MediaPage from './mediaPage';
-import OrdersPage from './ordersPage';
-import ProductsDashboardPage from './productsDashboardPage';
-import SingleDashboardOrderPage from './singleDashboardOrderPage';
-import SingleDashboardProductPage from './singleProductPage';
-import UsersPage from './usersPage';
+import DashboardCategoriesPage from './dashboardCategoriesPage';
+import DashboardMediaPage from './dashboardMediaPage';
+import DashboardOrdersPage from './dashboardOrdersPage';
+import DashboardProductsPage from './dashboardProductsPage';
+import DashboardOrderPage from './dashboardOrderPage';
+import DashboardProductPage from './dashboardProductPage';
+import DashboardUsersPage from './dashboardUsersPage';
 
-export { CategoriesPage, MediaPage, OrdersPage, ProductsDashboardPage, SingleDashboardOrderPage, SingleDashboardProductPage, UsersPage };
+export { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage };

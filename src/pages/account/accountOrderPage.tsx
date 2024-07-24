@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
 import { IOrder } from '@/entities/order/types';
 
-const MyOrderPage: FC = () => {
+const AccountOrderPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: Array<IOrder> };
 
   return (
@@ -18,8 +18,8 @@ const MyOrderPage: FC = () => {
                 <span className="text-center">{order.status}</span>
                 <span className="ml-auto col-span-2 flex gap-4">
                   {order.products.map( product => (
-                    <If condition={product.product.images[0]} key={product.product._id}>
-                      <Then><img src={product.product.images[0]} alt="" className="w-10 h-10 object-cover" /></Then>
+                    <If condition={Boolean( product.product.images[0] )} key={product.product._id}>
+                      <Then><img src={product.product.images[0] ? product.product.images[0].url : ''} alt="" className="w-10 h-10 object-cover" /></Then>
                       <Else><div className="w-10 h-10 bg-[#363636]"></div></Else>
                     </If>
                   ) )}
@@ -33,4 +33,4 @@ const MyOrderPage: FC = () => {
   );
 };
 
-export default MyOrderPage;
+export default AccountOrderPage;

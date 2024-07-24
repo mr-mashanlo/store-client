@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { Form, useLoaderData } from 'react-router-dom';
 import { MainHeader } from '@/app/layouts/header/ui';
-import { IProduct } from '@/entities/product/types';
+import { IProductResponse } from '@/entities/product/types';
 import Button from '@/shared/ui/button';
 
-const SingleProductPage: FC = () => {
-  const loaderData = useLoaderData() as { success: boolean, data: IProduct };
+const StoreProductPage: FC = () => {
+  const loaderData = useLoaderData() as { success: boolean, data: IProductResponse };
 
   return (
     <>
@@ -15,7 +15,7 @@ const SingleProductPage: FC = () => {
           <div className="grid grid-cols-3 gap-5">
             <div className="col-span-2">
               <div className="grid grid-cols-2 gap-5">
-                {loaderData.data.images.map( image => ( <img key={image} src={image} alt="" className="w-full aspect-square" /> ) )}
+                {loaderData.data.images.map( image => ( <img key={image._id} src={image.url} alt="" className="w-full aspect-square" /> ) )}
               </div>
             </div>
             <div className="relative">
@@ -26,7 +26,7 @@ const SingleProductPage: FC = () => {
                   <input id="product" name="product" type="text" value={JSON.stringify( loaderData.data )} readOnly hidden />
                   <Button className="w-full mt-10">Add to cart</Button>
                 </Form>
-                <p className="mt-10">{loaderData.data.category}</p>
+                <p className="mt-10">{loaderData.data.category.title}</p>
                 <p className="mt-6">{loaderData.data.about}</p>
               </div>
             </div>
@@ -37,4 +37,4 @@ const SingleProductPage: FC = () => {
   );
 };
 
-export default SingleProductPage;
+export default StoreProductPage;

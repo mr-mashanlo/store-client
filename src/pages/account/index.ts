@@ -1,5 +1,5 @@
-import ProfilePage from './profilePage';
-import AddressPage from './addressPage';
-import MyOrderPage from './myOrderPage';
+import AccountProfilePage from './accountProfilePage';
+import AccountAddressPage from './accountAddressPage';
+import AccountOrderPage from './accountOrderPage';
 
-export { ProfilePage, AddressPage, MyOrderPage };
+export { AccountProfilePage, AccountAddressPage, AccountOrderPage };

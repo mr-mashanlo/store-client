@@ -1,4 +1,4 @@
-import { IProduct, IProductService } from '@/entities/product/types';
+import { IProductRequest, IProductService } from '@/entities/product/types';
 
 export class ProductService {
 
@@ -16,11 +16,11 @@ export class ProductService {
     return this.service.getOne( id );
   };
 
-  create = ( product: IProduct ) => {
+  create = ( product: IProductRequest ) => {
     return this.service.create( product );
   };
 
-  update = ( id: string, updates: Partial<IProduct> ) => {
+  update = ( id: string, updates: Partial<IProductRequest> ) => {
     return this.service.update( id, updates );
   };
 

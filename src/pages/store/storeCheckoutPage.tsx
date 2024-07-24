@@ -7,7 +7,7 @@ import { IAddress } from '@/entities/address/types';
 import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
 
-const CheckoutPage: FC = () => {
+const StoreCheckoutPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: { user: IUser, address: IAddress } };
   const { products, getTotalPrice } = useCartStore();
 
@@ -58,4 +58,4 @@ const CheckoutPage: FC = () => {
   );
 };
 
-export default CheckoutPage;
+export default StoreCheckoutPage;

@@ -14,7 +14,7 @@ const createProduct = async ( { request }: ActionFunctionArgs ) => {
   }
 
   try {
-    await productService.create( { name, price, about, category, images: images.length ? images.split( ',' ) : [] } );
+    await productService.create( { name, price, about, category, images: images.split( ',' ) } );
     return { success: true };
   } catch ( error ) {
     return { success: false, error };

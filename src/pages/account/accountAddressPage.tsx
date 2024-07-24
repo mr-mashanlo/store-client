@@ -4,7 +4,7 @@ import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
 import { IAddress } from '@/entities/address/types';
 
-const AddressPage: FC = () => {
+const AccountAddressPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: IAddress};
 
   return (
@@ -24,4 +24,4 @@ const AddressPage: FC = () => {
   );
 };
 
-export default AddressPage;
+export default AccountAddressPage;

@@ -1,7 +1,7 @@
 import { addressService } from '@/features/address/service';
 import { userService } from '@/features/user/service';
 
-const fetchUserDepends = async () => {
+const fetchUserWithMetadata = async () => {
   try {
     const user = await userService.getOne();
     const address = await addressService.getOne();
@@ -11,4 +11,4 @@ const fetchUserDepends = async () => {
   }
 };
 
-export default fetchUserDepends;
+export default fetchUserWithMetadata;

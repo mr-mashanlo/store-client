@@ -1,4 +1,4 @@
-import { IProduct, IProductService } from '@/entities/product/types';
+import { IProductResponse, IProductRequest, IProductService } from '@/entities/product/types';
 import { authInstance } from '@/shared/api';
 
 export class MongoProductService implements IProductService {
@@ -6,7 +6,7 @@ export class MongoProductService implements IProductService {
   getAll = async () => {
     try {
       const response = await authInstance( 'product/all', { method: 'get', headers: { 'content-type': 'application/json' } } );
-      return await response.json() as Array<IProduct>;
+      return await response.json() as Array<IProductResponse>;
     } catch ( error ) {
       return Promise.reject( error );
     }
@@ -15,13 +15,13 @@ export class MongoProductService implements IProductService {
   getOne = async ( id: string ) => {
     try {
       const response = await authInstance( `product/${id}`, { method: 'get', headers: { 'content-type': 'application/json' } } );
-      return await response.json() as IProduct;
+      return await response.json() as IProductResponse;
     } catch ( error ) {
       return Promise.reject( error );
     }
   };
 
-  create = async ( product: IProduct ) => {
+  create = async ( product: IProductRequest ) => {
     try {
       const response = await authInstance( 'product', { method: 'post', body: JSON.stringify( { product } ), headers: { 'content-type': 'application/json' } } );
       return await response.json() as { success: boolean, msg: string };
@@ -30,7 +30,7 @@ export class MongoProductService implements IProductService {
     }
   };
 
-  update = async ( id: string, updates: Partial<IProduct> ) => {
+  update = async ( id: string, updates: Partial<IProductRequest> ) => {
     try {
       const response = await authInstance( `product/${id}`, { method: 'put', body: JSON.stringify( { updates } ), headers: { 'content-type': 'application/json' } } );
       return await response.json() as { success: boolean, msg: string };

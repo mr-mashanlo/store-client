@@ -2,7 +2,7 @@ import { mediaService } from '@/features/media/service';
 import { productService } from '../service';
 import { categoryService } from '@/features/category/service';
 
-const fetchProductsDepends = async () => {
+const fetchProductsWithMetadata = async () => {
   try {
     const products = await productService.getAll();
     const categories = await categoryService.getAll();
@@ -13,4 +13,4 @@ const fetchProductsDepends = async () => {
   }
 };
 
-export default fetchProductsDepends;
+export default fetchProductsWithMetadata;

@@ -10,22 +10,22 @@ import Textarea from '@/shared/ui/textarea';
 
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
-import { IProduct } from '@/entities/product/types';
+import { IProductResponse } from '@/entities/product/types';
 
 interface Props {
   categories: Array<ICategory>
   images: Array<IMedia>
-  product?: IProduct
+  product?: IProductResponse
   action: string
 }
 
 const CreateProductForm: FC<Props> = ( { categories, images, product, action } ) => {
   const actionData = useActionData() as { success: boolean };
   const form = useRef<HTMLFormElement>( null );
-  const [ gallery, setGallery ] = useState<Array<string>>( product ? product.images : [] );
+  const [ gallery, setGallery ] = useState<Array<IMedia>>( product ? product.images : [] );
   const [ isShowImages, setIsShowImages ] = useState<boolean>( false );
 
-  const appendImage = ( image: string ) => {
+  const appendImage = ( image: IMedia ) => {
     if ( gallery.indexOf( image ) !== -1 ) {
       return;
     }
@@ -36,7 +36,7 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
     }
   };
 
-  const removeImage = ( image: string ) => {
+  const removeImage = ( image: IMedia ) => {
     setGallery( gallery.filter( item => item !== image ) );
   };
 
@@ -59,47 +59,47 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
           <TextInput id="name" name="name" label="Name" type="text" defaultValue={product?.name} required />
           <div className="grid grid-cols-2 gap-7">
             <TextInput id="price" name="price" label="Price" type="text" defaultValue={product?.price} required />
-            <Select id="category" name="category" label="Category" options={categories} defaultValue={product?.category} required />
+            <Select id="category" name="category" label="Category" options={categories} defaultValue={product?.category._id} required />
           </div>
           <div className="grid grid-cols-4 gap-7">
-            <If condition={gallery[0]}>
+            <If condition={Boolean( gallery[0] )}>
               <Then>
                 <div className="relative">
                   <button onClick={() => removeImage( gallery[0] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                  <img src={gallery[0]} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                  <img src={gallery[0] ? gallery[0].url : ''} alt="" className="w-full aspect-square rounded-xl object-cover" />
                 </div>
               </Then>
               <Else>
                 <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square rounded-xl border-4 border-dashed border-[#363636] flex items-center justify-center text-4xl">+</button>
               </Else>
             </If>
-            <If condition={gallery[1]}>
+            <If condition={Boolean( gallery[1] )}>
               <Then>
                 <div className="relative">
                   <button onClick={() => removeImage( gallery[1] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                  <img src={gallery[1]} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                  <img src={gallery[1] ? gallery[1].url : ''} alt="" className="w-full aspect-square rounded-xl object-cover" />
                 </div>
               </Then>
               <Else>
                 <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square rounded-xl border-4 border-dashed border-[#363636] flex items-center justify-center text-4xl">+</button>
               </Else>
             </If>
-            <If condition={gallery[2]}>
+            <If condition={Boolean( gallery[2] )}>
               <Then>
                 <div className="relative">
                   <button onClick={() => removeImage( gallery[2] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                  <img src={gallery[2]} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                  <img src={gallery[2] ? gallery[2].url : ''} alt="" className="w-full aspect-square rounded-xl object-cover" />
                 </div>
               </Then>
               <Else>
                 <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square rounded-xl border-4 border-dashed border-[#363636] flex items-center justify-center text-4xl">+</button>
               </Else>
             </If>
-            <If condition={gallery[3]}>
+            <If condition={Boolean( gallery[3] )}>
               <Then>
                 <div className="relative">
                   <button onClick={() => removeImage( gallery[3] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                  <img src={gallery[3]} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                  <img src={gallery[3] ? gallery[3].url : ''} alt="" className="w-full aspect-square rounded-xl object-cover" />
                 </div>
               </Then>
               <Else>
@@ -107,15 +107,15 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
               </Else>
             </If>
           </div>
-          <input id="gallery" name="gallery" type="text" value={gallery.join( ', ' )} hidden readOnly />
+          <input id="gallery" name="gallery" type="text" value={gallery.map( item => item._id ).join( ',' )} hidden readOnly />
         </div>
         <div>
           <div className={twMerge( 'h-[16.222rem] bg-[#363636] rounded-lg relative', isShowImages ? '' : 'hidden' )}>
             <button onClick={() => setIsShowImages( false )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
             <div className="h-[16.1rem] p-4 grid grid-cols-3 gap-4 items-start overflow-x-auto hidden-scrollbar">
               {images.map( image => (
-                <button onClick={() => appendImage( image.url )} key={image._id} type="button">
-                  <img src={image.url} alt={image.alt} className={twMerge( 'w-full aspect-square object-cover rounded-lg', gallery.indexOf( image.url ) !== -1 ? 'opacity-20' : '' )} />
+                <button onClick={() => appendImage( image )} key={image._id} type="button">
+                  <img src={image.url} alt={image.alt} className={twMerge( 'w-full aspect-square object-cover rounded-lg', gallery.indexOf( image ) !== -1 ? 'opacity-20' : '' )} />
                 </button>
               ) )}
             </div>

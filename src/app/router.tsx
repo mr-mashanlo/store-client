@@ -12,12 +12,9 @@ import { RequestCart } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
-import { CategoriesPage, MediaPage, OrdersPage, ProductsDashboardPage, SingleDashboardOrderPage, SingleDashboardProductPage, UsersPage } from '@/pages/dashboard';
-import { AddressPage, MyOrderPage, ProfilePage } from '@/pages/account';
-import { SingleProductPage } from '@/pages/product';
-import { CartPage } from '@/pages/cart';
-import { CheckoutPage } from '@/pages/checkout';
-import { OrderPage } from '@/pages/order';
+import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage } from '@/pages/dashboard';
+import { AccountAddressPage, AccountOrderPage, AccountProfilePage } from '@/pages/account';
+import { StoreCartPage, StoreCheckoutPage, StoreOrderPage, StoreProductPage } from '@/pages/store';
 
 import { addToCart, removeFromCart } from '@/features/cart/actions';
 import { createAddress } from '@/features/address/actions';
@@ -32,9 +29,9 @@ import { fetchAddress } from '@/features/address/loadres';
 import { fetchCategories } from '@/features/category/loaders';
 import { fetchImages } from '@/features/media/loaders';
 import { fetchMe } from '@/features/auth/loaders';
-import { fetchProductDepends, fetchProductsDepends, fetchProducts, fetchProduct } from '@/features/product/loaders';
-import { fetchAllOrders, fetchMyOrders, fetchOrder, fetchUserDepends } from '@/features/order/loaders';
-import { fetchUsers } from '@/features/user/loaders';
+import { fetchProductWithMetadata, fetchProductsWithMetadata, fetchProducts, fetchProduct } from '@/features/product/loaders';
+import { fetchAllOrders, fetchMyOrders, fetchOrder } from '@/features/order/loaders';
+import { fetchUsers, fetchUserWithMetadata } from '@/features/user/loaders';
 
 const router = createBrowserRouter( [
   {
@@ -48,7 +45,7 @@ const router = createBrowserRouter( [
       },
       {
         path: 'cart',
-        element: <CartPage />,
+        element: <StoreCartPage />,
         children: [
           {
             path: 'remove/:id',
@@ -58,17 +55,17 @@ const router = createBrowserRouter( [
       },
       {
         path: 'checkout',
-        element: <RequestCart><CheckoutPage /></RequestCart>,
-        loader: fetchUserDepends,
+        element: <RequestCart><StoreCheckoutPage /></RequestCart>,
+        loader: fetchUserWithMetadata,
         action: createOrder
       },
       {
         path: 'order/:id',
-        element: <OrderPage />
+        element: <StoreOrderPage />
       },
       {
         path: 'product/:id',
-        element: <SingleProductPage />,
+        element: <StoreProductPage />,
         loader: fetchProduct,
         action: addToCart
       }
@@ -97,7 +94,7 @@ const router = createBrowserRouter( [
     children: [
       {
         path: 'media',
-        element: <MediaPage />,
+        element: <DashboardMediaPage />,
         loader: fetchImages,
         action: uploadImage,
         children: [
@@ -109,7 +106,7 @@ const router = createBrowserRouter( [
       },
       {
         path: 'users',
-        element: <UsersPage />,
+        element: <DashboardUsersPage />,
         loader: fetchUsers,
         children: [
           {
@@ -124,8 +121,8 @@ const router = createBrowserRouter( [
       },
       {
         path: 'products',
-        element: <ProductsDashboardPage />,
-        loader: fetchProductsDepends,
+        element: <DashboardProductsPage />,
+        loader: fetchProductsWithMetadata,
         action: createProduct,
         children: [
           {
@@ -136,13 +133,13 @@ const router = createBrowserRouter( [
       },
       {
         path: 'products/:id',
-        element: <SingleDashboardProductPage />,
-        loader: fetchProductDepends,
+        element: <DashboardProductPage />,
+        loader: fetchProductWithMetadata,
         action: updateProduct
       },
       {
         path: 'categories',
-        element: <CategoriesPage />,
+        element: <DashboardCategoriesPage />,
         loader: fetchCategories,
         action: createCategory,
         children: [
@@ -154,7 +151,7 @@ const router = createBrowserRouter( [
       },
       {
         path: 'orders',
-        element: <OrdersPage />,
+        element: <DashboardOrdersPage />,
         loader: fetchAllOrders,
         children: [
           {
@@ -165,7 +162,7 @@ const router = createBrowserRouter( [
       },
       {
         path: 'orders/:id',
-        element: <SingleDashboardOrderPage />,
+        element: <DashboardOrderPage />,
         loader: fetchOrder
       }
     ]
@@ -177,19 +174,19 @@ const router = createBrowserRouter( [
     children: [
       {
         path: 'me',
-        element: <ProfilePage />,
+        element: <AccountProfilePage />,
         loader: fetchMe,
         action: updateMe
       },
       {
         path: 'address',
-        element: <AddressPage />,
+        element: <AccountAddressPage />,
         loader: fetchAddress,
         action: createAddress
       },
       {
         path: 'orders',
-        element: <MyOrderPage />,
+        element: <AccountOrderPage />,
         loader: fetchMyOrders
       },
       {

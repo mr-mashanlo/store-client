@@ -4,7 +4,7 @@ import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
 import { IUser } from '@/entities/auth/types';
 
-const ProfilePage: FC = () => {
+const AccountProfilePage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: IUser };
 
   return (
@@ -28,4 +28,4 @@ const ProfilePage: FC = () => {
   );
 };
 
-export default ProfilePage;
+export default AccountProfilePage;

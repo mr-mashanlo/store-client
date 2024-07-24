@@ -3,7 +3,7 @@ import { productService } from '../service';
 import { categoryService } from '@/features/category/service';
 import { mediaService } from '@/features/media/service';
 
-const fetchProductDepends = async ( { params }: ActionFunctionArgs ) => {
+const fetchProductWithMetadata = async ( { params }: ActionFunctionArgs ) => {
 
   if ( typeof params.id !== 'string' ) {
     return { success: false };
@@ -19,4 +19,4 @@ const fetchProductDepends = async ( { params }: ActionFunctionArgs ) => {
   }
 };
 
-export default fetchProductDepends;
+export default fetchProductWithMetadata;

@@ -1,8 +1,8 @@
-import { IProduct } from '@/entities/product/types';
+import { IProductResponse } from '@/entities/product/types';
 
 export interface ICartStore {
-  products: Array<{ product: IProduct, quantity: number }>
-  addToProducts: ( product: IProduct ) => void
+  products: Array<{ product: IProductResponse, quantity: number }>
+  addToProducts: ( product: IProductResponse ) => void
   removeFromProducts: ( id: string ) => void
   resetCart: () => void
   getTotalQuantity: () => number

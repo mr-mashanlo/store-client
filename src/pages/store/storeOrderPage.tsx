@@ -1,7 +1,7 @@
 import { PageHeader } from '@/app/layouts/header/ui';
 import { FC } from 'react';
 
-const OrderPage: FC = () => {
+const StoreOrderPage: FC = () => {
   return (
     <>
       <PageHeader title="Order Page" />
@@ -14,4 +14,4 @@ const OrderPage: FC = () => {
   );
 };
 
-export default OrderPage;
+export default StoreOrderPage;

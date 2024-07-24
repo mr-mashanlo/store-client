@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { UserList } from '@/features/user/ui';
 import { IUser } from '@/entities/auth/types';
 
-const UsersPage: FC = () => {
+const DashboardUsersPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data?: Array<IUser> };
 
   return (
@@ -14,4 +14,4 @@ const UsersPage: FC = () => {
   );
 };
 
-export default UsersPage;
+export default DashboardUsersPage;

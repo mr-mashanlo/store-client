@@ -1,4 +1,4 @@
-export interface IProduct {
+export interface IProductRequest {
   _id?: string,
   name: string,
   price: string,

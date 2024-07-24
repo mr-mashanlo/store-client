@@ -3,7 +3,7 @@ import { CategoryList, CreateCategoryForm } from '@/features/category/ui';
 import { useLoaderData } from 'react-router-dom';
 import { ICategory } from '@/entities/category/types';
 
-const CategoriesPage: FC = () => {
+const DashboardCategoriesPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data?: Array<ICategory> };
 
   return (
@@ -15,4 +15,4 @@ const CategoriesPage: FC = () => {
   );
 };
 
-export default CategoriesPage;
+export default DashboardCategoriesPage;

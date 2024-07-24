@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { ImageList, UploadForm } from '@/features/media/ui';
 import { IMedia } from '@/entities/media/types';
 
-const MediaPage: FC = () => {
+const DashboardMediaPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, error?: string, data?: Array<IMedia> };
 
   return (
@@ -15,4 +15,4 @@ const MediaPage: FC = () => {
   );
 };
 
-export default MediaPage;
+export default DashboardMediaPage;
