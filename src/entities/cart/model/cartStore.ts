@@ -39,7 +39,7 @@ const useCartStore = create( persist<ICartStore>( ( set, get ) => ( {
 
   getTotalPrice() {
     const total = get().products.reduce( ( acc, item ) => {
-      acc = acc + Number( item.product.price );
+      acc = acc + ( Number( item.product.price ) * Number( item.quantity ) );
       return acc;
     }, 0 );
     return total;

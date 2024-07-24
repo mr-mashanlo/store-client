@@ -1,9 +1,8 @@
-import { ActionFunctionArgs, redirect } from 'react-router-dom';
+import { ActionFunctionArgs } from 'react-router-dom';
 import { IProductResponse } from '@/entities/product/types';
 import { addressService } from '@/features/address/service';
 import { userService } from '@/features/user/service';
 import { orderService } from '../service';
-import { useCartStore } from '@/entities/cart/model';
 
 const createOrder = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();
@@ -22,14 +21,10 @@ const createOrder = async ( { request }: ActionFunctionArgs ) => {
 
   try {
     const product: Array<{ product: IProductResponse, quantity: number }> = JSON.parse( products );
-    const updatedProducts = product.map( item => ( { product: item.product._id || '', quantity: item.quantity } ) );
+    const updatedProducts = product.map( item => ( { product: item.product._id || '', quantity: Number( item.quantity ) } ) );
     const order = { products: updatedProducts };
 
-    const promises = Promise.allSettled( [
-      addressService.create( district, city, street ),
-      userService.update( { fullname, phone } ),
-      orderService.create( order )
-    ] );
+    const promises = Promise.allSettled( [ addressService.create( district, city, street ), userService.update( { fullname, phone } ), orderService.create( order ) ] );
     const responses = await promises;
     const isFulfilledResponses = responses.every( item => item.status === 'fulfilled' );
 
@@ -37,9 +32,8 @@ const createOrder = async ( { request }: ActionFunctionArgs ) => {
       return { success: false };
     }
 
-    useCartStore.getState().resetCart();
-
-    return redirect( '/account/orders' );
+    // @ts-expect-error value
+    return { success: true, data: responses[2].value };
   } catch ( error ) {
     return { success: false, error };
   }

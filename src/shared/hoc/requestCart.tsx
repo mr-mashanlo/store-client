@@ -10,7 +10,7 @@ const RequestCart: FC<Props> = ( { children } ) => {
   const { getTotalQuantity } = useCartStore();
 
   if ( !getTotalQuantity() ) {
-    return <Navigate to="/" />;
+    return <Navigate to="/account/orders" />;
   }
 
   return children;

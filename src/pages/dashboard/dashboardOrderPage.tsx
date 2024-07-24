@@ -1,10 +1,10 @@
-import { IOrder } from '@/entities/order/types';
+import { IOrderResponse } from '@/entities/order/types';
 import { FC } from 'react';
 import { Else, If, Then } from 'react-if';
 import { useLoaderData } from 'react-router-dom';
 
 const DashboardOrderPage: FC = () => {
-  const loaderData = useLoaderData() as { success: boolean, data: IOrder};
+  const loaderData = useLoaderData() as { success: boolean, data: IOrderResponse};
 
   return (
     <div className="grid gap-14">
@@ -39,7 +39,6 @@ const DashboardOrderPage: FC = () => {
           <span>{loaderData.data.user?.email}</span>
           <span>{loaderData.data.user?.phone}</span>
         </div>
-
       </div>
     </div>
   );

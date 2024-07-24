@@ -1,16 +1,30 @@
-import { FC } from 'react';
-import { Form, useLoaderData, useNavigation } from 'react-router-dom';
+import { FC, useEffect } from 'react';
+import { Form, useActionData, useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
+import { If, Then } from 'react-if';
 import { PageHeader } from '@/app/layouts/header/ui';
 import { useCartStore } from '@/entities/cart/model';
 import { IUser } from '@/entities/auth/types';
 import { IAddress } from '@/entities/address/types';
 import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
+import { IOrderResponse } from '@/entities/order/types';
 
 const StoreCheckoutPage: FC = () => {
+  const navigate = useNavigate();
   const navigation = useNavigation();
+  const actionData = useActionData() as { success: boolean, data: IOrderResponse };
   const loaderData = useLoaderData() as { success: boolean, data: { user: IUser, address: IAddress } };
+  const { getTotalQuantity } = useCartStore();
   const { products, getTotalPrice } = useCartStore();
+
+  useEffect( () => {
+    if( !actionData ) {
+      return;
+    }
+    if ( actionData.success ) {
+      navigate( `/success/${actionData.data._id}` );
+    }
+  }, [ actionData, navigate ] );
 
   return (
     <>
@@ -34,24 +48,28 @@ const StoreCheckoutPage: FC = () => {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold uppercase">Address</h2>
-              <Form method="post" action="/checkout" className="mt-10">
-                <div className="flex flex-col gap-7">
-                  <div className="grid grid-cols-2 gap-7">
-                    <TextInput id="fullname" name="fullname" label="Full name" type="text" placeholder="John Doe" defaultValue={loaderData.data.user.fullname} required />
-                    <TextInput id="phone" name="phone" label="Phone" type="text" placeholder="+7 777 77 77 777" defaultValue={loaderData.data.user.phone} required />
-                  </div>
-                  <div className="grid grid-cols-2 gap-7">
-                    <TextInput id="district" name="district" label="District" type="text" placeholder="Jambyl district" defaultValue={loaderData.data.address.district} required />
-                    <TextInput id="city" name="city" label="City" type="text" placeholder="Sortobe" defaultValue={loaderData.data.address.city} required />
-                  </div>
-                  <TextInput id="street" name="street" label="Street" type="text" placeholder="Dank #31" defaultValue={loaderData.data.address.street} required />
-                  <input id="products" name="products" type="text" value={JSON.stringify( products )} readOnly hidden />
-                  <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Buy</Button>
+            <If condition={getTotalQuantity()}>
+              <Then>
+                <div>
+                  <h2 className="text-2xl font-bold uppercase">Address</h2>
+                  <Form method="post" action="/checkout" className="mt-10">
+                    <div className="flex flex-col gap-7">
+                      <div className="grid grid-cols-2 gap-7">
+                        <TextInput id="fullname" name="fullname" label="Full name" type="text" placeholder="John Doe" defaultValue={loaderData.data.user.fullname} required />
+                        <TextInput id="phone" name="phone" label="Phone" type="text" placeholder="+7 777 77 77 777" defaultValue={loaderData.data.user.phone} required />
+                      </div>
+                      <div className="grid grid-cols-2 gap-7">
+                        <TextInput id="district" name="district" label="District" type="text" placeholder="Jambyl district" defaultValue={loaderData.data.address.district} required />
+                        <TextInput id="city" name="city" label="City" type="text" placeholder="Sortobe" defaultValue={loaderData.data.address.city} required />
+                      </div>
+                      <TextInput id="street" name="street" label="Street" type="text" placeholder="Dank #31" defaultValue={loaderData.data.address.street} required />
+                      <input id="products" name="products" type="text" value={JSON.stringify( products )} required readOnly hidden />
+                      <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Buy</Button>
+                    </div>
+                  </Form>
                 </div>
-              </Form>
-            </div>
+              </Then>
+            </If>
           </div>
         </div>
       </section>

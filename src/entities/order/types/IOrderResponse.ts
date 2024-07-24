@@ -2,7 +2,7 @@ import { IAddress } from '@/entities/address/types';
 import { IUser } from '@/entities/auth/types';
 import { IProductResponse } from '@/entities/product/types';
 
-export interface IOrder {
+export interface IOrderResponse {
   _id?: string
   user?: IUser
   address?: IAddress

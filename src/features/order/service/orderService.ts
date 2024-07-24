@@ -1,4 +1,4 @@
-import { IOrder, IOrderService } from '@/entities/order/types';
+import { IOrderRequest, IOrderService } from '@/entities/order/types';
 
 export class OrderService {
 
@@ -20,11 +20,11 @@ export class OrderService {
     return this.service.getOne( id );
   };
 
-  create = ( order: IOrder ) => {
+  create = ( order: IOrderRequest ) => {
     return this.service.create( order );
   };
 
-  update = ( updates: Partial<IOrder>, id: string ) => {
+  update = ( updates: Partial<IOrderRequest>, id: string ) => {
     return this.service.update( updates, id );
   };
 

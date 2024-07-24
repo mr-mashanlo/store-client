@@ -8,13 +8,12 @@ import { AccountLayout } from './layouts/account';
 import { NotRequestAuth } from '@/shared/hoc';
 import { RequestAdmin } from '@/shared/hoc';
 import { RequestAuth } from '@/shared/hoc';
-import { RequestCart } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
 import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage } from '@/pages/dashboard';
 import { AccountAddressPage, AccountOrderPage, AccountProfilePage } from '@/pages/account';
-import { StoreCartPage, StoreCheckoutPage, StoreOrderPage, StoreProductPage } from '@/pages/store';
+import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } from '@/pages/store';
 
 import { addToCart, removeFromCart } from '@/features/cart/actions';
 import { createAddress } from '@/features/address/actions';
@@ -55,13 +54,14 @@ const router = createBrowserRouter( [
       },
       {
         path: 'checkout',
-        element: <RequestCart><StoreCheckoutPage /></RequestCart>,
+        element: <StoreCheckoutPage />,
         loader: fetchUserWithMetadata,
         action: createOrder
       },
       {
-        path: 'order/:id',
-        element: <StoreOrderPage />
+        path: 'success/:id',
+        element: <StoreSuccessPage />,
+        loader: fetchOrder
       },
       {
         path: 'product/:id',

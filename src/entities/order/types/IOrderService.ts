@@ -1,4 +1,4 @@
-import { IOrder } from './IOrder';
+import { IOrder } from './IOrderResponse';
 
 export interface IOrderService {
   getAll: () => Promise<Array<IOrder>>,

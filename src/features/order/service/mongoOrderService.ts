@@ -1,4 +1,4 @@
-import { IOrder, IOrderService } from '@/entities/order/types';
+import { IOrderResponse, IOrderRequest, IOrderService } from '@/entities/order/types';
 import { authInstance } from '@/shared/api';
 
 export class MongoOrderService implements IOrderService {
@@ -6,7 +6,7 @@ export class MongoOrderService implements IOrderService {
   getAll = async () => {
     try {
       const response = await authInstance( 'order/all', { method: 'get', headers: { 'content-type': 'application/json' } } );
-      return await response.json() as Array<IOrder>;
+      return await response.json() as Array<IOrderResponse>;
     } catch ( error ) {
       return Promise.reject( error );
     }
@@ -15,7 +15,7 @@ export class MongoOrderService implements IOrderService {
   getOwn = async () => {
     try {
       const response = await authInstance( 'order/own', { method: 'get', headers: { 'content-type': 'application/json' } } );
-      return await response.json() as Array<IOrder>;
+      return await response.json() as Array<IOrderResponse>;
     } catch ( error ) {
       return Promise.reject( error );
     }
@@ -24,22 +24,22 @@ export class MongoOrderService implements IOrderService {
   getOne = async ( id: string ) => {
     try {
       const response = await authInstance( `order/${id}`, { method: 'get', headers: { 'content-type': 'application/json' } } );
-      return await response.json() as IOrder;
+      return await response.json() as IOrderResponse;
     } catch ( error ) {
       return Promise.reject( error );
     }
   };
 
-  create = async ( order: IOrder ) => {
+  create = async ( order: IOrderRequest ) => {
     try {
       const response = await authInstance( 'order', { method: 'post', body: JSON.stringify( order ), headers: { 'content-type': 'application/json' } } );
-      return await response.json() as IOrder;
+      return await response.json() as IOrderResponse;
     } catch ( error ) {
       return Promise.reject( error );
     }
   };
 
-  update = async ( updates: Partial<IOrder>, id: string ) => {
+  update = async ( updates: Partial<IOrderRequest>, id: string ) => {
     try {
       const response = await authInstance( `order/${id}`, { method: 'put', body: JSON.stringify( { updates } ), headers: { 'content-type': 'application/json' } } );
       return await response.json() as { success: boolean, msg: string };
