@@ -22,7 +22,7 @@ const StoreCheckoutPage: FC = () => {
               <h2 className="text-2xl font-bold uppercase">Products</h2>
               <ul className="mt-10">
                 {products.map( product => (
-                  <li key={product.product._id} className="p-3 grid grid-cols-3 gap-4 items-center even:bg-[#363636]">
+                  <li key={product.product._id} className="p-3 grid grid-cols-3 gap-4 items-center odd:bg-[#363636]">
                     <span className="line-clamp-1">{product.product.name}</span>
                     <span className="text-center">{product.quantity}</span>
                     <span className="text-right">{product.product.price}$</span>

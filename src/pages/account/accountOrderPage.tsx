@@ -13,7 +13,7 @@ const AccountOrderPage: FC = () => {
         <Then>
           <ul>
             {loaderData.data.map( order => (
-              <li key={order._id} className="p-3 grid grid-cols-4 gap-4 items-center even:bg-[#363636]">
+              <li key={order._id} className="p-3 grid grid-cols-4 gap-4 items-center odd:bg-[#363636]">
                 <span>{order._id}</span>
                 <span className="text-center">{order.status}</span>
                 <span className="ml-auto col-span-2 flex gap-4">

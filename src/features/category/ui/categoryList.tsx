@@ -15,7 +15,7 @@ const CategoryList: FC<Props> = ( { categories } ) => {
   return (
     <ul>
       {categories.map( category => (
-        <li key={category._id} className="p-3 grid grid-cols-3 gap-4 items-center even:bg-[#363636]">
+        <li key={category._id} className="p-3 grid grid-cols-3 gap-4 items-center odd:bg-[#363636]">
           <span>{category.title}</span>
           <span>{category.slug}</span>
           <If condition={category.slug !== 'default'}>

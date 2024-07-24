@@ -17,7 +17,7 @@ const StoreCartPage: FC = () => {
             <Then>
               <ul>
                 {products.map( product => (
-                  <li key={product.product._id} className="p-3 grid grid-cols-6 gap-4 items-center even:bg-[#363636]">
+                  <li key={product.product._id} className="p-3 grid grid-cols-6 gap-4 items-center odd:bg-[#363636]">
                     <If condition={product.product.images.length}>
                       <Then><img src={product.product.images[0] ? product.product.images[0].url : ''} alt="" className="w-10 h-10 object-cover" /></Then>
                       <Else><div className="w-10 h-10 bg-[#363636]"></div></Else>

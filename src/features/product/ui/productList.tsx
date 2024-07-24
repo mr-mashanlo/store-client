@@ -15,7 +15,7 @@ const ProductList: FC<Props> = ( { products } ) => {
   return (
     <ul>
       {products.map( product => (
-        <li key={product._id} className="p-3 grid grid-cols-6 gap-4 items-center even:bg-[#363636]">
+        <li key={product._id} className="p-3 grid grid-cols-6 gap-4 items-center odd:bg-[#363636]">
           <If condition={Boolean( product.images[0] )}>
             <Then><img src={product.images[0] ? product.images[0].url : ''} alt="" className="w-10 h-10 object-cover" /></Then>
             <Else><div className="w-10 h-10 bg-[#363636]"></div></Else>
