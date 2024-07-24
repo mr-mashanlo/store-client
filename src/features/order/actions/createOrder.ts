@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
-import { IProduct } from '@/entities/product/types';
+import { IProductResponse } from '@/entities/product/types';
 import { addressService } from '@/features/address/service';
 import { userService } from '@/features/user/service';
 import { orderService } from '../service';
@@ -21,7 +21,7 @@ const createOrder = async ( { request }: ActionFunctionArgs ) => {
   }
 
   try {
-    const product: Array<{ product: IProduct, quantity: number }> = JSON.parse( products );
+    const product: Array<{ product: IProductResponse, quantity: number }> = JSON.parse( products );
     const updatedProducts = product.map( item => ( { product: item.product._id || '', quantity: item.quantity } ) );
     const order = { products: updatedProducts };
 
@@ -39,8 +39,7 @@ const createOrder = async ( { request }: ActionFunctionArgs ) => {
 
     useCartStore.getState().resetCart();
 
-    // @ts-expect-error value
-    return redirect( `/order/${responses[2].value._id}` );
+    return redirect( '/account/orders' );
   } catch ( error ) {
     return { success: false, error };
   }

@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form, useLoaderData, useNavigation } from 'react-router-dom';
 import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
 import { IAddress } from '@/entities/address/types';
 
 const AccountAddressPage: FC = () => {
+  const navigation = useNavigation();
   const loaderData = useLoaderData() as { success: boolean, data: IAddress};
 
   return (
@@ -17,7 +18,7 @@ const AccountAddressPage: FC = () => {
             <TextInput id="city" name="city" label="City" type="text" placeholder="Sortobe" defaultValue={loaderData.data?.city} required />
           </div>
           <TextInput id="street" name="street" label="Street" type="text" placeholder="Dank #31" defaultValue={loaderData.data?.street} required />
-          <Button>Save</Button>
+          <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Save</Button>
         </div>
       </Form>
     </div>

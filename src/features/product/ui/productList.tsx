@@ -1,13 +1,17 @@
-import { FC } from 'react';
-import { Form, Link } from 'react-router-dom';
+import { FC, useState } from 'react';
+import { Link, useFetcher } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
 import { IProductResponse } from '@/entities/product/types';
+import Button from '@/shared/ui/button';
 
 interface Props {
   products: Array<IProductResponse>
 }
 
 const ProductList: FC<Props> = ( { products } ) => {
+  const deleteFetcher = useFetcher();
+  const [ activeButton, setActiveButton ] = useState<string>( '' );
+
   return (
     <ul>
       {products.map( product => (
@@ -19,9 +23,9 @@ const ProductList: FC<Props> = ( { products } ) => {
           <span className="col-span-2 line-clamp-1"><Link to={`/dashboard/products/${product._id}`} className="hover:text-white hover:underline">{product.name}</Link></span>
           <span>{product.price}$</span>
           <span>{product.category.title}</span>
-          <Form method="delete" action={`/dashboard/products/delete/${product._id}`} navigate={false} className="ml-auto">
-            <button type="submit" className="px-4 py-2 bg-white text-[#202020] text-sm leading-normal border-2 border-solid">Delete product</button>
-          </Form>
+          <deleteFetcher.Form method="delete" action={`/dashboard/products/delete/${product._id}`} className="ml-auto">
+            <Button onClick={() => setActiveButton( product._id || '' )} size="sm" loading={activeButton === product._id && deleteFetcher.state === 'submitting'} disabled={activeButton === product._id && deleteFetcher.state === 'submitting'}>Delete</Button>
+          </deleteFetcher.Form>
         </li>
       ) )}
     </ul>

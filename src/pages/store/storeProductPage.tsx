@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form, useLoaderData, useNavigation } from 'react-router-dom';
 import { MainHeader } from '@/app/layouts/header/ui';
 import { IProductResponse } from '@/entities/product/types';
 import Button from '@/shared/ui/button';
 
 const StoreProductPage: FC = () => {
+  const navigation = useNavigation();
   const loaderData = useLoaderData() as { success: boolean, data: IProductResponse };
 
   return (
@@ -22,9 +23,9 @@ const StoreProductPage: FC = () => {
               <div className="sticky top-20 left-0">
                 <h1 className="text-2xl font-bold">{loaderData.data.name}</h1>
                 <p className="mt-4 text-6xl font-bold">{loaderData.data.price}$</p>
-                <Form method="post" action={`/product/${loaderData.data._id}`} navigate={false} >
+                <Form method="post" action={`/product/${loaderData.data._id}`}>
                   <input id="product" name="product" type="text" value={JSON.stringify( loaderData.data )} readOnly hidden />
-                  <Button className="w-full mt-10">Add to cart</Button>
+                  <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'} className="w-full mt-10">Add to cart</Button>
                 </Form>
                 <p className="mt-10">{loaderData.data.category.title}</p>
                 <p className="mt-6">{loaderData.data.about}</p>

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form, useLoaderData, useNavigation } from 'react-router-dom';
 import { PageHeader } from '@/app/layouts/header/ui';
 import { useCartStore } from '@/entities/cart/model';
 import { IUser } from '@/entities/auth/types';
@@ -8,6 +8,7 @@ import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
 
 const StoreCheckoutPage: FC = () => {
+  const navigation = useNavigation();
   const loaderData = useLoaderData() as { success: boolean, data: { user: IUser, address: IAddress } };
   const { products, getTotalPrice } = useCartStore();
 
@@ -47,7 +48,7 @@ const StoreCheckoutPage: FC = () => {
                   </div>
                   <TextInput id="street" name="street" label="Street" type="text" placeholder="Dank #31" defaultValue={loaderData.data.address.street} required />
                   <input id="products" name="products" type="text" value={JSON.stringify( products )} readOnly hidden />
-                  <Button>Buy</Button>
+                  <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Buy</Button>
                 </div>
               </Form>
             </div>

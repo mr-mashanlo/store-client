@@ -1,10 +1,12 @@
 import { FC } from 'react';
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form, useFetcher, useLoaderData, useNavigation } from 'react-router-dom';
 import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
 import { IUser } from '@/entities/auth/types';
 
 const AccountProfilePage: FC = () => {
+  const navigation = useNavigation();
+  const logoutFetcher = useFetcher();
   const loaderData = useLoaderData() as { success: boolean, data: IUser };
 
   return (
@@ -18,12 +20,12 @@ const AccountProfilePage: FC = () => {
             <TextInput id="email" name="email" label="Email" type="text" defaultValue={loaderData.data.email} readOnly />
             <TextInput id="role" name="role" label="Role" type="text" defaultValue={loaderData.data.role} readOnly />
           </div>
-          <Button>Save</Button>
+          <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Save</Button>
         </div>
       </Form>
-      <Form method="post" action="/account/logout">
-        <Button className="w-full">Log out</Button>
-      </Form>
+      <logoutFetcher.Form method="post" action="/account/logout">
+        <Button className="w-full" loading={logoutFetcher.state === 'submitting'} disabled={logoutFetcher.state === 'submitting'}>Log out</Button>
+      </logoutFetcher.Form>
     </div>
   );
 };

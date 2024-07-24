@@ -3,6 +3,7 @@ import { PageHeader } from '@/app/layouts/header/ui';
 import { useCartStore } from '@/entities/cart/model';
 import { Else, If, Then } from 'react-if';
 import { Form, Link } from 'react-router-dom';
+import Button from '@/shared/ui/button';
 
 const StoreCartPage: FC = () => {
   const { products, getTotalPrice } = useCartStore();
@@ -25,7 +26,7 @@ const StoreCartPage: FC = () => {
                     <span>{product.product.price}$</span>
                     <span>{product.quantity}</span>
                     <Form method="delete" action={`/cart/remove/${product.product._id}`} navigate={false} className="ml-auto">
-                      <button type="submit" className="px-4 py-2 bg-white text-[#202020] text-sm leading-normal border-2 border-solid">Delete product</button>
+                      <Button size="sm">Remove</Button>
                     </Form>
                   </li>
                 ) )}

@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react';
-import { Form, useActionData } from 'react-router-dom';
+import { Form, useActionData, useNavigation } from 'react-router-dom';
 import { If, Then, Else } from 'react-if';
 import { twMerge } from 'tailwind-merge';
 
@@ -20,6 +20,7 @@ interface Props {
 }
 
 const CreateProductForm: FC<Props> = ( { categories, images, product, action } ) => {
+  const navigation = useNavigation();
   const actionData = useActionData() as { success: boolean };
   const form = useRef<HTMLFormElement>( null );
   const [ gallery, setGallery ] = useState<Array<IMedia>>( product ? product.images : [] );
@@ -124,7 +125,7 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
         </div>
       </div>
       <div className="mt-7 text-center">
-        <Button type="submit">{product ? 'Save' : 'Create'}</Button>
+        <Button type="submit" loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>{product ? 'Save' : 'Create'}</Button>
       </div>
     </Form>
   );
