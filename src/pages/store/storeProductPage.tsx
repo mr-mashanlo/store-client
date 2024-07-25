@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Form, useLoaderData, useNavigation } from 'react-router-dom';
-import { MainHeader } from '@/app/layouts/header/ui';
+import { MainHeader } from '@/app/layouts/header';
 import { IProductResponse } from '@/entities/product/types';
 import Button from '@/shared/ui/button';
 

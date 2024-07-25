@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { PageHeader } from '@/app/layouts/header/ui';
+import { PageHeader } from '@/app/layouts/header';
 import { useCartStore } from '@/entities/cart/model';
 import { Else, If, Then } from 'react-if';
 import { Form, Link } from 'react-router-dom';

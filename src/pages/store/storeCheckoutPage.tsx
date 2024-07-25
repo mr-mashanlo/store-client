@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { Form, useActionData, useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 import { If, Then } from 'react-if';
-import { PageHeader } from '@/app/layouts/header/ui';
+import { PageHeader } from '@/app/layouts/header';
 import { useCartStore } from '@/entities/cart/model';
 import { IUser } from '@/entities/auth/types';
 import { IAddress } from '@/entities/address/types';
