@@ -65,8 +65,8 @@ const UploadForm: FC = () => {
         <If condition={image !== null}>
           <Then>
             <div className="text-center">
-              <p className="font-medium text-xl">The file {image ? image.name : 'default-file.png'} is ready for upload.</p>
-              <p className="mt-4">Its size is {Math.floor( image ? image.size / 1024 : 1 )} KB and it's prepared for transfer.</p>
+              <p className="font-medium sm:text-xl">The file {image ? image.name : 'default-file.png'} is ready for upload.</p>
+              <p className="mt-4 text-sm sm:text-base">Its size is {Math.floor( image ? image.size / 1024 : 1 )} KB and it's prepared for transfer.</p>
               <div className="mt-5 flex justify-center gap-6">
                 <Button onClick={() => handleImageClear()} type="reset" disabled={navigation.state === 'submitting'}>Clear</Button>
                 <Button type="submit" loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Save</Button>
@@ -77,15 +77,15 @@ const UploadForm: FC = () => {
             <If condition={isSuccess}>
               <Then>
                 <div className="text-center">
-                  <p className="font-medium text-xl">The file was successfully uploaded to the server.</p>
-                  <p className="mt-4">The process completed smoothly and efficiently.</p>
+                  <p className="font-medium sm:text-xl">The file was successfully uploaded to the server.</p>
+                  <p className="mt-4 text-sm sm:text-base">The process completed smoothly and efficiently.</p>
                   <Button onClick={() => setIsSuccess( false )} type="button" className="mt-5">Done</Button>
                 </div>
               </Then>
               <Else>
                 <div className="text-center">
-                  <p className="font-medium text-xl">Choose a file or drag & drop it here</p>
-                  <p className="mt-4">JPEG PNG WEBP formats, up to 2MB</p>
+                  <p className="font-medium sm:text-xl">Choose a file or drag & drop it here</p>
+                  <p className="mt-4 text-sm sm:text-base">JPEG PNG WEBP formats, up to 2MB</p>
                   <Button onClick={() => input.current?.click()} type="button" className="mt-5">Browse File</Button>
                 </div>
               </Else>

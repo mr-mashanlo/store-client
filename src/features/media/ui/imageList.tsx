@@ -8,7 +8,7 @@ interface Props {
 
 const ImageList: FC<Props> = ( { images } ) => {
   return (
-    <ul className="grid gap-5 grid-cols-6">
+    <ul className="grid gap-2 sm:gap-5 grid-cols-3 sm:grid-cols-6">
       {images.map( image => (
         <li key={image.name} className="relative group overflow-hidden">
           <img src={image.url} alt={image.alt} className="block aspect-square object-cover" />
