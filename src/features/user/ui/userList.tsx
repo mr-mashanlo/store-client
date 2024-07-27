@@ -13,9 +13,9 @@ const UserList: FC<Props> = ( { users } ) => {
   const [ activeButton, setActiveButton ] = useState<string>( '' );
 
   return (
-    <ul>
+    <ul className="overflow-auto">
       {users.map( user => (
-        <li key={user._id} className="p-3 grid grid-cols-3 gap-4 items-center odd:bg-[#363636]">
+        <li key={user._id} className="w-[50rem] sm:w-auto p-3 grid grid-cols-3 gap-4 items-center odd:bg-[#363636]">
           <span>{user.email}</span>
           <updateFetcher.Form method="put" action={`/dashboard/users/update/${user._id}`} className="ml-auto flex items-center">
             <select name="role" id="role" defaultValue={user.role} className="px-4 py-2 bg-transparent border-2 border-solid text-sm leading-normal appearance-none">

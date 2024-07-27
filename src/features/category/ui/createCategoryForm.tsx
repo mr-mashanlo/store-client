@@ -16,7 +16,7 @@ const CreateCategoryForm: FC = () => {
 
   return (
     <Form ref={form} method="post" action="/dashboard/categories">
-      <div className="grid grid-cols-3 gap-7">
+      <div className="grid sm:grid-cols-3 gap-7">
         <TextInput id="title" name="title" label="Title" type="text" required />
         <TextInput id="slug" name="slug" label="Slug" type="text" required />
         <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Create</Button>

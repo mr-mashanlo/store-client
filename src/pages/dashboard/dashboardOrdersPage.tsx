@@ -1,22 +1,25 @@
 import { FC, useState } from 'react';
 import { Link, useFetcher, useLoaderData } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
-import { IOrder } from '@/entities/order/types';
+import { IOrderResponse } from '@/entities/order/types';
 import Button from '@/shared/ui/button';
 
 const DashboardOrdersPage: FC = () => {
   const updateFetcher = useFetcher();
-  const loaderData = useLoaderData() as { success: boolean, data: Array<IOrder> };
+  const loaderData = useLoaderData() as { success: boolean, data: Array<IOrderResponse> };
   const [ activeButton, setActiveButton ] = useState<string>( '' );
 
   return (
-    <div className="grid gap-14">
-      <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Orders page</h1>
+    <div className="grid gap-10 sm:gap-14">
+      <div className="flex items-center gap-5">
+        <Link to="/" className="w-6 h-6 rounded-full bg-[#505050] sm:hidden"></Link>
+        <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Orders page</h1>
+      </div>
       <If condition={loaderData.data.length}>
         <Then>
-          <ul>
+          <ul className="overflow-auto">
             {loaderData.data.map( order => (
-              <li key={order._id} className="p-3 grid grid-cols-4 gap-4 items-center odd:bg-[#363636]">
+              <li key={order._id} className="w-[70rem] sm:w-auto p-3 grid grid-cols-4 gap-4 items-center odd:bg-[#363636]">
                 <Link to={`/dashboard/orders/${order._id}`} className="hover:text-white hover:underline">{order._id}</Link>
                 <span className="ml-auto col-span-2 flex gap-4">
                   {order.products.map( product => (

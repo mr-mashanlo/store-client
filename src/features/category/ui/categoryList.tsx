@@ -13,9 +13,9 @@ const CategoryList: FC<Props> = ( { categories } ) => {
   const [ activeButton, setActiveButton ] = useState<string>( '' );
 
   return (
-    <ul>
+    <ul className="overflow-auto">
       {categories.map( category => (
-        <li key={category._id} className="p-3 grid grid-cols-3 gap-4 items-center odd:bg-[#363636]">
+        <li key={category._id} className="w-[50rem] sm:w-auto p-3 grid grid-cols-3 gap-4 items-center odd:bg-[#363636]">
           <span>{category.title}</span>
           <span>{category.slug}</span>
           <If condition={category.slug !== 'default'}>

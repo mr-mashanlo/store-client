@@ -55,10 +55,10 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
 
   return (
     <Form ref={form} method="post" action={action}>
-      <div className="grid grid-cols-2 gap-7">
+      <div className="grid sm:grid-cols-2 gap-7">
         <div className="flex flex-col gap-7">
           <TextInput id="name" name="name" label="Name" type="text" defaultValue={product?.name} required />
-          <div className="grid grid-cols-2 gap-7">
+          <div className="grid sm:grid-cols-2 gap-7">
             <TextInput id="price" name="price" label="Price" type="text" defaultValue={product?.price} required />
             <Select id="category" name="category" label="Category" options={categories} defaultValue={product?.category._id} required />
           </div>
