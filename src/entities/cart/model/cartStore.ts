@@ -4,6 +4,7 @@ import { ICartStore } from '../types';
 
 const useCartStore = create( persist<ICartStore>( ( set, get ) => ( {
   products: [],
+  from: '',
 
   addToProducts( product ) {
     const products = [ ...get().products ];
@@ -25,8 +26,12 @@ const useCartStore = create( persist<ICartStore>( ( set, get ) => ( {
     return set( () => ( { products: filteredProducts } ) );
   },
 
+  setFrom( location ) {
+    return set( () => ( { from: location } ) );
+  },
+
   resetCart() {
-    return set( () => ( { products: [] } ) );
+    return set( () => ( { products: [], from: '' } ) );
   },
 
   getTotalQuantity() {

@@ -14,8 +14,10 @@ const StoreCheckoutPage: FC = () => {
   const navigation = useNavigation();
   const actionData = useActionData() as { success: boolean, data: IOrderResponse };
   const loaderData = useLoaderData() as { success: boolean, data: { user: IUser, address: IAddress } };
-  const { getTotalQuantity } = useCartStore();
+  const { setFrom, getTotalQuantity } = useCartStore();
   const { products, getTotalPrice } = useCartStore();
+
+  useEffect( () => { setFrom( '' ); }, [ setFrom ] );
 
   useEffect( () => {
     if( !actionData ) {

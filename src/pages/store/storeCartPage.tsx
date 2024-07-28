@@ -3,9 +3,12 @@ import { PageHeader } from '@/app/layouts/header';
 import { useCartStore } from '@/entities/cart/model';
 import { Else, If, Then } from 'react-if';
 import { Form, Link } from 'react-router-dom';
+import { useAuthStore } from '@/entities/auth/model';
 
 const StoreCartPage: FC = () => {
   const { products, getTotalPrice } = useCartStore();
+  const { auth } = useAuthStore();
+  const { setFrom } = useCartStore();
 
   return (
     <>
@@ -33,7 +36,14 @@ const StoreCartPage: FC = () => {
               </ul>
               <div className="mt-10 sm:mt-20 text-right">
                 <p className="text-5xl sm:text-6xl font-bold">Total: {getTotalPrice()}$</p>
-                <Link to="/checkout" className="inline-block min-w-48 mt-5 sm:mt-10 px-5 py-2 bg-white text-[#202020] text-center font-bold uppercase rounded-lg border-2 border-white">Next</Link>
+                <If condition={auth}>
+                  <Then>
+                    <Link to="/checkout" className="inline-block min-w-48 mt-5 sm:mt-10 px-5 py-2 bg-white text-[#202020] text-center font-bold uppercase rounded-lg border-2 border-white">Next</Link>
+                  </Then>
+                  <Else>
+                    <Link to="/signin" onClick={() => setFrom( '/cart' )} className="inline-block min-w-48 mt-5 sm:mt-10 px-5 py-2 bg-white text-[#202020] text-center font-bold uppercase rounded-lg border-2 border-white">Next</Link>
+                  </Else>
+                </If>
               </div>
             </Then>
           </If>
