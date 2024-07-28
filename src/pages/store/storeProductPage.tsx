@@ -11,11 +11,11 @@ const StoreProductPage: FC = () => {
   return (
     <>
       <MainHeader />
-      <section className="py-10">
+      <section className="py-5 sm:py-14">
         <div className="container-block container-block--normal">
-          <div className="grid grid-cols-3 gap-5">
-            <div className="col-span-2">
-              <div className="grid grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-3 gap-5">
+            <div className="sm:col-span-2">
+              <div className="grid sm:grid-cols-2 gap-5">
                 {loaderData.data.images.map( image => ( <img key={image._id} src={image.url} alt="" className="w-full aspect-square" /> ) )}
               </div>
             </div>

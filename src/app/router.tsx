@@ -18,7 +18,7 @@ import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } 
 import { addToCart, removeFromCart } from '@/features/cart/actions';
 import { createAddress } from '@/features/address/actions';
 import { createCategory, deleteCategory, updateCategory } from '@/features/category/actions';
-import { createOrder, updateOrder } from '@/features/order/actions';
+import { createOrder, deleteOrder, updateOrder } from '@/features/order/actions';
 import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
 import { deleteUser, updateUser } from '@/features/user/actions';
@@ -166,7 +166,13 @@ const router = createBrowserRouter( [
         path: 'orders/:id',
         element: <DashboardOrderPage />,
         loader: fetchOrder,
-        action: updateOrder
+        action: updateOrder,
+        children: [
+          {
+            path: 'delete',
+            action: deleteOrder
+          }
+        ]
       }
     ]
   },

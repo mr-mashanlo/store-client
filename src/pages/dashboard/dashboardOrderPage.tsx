@@ -53,12 +53,18 @@ const DashboardOrderPage: FC = () => {
         </div>
       </div>
       <div>
-        <h2 className="text-2xl font-bold uppercase">Cusstomer</h2>
+        <h2 className="text-2xl font-bold uppercase">Customer</h2>
         <div className="mt-5 p-3 grid sm:grid-cols-4 gap-4 bg-[#363636]">
           <span className="sm:col-span-2">{loaderData.data.user?.fullname}</span>
           <span className="sm:text-right">{loaderData.data.user?.email}</span>
           <span className="sm:text-right">{loaderData.data.user?.phone}</span>
         </div>
+      </div>
+      <div>
+        <h2 className="text-2xl font-bold uppercase">Delete</h2>
+        <Form method="post" action={`/dashboard/orders/${loaderData.data._id}/delete`} className="mt-5">
+          <Button className="w-full">Delete</Button>
+        </Form>
       </div>
     </div>
   );

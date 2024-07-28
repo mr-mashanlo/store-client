@@ -14,19 +14,21 @@ const StoreSuccessPage: FC = () => {
   return (
     <>
       <PageHeader title="Success Page" />
-      <section className="py-14">
+      <section className="py-5 sm:py-14">
         <div className="container-block container-block--normal">
           <div className="grid gap-14">
             <div>
               <h2 className="text-2xl font-bold uppercase">Products</h2>
               <ul className="mt-5">
                 {loaderData.data.products.map( item => (
-                  <li key={item.product._id} className="p-3 grid grid-cols-4 gap-4 items-center odd:bg-[#363636]">
-                    <If condition={Boolean( item.product.images[0] )}>
-                      <Then><img src={item.product.images[0] ? item.product.images[0].url : ''} alt="" className="w-10 h-10 object-cover" /></Then>
-                      <Else><div className="w-10 h-10 bg-[#363636]"></div></Else>
-                    </If>
-                    <span className="col-span-2 line-clamp-1">{item.product.name}</span>
+                  <li key={item.product._id} className="p-3 flex gap-4 items-center justify-between odd:bg-[#363636]">
+                    <span className="flex gap-3 items-center">
+                      <If condition={Boolean( item.product.images[0] )}>
+                        <Then><img src={item.product.images[0] ? item.product.images[0].url : ''} alt="" className="w-10 h-10 object-cover" /></Then>
+                        <Else><div className="w-10 h-10 bg-[#363636]"></div></Else>
+                      </If>
+                      <span className="col-span-2 line-clamp-1">{item.product.name}</span>
+                    </span>
                     <span>{item.quantity}</span>
                   </li>
                 ) )}
@@ -34,7 +36,7 @@ const StoreSuccessPage: FC = () => {
             </div>
             <div>
               <h2 className="text-2xl font-bold uppercase">Address</h2>
-              <div className="mt-5 p-3 grid grid-cols-3 gap-4 bg-[#363636]">
+              <div className="mt-5 p-3 grid sm:grid-cols-3 gap-4 bg-[#363636]">
                 <span>{loaderData.data.address?.district}</span>
                 <span>{loaderData.data.address?.city}</span>
                 <span>{loaderData.data.address?.street}</span>
@@ -42,7 +44,7 @@ const StoreSuccessPage: FC = () => {
             </div>
             <div>
               <h2 className="text-2xl font-bold uppercase">Cusstomer</h2>
-              <div className="mt-5 p-3 grid grid-cols-3 gap-4 bg-[#363636]">
+              <div className="mt-5 p-3 grid sm:grid-cols-3 gap-4 bg-[#363636]">
                 <span>{loaderData.data.user?.fullname}</span>
                 <span>{loaderData.data.user?.email}</span>
                 <span>{loaderData.data.user?.phone}</span>

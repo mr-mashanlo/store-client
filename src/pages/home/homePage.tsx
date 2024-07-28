@@ -10,9 +10,9 @@ const HomePage: FC = () => {
   return (
     <>
       <MainHeader />
-      <section className="py-14">
+      <section className="py-5 sm:py-14">
         <div className="container-block container-block--normal">
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
             {loaderData.data.map( product => (
               <div key={product._id} className="grid gap-2">
                 <div className="group relative overflow-hidden">

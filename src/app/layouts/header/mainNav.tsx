@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
 import { useAuthStore } from '@/entities/auth/model';
 import { useCartStore } from '@/entities/cart/model';
+import { twMerge } from 'tailwind-merge';
 
 const MainNav: FC = () => {
   const { auth, role } = useAuthStore();
@@ -20,7 +21,7 @@ const MainNav: FC = () => {
 
   if ( width < 500 ) return (
     <nav className="w-full fixed bottom-0 left-0 z-10 bg-[#303030]">
-      <ul className="grid grid-cols-3">
+      <ul className={twMerge( 'grid', role === 'ADMIN' ? 'grid-cols-3' : 'grid-cols-2' )}>
         <li><Link to="/cart" className="inline-block w-full p-3 bg-[#909090] text-[#202020] text-center">Cart ({getTotalQuantity()})</Link></li>
         <If condition={!auth}>
           <Then><li><Link to="/signin" className="inline-block w-full p-3 text-center">Sign in</Link></li></Then>

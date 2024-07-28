@@ -12,8 +12,8 @@ const MainHeader: FC = () => {
       <div className="container-block container-block--normal px-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
           <If condition={loacation.pathname === '/'}>
-            <Then><p className=" sm:text-xl font-medium uppercase text-[#FFCCCC]">Lee Mashanlo</p></Then>
-            <Else><p className="text-xl font-medium uppercase text-[#FFCCCC]"><button onClick={() => navigate( -1 )} className="uppercase">Back</button></p></Else>
+            <Then><p className="text-2xl font-bold uppercase text-[#FFCCCC]">Lee Mashanlo</p></Then>
+            <Else><p className="text-2xl font-bold uppercase text-[#FFCCCC]"><button onClick={() => navigate( -1 )} className="uppercase">Back</button></p></Else>
           </If>
           <MainNav />
         </div>
