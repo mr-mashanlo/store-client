@@ -1,14 +1,12 @@
-import { ActionFunctionArgs } from 'react-router-dom';
+import { ActionFunctionArgs, redirect } from 'react-router-dom';
 import { categoryService } from '../service';
 
 const deleteCategory = async ( { params }: ActionFunctionArgs ) => {
-  if ( typeof params.slug !== 'string' ) {
-    return { success: false };
-  }
+  const id = params.id as string;
 
   try {
-    await categoryService.delete( params.slug );
-    return { success: true };
+    await categoryService.delete( id );
+    return redirect( '/dashboard/categories' );
   } catch ( error ) {
     return { success: false, error };
   }

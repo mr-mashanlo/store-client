@@ -21,7 +21,7 @@ const AccountAddressPage: FC = () => {
             <TextInput id="city" name="city" label="City" type="text" placeholder="Sortobe" defaultValue={loaderData.data?.city} required />
           </div>
           <TextInput id="street" name="street" label="Street" type="text" placeholder="Dank #31" defaultValue={loaderData.data?.street} required />
-          <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Save</Button>
+          <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Update</Button>
         </div>
       </Form>
     </div>

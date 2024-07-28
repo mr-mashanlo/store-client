@@ -1,16 +1,12 @@
-import { ActionFunctionArgs } from 'react-router-dom';
+import { ActionFunctionArgs, redirect } from 'react-router-dom';
 import { userService } from '../service';
 
 const deleteUser = async ( { params }: ActionFunctionArgs ) => {
-  const id = params.id;
-
-  if ( typeof id !== 'string' ) {
-    return { success: false };
-  }
+  const id = params.id as string;
 
   try {
     await userService.delete( id );
-    return { success: true };
+    return redirect( '/dashboard/users' );
   } catch ( error ) {
     return { success: false, error };
   }

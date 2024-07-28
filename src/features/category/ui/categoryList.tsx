@@ -1,30 +1,18 @@
-import { FC, useState } from 'react';
-import { useFetcher } from 'react-router-dom';
-import { If, Then } from 'react-if';
+import { FC } from 'react';
 import { ICategory } from '@/entities/category/types';
-import Button from '@/shared/ui/button';
+import { Link } from 'react-router-dom';
 
 interface Props {
   categories: Array<ICategory>
 }
 
 const CategoryList: FC<Props> = ( { categories } ) => {
-  const deleteFetcher = useFetcher();
-  const [ activeButton, setActiveButton ] = useState<string>( '' );
-
   return (
-    <ul className="overflow-auto">
+    <ul>
       {categories.map( category => (
-        <li key={category._id} className="w-[50rem] sm:w-auto p-3 grid grid-cols-3 gap-4 items-center odd:bg-[#363636]">
-          <span>{category.title}</span>
+        <li key={category._id} className="p-3 flex justify-between gap-4 items-center odd:bg-[#363636]">
+          <Link to={`/dashboard/categories/${category._id}`} className="hover:text-white hover:underline">{category.title}</Link>
           <span>{category.slug}</span>
-          <If condition={category.slug !== 'default'}>
-            <Then>
-              <deleteFetcher.Form method="delete" action={`/dashboard/categories/delete/${category.slug}`} className="ml-auto">
-                <Button onClick={() => setActiveButton( category._id || '' )} size="sm" loading={activeButton === category._id && deleteFetcher.state === 'submitting'} disabled={activeButton === category._id && deleteFetcher.state === 'submitting'}>Delete</Button>
-              </deleteFetcher.Form>
-            </Then>
-          </If>
         </li>
       ) )}
     </ul>

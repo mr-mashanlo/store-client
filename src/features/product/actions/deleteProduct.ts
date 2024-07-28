@@ -1,15 +1,12 @@
-import { ActionFunctionArgs } from 'react-router-dom';
+import { ActionFunctionArgs, redirect } from 'react-router-dom';
 import { productService } from '../service';
 
 const deleteProduct = async ( { params }: ActionFunctionArgs ) => {
-
-  if ( typeof params.id !== 'string' ) {
-    return { success: false };
-  }
+  const id = params.id as string;
 
   try {
-    await productService.delete( params.id );
-    return { success: true };
+    await productService.delete( id );
+    return redirect( '/dashboard/products' );
   } catch ( error ) {
     return { success: false, error };
   }

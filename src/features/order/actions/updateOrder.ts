@@ -3,14 +3,11 @@ import { orderService } from '../service';
 
 const updateOrder = async ( { params, request }: ActionFunctionArgs ) => {
   const formData = await request.formData();
-  const status = formData.get( 'status' ) as 'Processing' | 'Delivering' | 'Done';
-
-  if ( typeof params.id !== 'string' || typeof status !== 'string' ) {
-    return { success: false };
-  }
+  const id = params.id as string;
+  const status = formData.get( 'status' ) as 'Processing' | 'Delivering' | 'Done' ;
 
   try {
-    await orderService.update( { status }, params.id );
+    await orderService.update( { status }, id );
     return { success: true };
   } catch ( error ) {
     return { success: false, error };

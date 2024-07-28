@@ -1,17 +1,10 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { Else, If, Then } from 'react-if';
 import { IOrderResponse } from '@/entities/order/types';
+import { Else, If, Then } from 'react-if';
 
 const AccountOrderPage: FC = () => {
-  const loaderData = useLoaderData() as { success: boolean, data: Array<IOrderResponse> };
-  const [ width, setWidth ] = useState( window.innerWidth );
-
-  useEffect( () => {
-    const handleResize = () => { setWidth( window.innerWidth ); };
-    window.addEventListener( 'resize', handleResize );
-    return () => { window.removeEventListener( 'resize', handleResize ); };
-  }, [] );
+  const loaderData = useLoaderData() as { success: boolean, data: IOrderResponse };
 
   return (
     <div className="grid gap-10 sm:gap-14">
@@ -19,45 +12,24 @@ const AccountOrderPage: FC = () => {
         <Link to="/" className="w-6 h-6 rounded-full bg-[#505050] sm:hidden"></Link>
         <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Order page</h1>
       </div>
-      <If condition={loaderData.data.length}>
-        <Then>
-          <If condition={width < 500}>
-            <Then>
-              <ul className="grid gap-5">
-                {loaderData.data.map( order => (
-                  <li key={order._id} className="p-3 grid grid-cols-5 gap-4 items-center bg-[#363636]">
-                    <span className="h-full col-span-2 flex items-center justify-center bg-[#505050]">{order.status}</span>
-                    {order.products.map( product => (
-                      <If condition={Boolean( product.product.images[0] )} key={product.product._id}>
-                        <Then><img src={product.product.images[0] ? product.product.images[0].url : ''} alt="" className="w-full aspect-square object-cover" /></Then>
-                        <Else><div className="w-full aspect-square bg-[#363636]"></div></Else>
-                      </If>
-                    ) )}
-                  </li>
-                ) )}
-              </ul>
-            </Then>
-            <Else>
-              <ul>
-                {loaderData.data.map( order => (
-                  <li key={order._id} className="p-3 grid grid-cols-4 gap-4 items-center odd:bg-[#363636]">
-                    <span>{order._id}</span>
-                    <span className="text-center">{order.status}</span>
-                    <span className="ml-auto col-span-2 flex gap-4">
-                      {order.products.map( product => (
-                        <If condition={Boolean( product.product.images[0] )} key={product.product._id}>
-                          <Then><img src={product.product.images[0] ? product.product.images[0].url : ''} alt="" className="w-10 aspect-square object-cover" /></Then>
-                          <Else><div className="w-10 aspect-square bg-[#363636]"></div></Else>
-                        </If>
-                      ) )}
-                    </span>
-                  </li>
-                ) )}
-              </ul>
-            </Else>
-          </If>
-        </Then>
-      </If>
+      <div className="overflow-hidden">
+        <h2 className="text-2xl font-bold uppercase">{loaderData.data.status}</h2>
+        <ul className="mt-5 overflow-auto">
+          {loaderData.data.products.map( product => (
+            <li key={product.product._id} className="p-3 flex sm:grid sm:grid-cols-4 gap-4 items-center justify-between odd:bg-[#363636]">
+              <span className="flex items-center gap-3 col-span-2">
+                <If condition={Boolean( product.product.images[0] )}>
+                  <Then><img src={product.product.images[0] ? product.product.images[0].url : ''} alt="" className="w-10 h-10 object-cover" /></Then>
+                  <Else><div className="w-10 h-10 bg-[#363636]"></div></Else>
+                </If>
+                <span className="line-clamp-1">{product.product.name}</span>
+              </span>
+              <span className="hidden sm:inline sm:text-right">{product.product.category.title}</span>
+              <span className="sm:text-right">{product.product.price}$</span>
+            </li>
+          ) )}
+        </ul>
+      </div>
     </div>
   );
 };

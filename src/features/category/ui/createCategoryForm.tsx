@@ -2,8 +2,14 @@ import { FC, useEffect, useRef } from 'react';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
 import TextInput from '@/shared/ui/textInput';
 import Button from '@/shared/ui/button';
+import { ICategory } from '@/entities/category/types';
 
-const CreateCategoryForm: FC = () => {
+interface Props {
+  action: string
+  category?: ICategory
+}
+
+const CreateCategoryForm: FC<Props> = ( { action, category } ) => {
   const navigation = useNavigation();
   const actionData = useActionData() as { success: boolean, msg: string };
   const form = useRef<HTMLFormElement>( null );
@@ -15,11 +21,11 @@ const CreateCategoryForm: FC = () => {
   }, [ actionData ] );
 
   return (
-    <Form ref={form} method="post" action="/dashboard/categories">
+    <Form ref={form} method="post" action={action}>
       <div className="grid sm:grid-cols-3 gap-7">
-        <TextInput id="title" name="title" label="Title" type="text" required />
-        <TextInput id="slug" name="slug" label="Slug" type="text" required />
-        <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>Create</Button>
+        <TextInput id="title" name="title" label="Title" type="text" defaultValue={category?.title} required />
+        <TextInput id="slug" name="slug" label="Slug" type="text" defaultValue={category?.slug} required />
+        <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>{category ? 'Update' : 'Create'}</Button>
       </div>
     </Form>
   );

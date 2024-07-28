@@ -125,7 +125,7 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
         </div>
       </div>
       <div className="mt-7 text-center">
-        <Button type="submit" loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'}>{product ? 'Save' : 'Create'}</Button>
+        <Button type="submit" loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'} className="w-full">{product ? 'Update' : 'Create'}</Button>
       </div>
     </Form>
   );

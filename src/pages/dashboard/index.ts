@@ -1,9 +1,21 @@
 import DashboardCategoriesPage from './dashboardCategoriesPage';
+import DashboardCategoryPage from './dashboardCategoryPage';
 import DashboardMediaPage from './dashboardMediaPage';
-import DashboardOrdersPage from './dashboardOrdersPage';
-import DashboardProductsPage from './dashboardProductsPage';
 import DashboardOrderPage from './dashboardOrderPage';
+import DashboardOrdersPage from './dashboardOrdersPage';
 import DashboardProductPage from './dashboardProductPage';
+import DashboardProductsPage from './dashboardProductsPage';
+import DashboardUserPage from './dashboardUserPage';
 import DashboardUsersPage from './dashboardUsersPage';
 
-export { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage };
+export {
+  DashboardCategoriesPage,
+  DashboardCategoryPage,
+  DashboardMediaPage,
+  DashboardOrderPage,
+  DashboardOrdersPage,
+  DashboardProductPage,
+  DashboardProductsPage,
+  DashboardUserPage,
+  DashboardUsersPage
+};

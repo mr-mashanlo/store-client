@@ -12,7 +12,7 @@ const DashboardCategoriesPage: FC = () => {
         <Link to="/" className="w-6 h-6 rounded-full bg-[#505050] sm:hidden"></Link>
         <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Categories page</h1>
       </div>
-      <CreateCategoryForm />
+      <CreateCategoryForm action="/dashboard/categories" />
       <CategoryList categories={loaderData.data || []} />
     </div>
   );

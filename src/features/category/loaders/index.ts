@@ -1,3 +1,4 @@
 import fetchCategories from './fetchCategories';
+import fetchCategory from './fetchCategory';
 
-export { fetchCategories };
+export { fetchCategories, fetchCategory };

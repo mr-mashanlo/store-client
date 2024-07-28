@@ -11,13 +11,13 @@ import { RequestAuth } from '@/shared/hoc';
 
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
-import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage } from '@/pages/dashboard';
-import { AccountAddressPage, AccountOrderPage, AccountProfilePage } from '@/pages/account';
+import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage, DashboardUserPage, DashboardCategoryPage } from '@/pages/dashboard';
+import { AccountAddressPage, AccountOrderPage, AccountOrdersPage, AccountProfilePage } from '@/pages/account';
 import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } from '@/pages/store';
 
 import { addToCart, removeFromCart } from '@/features/cart/actions';
 import { createAddress } from '@/features/address/actions';
-import { createCategory, deleteCategory } from '@/features/category/actions';
+import { createCategory, deleteCategory, updateCategory } from '@/features/category/actions';
 import { createOrder, updateOrder } from '@/features/order/actions';
 import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
 import { deleteImage, uploadImage } from '@/features/media/actions';
@@ -25,7 +25,7 @@ import { deleteUser, updateUser } from '@/features/user/actions';
 import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
 
 import { fetchAddress } from '@/features/address/loadres';
-import { fetchCategories } from '@/features/category/loaders';
+import { fetchCategories, fetchCategory } from '@/features/category/loaders';
 import { fetchImages } from '@/features/media/loaders';
 import { fetchMe } from '@/features/auth/loaders';
 import { fetchProductWithMetadata, fetchProductsWithMetadata, fetchProducts, fetchProduct } from '@/features/product/loaders';
@@ -107,14 +107,16 @@ const router = createBrowserRouter( [
       {
         path: 'users',
         element: <DashboardUsersPage />,
-        loader: fetchUsers,
+        loader: fetchUsers
+      },
+      {
+        path: 'users/:id',
+        element: <DashboardUserPage />,
+        loader: fetchUserWithMetadata,
+        action: updateUser,
         children: [
           {
-            path: 'update/:id',
-            action: updateUser
-          },
-          {
-            path: 'delete/:id',
+            path: 'delete',
             action: deleteUser
           }
         ]
@@ -123,28 +125,34 @@ const router = createBrowserRouter( [
         path: 'products',
         element: <DashboardProductsPage />,
         loader: fetchProductsWithMetadata,
-        action: createProduct,
-        children: [
-          {
-            path: 'delete/:id',
-            action: deleteProduct
-          }
-        ]
+        action: createProduct
       },
       {
         path: 'products/:id',
         element: <DashboardProductPage />,
         loader: fetchProductWithMetadata,
-        action: updateProduct
+        action: updateProduct,
+        children: [
+          {
+            path: 'delete',
+            action: deleteProduct
+          }
+        ]
       },
       {
         path: 'categories',
         element: <DashboardCategoriesPage />,
         loader: fetchCategories,
-        action: createCategory,
+        action: createCategory
+      },
+      {
+        path: 'categories/:id',
+        element: <DashboardCategoryPage />,
+        loader: fetchCategory,
+        action: updateCategory,
         children: [
           {
-            path: 'delete/:slug',
+            path: 'delete',
             action: deleteCategory
           }
         ]
@@ -152,18 +160,13 @@ const router = createBrowserRouter( [
       {
         path: 'orders',
         element: <DashboardOrdersPage />,
-        loader: fetchAllOrders,
-        children: [
-          {
-            path: 'update/:id',
-            action: updateOrder
-          }
-        ]
+        loader: fetchAllOrders
       },
       {
         path: 'orders/:id',
         element: <DashboardOrderPage />,
-        loader: fetchOrder
+        loader: fetchOrder,
+        action: updateOrder
       }
     ]
   },
@@ -186,8 +189,13 @@ const router = createBrowserRouter( [
       },
       {
         path: 'orders',
-        element: <AccountOrderPage />,
+        element: <AccountOrdersPage />,
         loader: fetchMyOrders
+      },
+      {
+        path: 'orders/:id',
+        element: <AccountOrderPage />,
+        loader: fetchOrder
       },
       {
         path: 'logout',
