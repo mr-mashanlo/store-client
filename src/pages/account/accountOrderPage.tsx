@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { IOrderResponse } from '@/entities/order/types';
 import { Else, If, Then } from 'react-if';
+import { IOrderResponse } from '@/entities/order/types';
 
 const AccountOrderPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: IOrderResponse };

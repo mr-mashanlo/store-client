@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { Else, If, Then } from 'react-if';
 import { MainHeader } from '@/app/layouts/header';
 import { IProductResponse } from '@/entities/product/types';
-import { Else, If, Then } from 'react-if';
 
 const HomePage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: Array<IProductResponse> };

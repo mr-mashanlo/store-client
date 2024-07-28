@@ -1,8 +1,8 @@
 import { FC } from 'react';
+import { Form, Link } from 'react-router-dom';
+import { Else, If, Then } from 'react-if';
 import { PageHeader } from '@/app/layouts/header';
 import { useCartStore } from '@/entities/cart/model';
-import { Else, If, Then } from 'react-if';
-import { Form, Link } from 'react-router-dom';
 import { useAuthStore } from '@/entities/auth/model';
 
 const StoreCartPage: FC = () => {
