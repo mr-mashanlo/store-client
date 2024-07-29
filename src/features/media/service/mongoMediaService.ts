@@ -21,10 +21,10 @@ export class MongoMediaService implements IMediaService {
     }
   };
 
-  delete = async ( name: string ) => {
+  delete = async ( id: string ) => {
     try {
-      const response = await authInstance( `media/${name}`, { method: 'delete' } );
-      return await response.json() as IMedia;
+      const response = await authInstance( `media/${id}`, { method: 'delete' } );
+      return await response.json() as { success: boolean, msg: string };
     } catch ( error ) {
       return Promise.reject( error );
     }

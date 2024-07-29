@@ -99,7 +99,7 @@ const router = createBrowserRouter( [
         action: uploadImage,
         children: [
           {
-            path: 'delete/:name',
+            path: 'delete/:id',
             action: deleteImage
           }
         ]

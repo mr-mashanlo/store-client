@@ -16,8 +16,8 @@ export class MediaService {
     return this.service.create( image );
   };
 
-  delete = ( name: string ) => {
-    return this.service.delete( name );
+  delete = ( id: string ) => {
+    return this.service.delete( id );
   };
 
 }
