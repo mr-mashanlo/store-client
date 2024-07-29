@@ -2,13 +2,10 @@ import { ActionFunctionArgs } from 'react-router-dom';
 import { mediaService } from '../service';
 
 const deleteImage = async ( { params }: ActionFunctionArgs ) => {
-
-  if ( typeof params.name !== 'string' ) {
-    return { success: false };
-  }
+  const id = params.id as string;
 
   try {
-    await mediaService.delete( params.name );
+    await mediaService.delete( id );
     return { success: true };
   } catch ( error ) {
     return { success: false, error };
