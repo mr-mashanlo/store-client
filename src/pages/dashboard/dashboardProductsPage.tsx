@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { CreateProductForm, ProductList } from '@/features/product/ui';
+import { CreateProductForm, ProductList } from '@/features/dashboard/product/ui';
 import { IProductResponse } from '@/entities/product/types';
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';

@@ -1,7 +1,7 @@
 import { IAuthService } from '@/entities/auth/types';
 import { authInstance, defaultInstance } from '@/shared/api';
 
-export class AuthService implements IAuthService {
+class AuthService implements IAuthService {
 
   signin = async ( email: string, password: string ) => {
     try {
@@ -49,3 +49,7 @@ export class AuthService implements IAuthService {
   };
 
 }
+
+const authService = new AuthService();
+
+export default authService;

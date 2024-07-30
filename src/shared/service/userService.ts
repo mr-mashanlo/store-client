@@ -1,7 +1,7 @@
 import { IUser, IUserService } from '@/entities/user/types';
 import { authInstance } from '@/shared/api';
 
-export class UserService implements IUserService {
+class UserService implements IUserService {
 
   getAll = async () => {
     try {
@@ -40,3 +40,7 @@ export class UserService implements IUserService {
   };
 
 }
+
+const userService = new UserService();
+
+export default userService;

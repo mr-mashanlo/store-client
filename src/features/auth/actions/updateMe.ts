@@ -1,5 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { userService } from '@/features/user/service';
+import { userService } from '@/shared/service';
 
 const updateMe = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();

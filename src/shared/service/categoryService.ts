@@ -1,7 +1,7 @@
 import { ICategory, ICategoryService } from '@/entities/category/types';
 import { authInstance } from '@/shared/api';
 
-export class CategoryService implements ICategoryService {
+class CategoryService implements ICategoryService {
 
   getAll = async () => {
     try {
@@ -49,3 +49,7 @@ export class CategoryService implements ICategoryService {
   };
 
 }
+
+const categoryService = new CategoryService();
+
+export default categoryService;

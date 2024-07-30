@@ -1,17 +1,17 @@
-import { AddressService } from './addressService';
-import { AuthService } from './authService';
-import { CategoryService } from './categoryService';
-import { MediaService } from './mediaService';
-import { OrderService } from './orderService';
-import { ProductService } from './productService';
-import { UserService } from './userService';
+import addressService from './addressService';
+import authService from './authService';
+import categoryService from './categoryService';
+import mediaService from './mediaService';
+import orderService from './orderService';
+import productService from './productService';
+import userService from './userService';
 
 export {
-  AddressService,
-  AuthService,
-  CategoryService,
-  MediaService,
-  OrderService,
-  ProductService,
-  UserService
+  addressService,
+  authService,
+  categoryService,
+  mediaService,
+  orderService,
+  productService,
+  userService
 };

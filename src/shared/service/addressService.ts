@@ -1,7 +1,7 @@
 import { authInstance } from '@/shared/api';
 import { IAddress, IAddressService } from '@/entities/address/types';
 
-export class AddressService implements IAddressService {
+class AddressService implements IAddressService {
 
   getOne = async ( id?: string ) => {
     try {
@@ -40,3 +40,7 @@ export class AddressService implements IAddressService {
   };
 
 }
+
+const addressService = new AddressService();
+
+export default addressService;

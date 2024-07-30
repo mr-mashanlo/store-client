@@ -1,7 +1,7 @@
 import { IOrderResponse, IOrderRequest, IOrderService } from '@/entities/order/types';
 import { authInstance } from '@/shared/api';
 
-export class OrderService implements IOrderService {
+class OrderService implements IOrderService {
 
   getAll = async () => {
     try {
@@ -58,3 +58,7 @@ export class OrderService implements IOrderService {
   };
 
 }
+
+const orderService = new OrderService();
+
+export default orderService;

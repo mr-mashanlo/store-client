@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { ImageList, UploadForm } from '@/features/media/ui';
+import { ImageList, UploadForm } from '@/features/dashboard/media/ui';
 import { IMedia } from '@/entities/media/types';
 
 const DashboardMediaPage: FC = () => {

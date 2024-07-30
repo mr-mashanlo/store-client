@@ -1,7 +1,7 @@
 import { IMedia, IMediaService } from '@/entities/media/types';
 import { authInstance } from '@/shared/api';
 
-export class MediaService implements IMediaService {
+class MediaService implements IMediaService {
 
   getAll = async () => {
     try {
@@ -31,3 +31,7 @@ export class MediaService implements IMediaService {
   };
 
 }
+
+const mediaService = new MediaService();
+
+export default mediaService;

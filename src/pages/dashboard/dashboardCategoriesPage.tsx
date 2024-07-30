@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { CategoryList, CreateCategoryForm } from '@/features/category/ui';
+import { CategoryList, CreateCategoryForm } from '@/features/dashboard/category/ui';
 import { Link, useLoaderData } from 'react-router-dom';
 import { ICategory } from '@/entities/category/types';
 

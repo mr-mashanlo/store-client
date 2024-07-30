@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Form, Link, useLoaderData } from 'react-router-dom';
-import { CreateCategoryForm } from '@/features/category/ui';
+import { CreateCategoryForm } from '@/features/dashboard/category/ui';
 import Button from '@/shared/widgets/button';
 import { ICategory } from '@/entities/category/types';
 

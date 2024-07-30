@@ -15,22 +15,22 @@ import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, Dashb
 import { ProfileAboutPage, ProfileAddressPage, ProfileOrderPage, ProfileOrdersPage } from '@/pages/profile';
 import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } from '@/pages/store';
 
-import { addToCart, removeFromCart } from '@/features/cart/actions';
-import { createAddress } from '@/features/address/actions';
-import { createCategory, deleteCategory, updateCategory } from '@/features/category/actions';
-import { createOrder, deleteOrder, updateOrder } from '@/features/order/actions';
-import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
-import { deleteImage, uploadImage } from '@/features/media/actions';
-import { deleteUser, updateUser } from '@/features/user/actions';
+import { addToCart, removeFromCart } from '@/features/store/cart/actions';
+import { createAddress } from '@/features/profile/address/actions';
+import { createCategory, deleteCategory, updateCategory } from '@/features/dashboard/category/actions';
+import { createOrder, deleteOrder, updateOrder } from '@/features/dashboard/order/actions';
+import { createProduct, deleteProduct, updateProduct } from '@/features/dashboard/product/actions';
+import { deleteImage, uploadImage } from '@/features/dashboard/media/actions';
+import { deleteUser, updateUser } from '@/features/dashboard/user/actions';
 import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
 
-import { fetchAddress } from '@/features/address/loadres';
-import { fetchCategories, fetchCategory } from '@/features/category/loaders';
-import { fetchImages } from '@/features/media/loaders';
+import { fetchAddress } from '@/features/profile/address/loadres';
+import { fetchCategories, fetchCategory } from '@/features/dashboard/category/loaders';
+import { fetchImages } from '@/features/dashboard/media/loaders';
 import { fetchMe } from '@/features/auth/loaders';
-import { fetchProductWithMetadata, fetchProductsWithMetadata, fetchProducts, fetchProduct } from '@/features/product/loaders';
-import { fetchAllOrders, fetchMyOrders, fetchOrder } from '@/features/order/loaders';
-import { fetchUsers, fetchUserWithMetadata } from '@/features/user/loaders';
+import { fetchProductWithMetadata, fetchProductsWithMetadata, fetchProducts, fetchProduct } from '@/features/dashboard/product/loaders';
+import { fetchAllOrders, fetchMyOrders, fetchOrder } from '@/features/dashboard/order/loaders';
+import { fetchUsers, fetchUserWithMetadata } from '@/features/dashboard/user/loaders';
 
 const router = createBrowserRouter( [
   {

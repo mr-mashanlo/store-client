@@ -3,7 +3,7 @@ import { Form, Link, useLoaderData } from 'react-router-dom';
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 import { IProductResponse } from '@/entities/product/types';
-import { CreateProductForm } from '@/features/product/ui';
+import { CreateProductForm } from '@/features/dashboard/product/ui';
 import Button from '@/shared/widgets/button';
 
 const DashboardProductPage: FC = () => {

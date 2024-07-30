@@ -1,7 +1,7 @@
 import { IProductResponse, IProductRequest, IProductService } from '@/entities/product/types';
 import { authInstance } from '@/shared/api';
 
-export class ProductService implements IProductService {
+class ProductService implements IProductService {
 
   getAll = async () => {
     try {
@@ -49,3 +49,7 @@ export class ProductService implements IProductService {
   };
 
 }
+
+const productService = new ProductService();
+
+export default productService;
