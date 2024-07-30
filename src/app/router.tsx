@@ -12,7 +12,7 @@ import { RequestAuth } from '@/shared/hoc';
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
 import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage, DashboardUserPage, DashboardCategoryPage } from '@/pages/dashboard';
-import { AccountAddressPage, AccountOrderPage, AccountOrdersPage, AccountProfilePage } from '@/pages/account';
+import { ProfileAboutPage, ProfileAddressPage, ProfileOrderPage, ProfileOrdersPage } from '@/pages/profile';
 import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } from '@/pages/store';
 
 import { addToCart, removeFromCart } from '@/features/cart/actions';
@@ -183,24 +183,24 @@ const router = createBrowserRouter( [
     children: [
       {
         path: 'me',
-        element: <AccountProfilePage />,
+        element: <ProfileAboutPage />,
         loader: fetchMe,
         action: updateMe
       },
       {
         path: 'address',
-        element: <AccountAddressPage />,
+        element: <ProfileAddressPage />,
         loader: fetchAddress,
         action: createAddress
       },
       {
         path: 'orders',
-        element: <AccountOrdersPage />,
+        element: <ProfileOrdersPage />,
         loader: fetchMyOrders
       },
       {
         path: 'orders/:id',
-        element: <AccountOrderPage />,
+        element: <ProfileOrderPage />,
         loader: fetchOrder
       },
       {

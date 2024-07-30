@@ -1,6 +1,11 @@
 import StoreCartPage from './storeCartPage';
 import StoreCheckoutPage from './storeCheckoutPage';
-import StoreSuccessPage from './storeSuccessPage';
 import StoreProductPage from './storeProductPage';
+import StoreSuccessPage from './storeSuccessPage';
 
-export { StoreCartPage, StoreCheckoutPage, StoreSuccessPage, StoreProductPage };
+export {
+  StoreCartPage,
+  StoreCheckoutPage,
+  StoreProductPage,
+  StoreSuccessPage
+};

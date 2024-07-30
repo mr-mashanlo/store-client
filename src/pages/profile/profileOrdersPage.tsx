@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { If, Then } from 'react-if';
 import { IOrderResponse } from '@/entities/order/types';
 
-const AccountOrdersPage: FC = () => {
+const ProfileOrdersPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: Array<IOrderResponse> };
 
   return (
@@ -28,4 +28,4 @@ const AccountOrdersPage: FC = () => {
   );
 };
 
-export default AccountOrdersPage;
+export default ProfileOrdersPage;

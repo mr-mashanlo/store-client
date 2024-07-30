@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Form, Link, useFetcher, useLoaderData, useNavigation } from 'react-router-dom';
-import TextInput from '@/shared/ui/textInput';
-import Button from '@/shared/ui/button';
+import TextInput from '@/shared/widgets/textInput';
+import Button from '@/shared/widgets/button';
 import { IUser } from '@/entities/auth/types';
 
-const AccountProfilePage: FC = () => {
+const ProfileAboutPage: FC = () => {
   const navigation = useNavigation();
   const logoutFetcher = useFetcher();
   const loaderData = useLoaderData() as { success: boolean, data: IUser };
@@ -33,4 +33,4 @@ const AccountProfilePage: FC = () => {
   );
 };
 
-export default AccountProfilePage;
+export default ProfileAboutPage;

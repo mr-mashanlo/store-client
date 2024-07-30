@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Form, Link, useLoaderData, useNavigation } from 'react-router-dom';
-import TextInput from '@/shared/ui/textInput';
-import Button from '@/shared/ui/button';
+import TextInput from '@/shared/widgets/textInput';
+import Button from '@/shared/widgets/button';
 import { IAddress } from '@/entities/address/types';
 
-const AccountAddressPage: FC = () => {
+const ProfileAddressPage: FC = () => {
   const navigation = useNavigation();
   const loaderData = useLoaderData() as { success: boolean, data: IAddress};
 
@@ -28,4 +28,4 @@ const AccountAddressPage: FC = () => {
   );
 };
 
-export default AccountAddressPage;
+export default ProfileAddressPage;

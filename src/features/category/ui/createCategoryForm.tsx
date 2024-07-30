@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef } from 'react';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
-import TextInput from '@/shared/ui/textInput';
-import Button from '@/shared/ui/button';
+import TextInput from '@/shared/widgets/textInput';
+import Button from '@/shared/widgets/button';
 import { ICategory } from '@/entities/category/types';
 
 interface Props {

@@ -5,8 +5,8 @@ import { PageHeader } from '@/app/layouts/header';
 import { useCartStore } from '@/entities/cart/model';
 import { IUser } from '@/entities/auth/types';
 import { IAddress } from '@/entities/address/types';
-import TextInput from '@/shared/ui/textInput';
-import Button from '@/shared/ui/button';
+import TextInput from '@/shared/widgets/textInput';
+import Button from '@/shared/widgets/button';
 import { IOrderResponse } from '@/entities/order/types';
 
 const StoreCheckoutPage: FC = () => {

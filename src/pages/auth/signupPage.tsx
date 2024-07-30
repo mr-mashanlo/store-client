@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { Form, Link, useActionData, useNavigate, useNavigation } from 'react-router-dom';
-import TextInput from '@/shared/ui/textInput';
-import Button from '@/shared/ui/button';
+import TextInput from '@/shared/widgets/textInput';
+import Button from '@/shared/widgets/button';
 
 interface Action {
   success: boolean

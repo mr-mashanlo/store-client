@@ -1,5 +1,5 @@
 import { IOrderResponse } from '@/entities/order/types';
-import Button from '@/shared/ui/button';
+import Button from '@/shared/widgets/button';
 import { FC } from 'react';
 import { Else, If, Then } from 'react-if';
 import { Form, useLoaderData } from 'react-router-dom';

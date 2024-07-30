@@ -3,10 +3,10 @@ import { Form, useActionData, useNavigation } from 'react-router-dom';
 import { If, Then, Else } from 'react-if';
 import { twMerge } from 'tailwind-merge';
 
-import Button from '@/shared/ui/button';
-import Select from '@/shared/ui/select';
-import TextInput from '@/shared/ui/textInput';
-import Textarea from '@/shared/ui/textarea';
+import Button from '@/shared/widgets/button';
+import Select from '@/shared/widgets/select';
+import TextInput from '@/shared/widgets/textInput';
+import Textarea from '@/shared/widgets/textarea';
 
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
