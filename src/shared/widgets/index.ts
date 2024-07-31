@@ -5,6 +5,7 @@ import TextInput from './textInput';
 
 import DeleteForm from './deleteForm';
 import OrderList from './orderList';
+import ProductGrid from './productGrid';
 import ProductList from './productList';
 import ProductListWithQuantity from './productListWithQuantity';
 
@@ -16,6 +17,7 @@ export {
 
   DeleteForm,
   OrderList,
+  ProductGrid,
   ProductList,
   ProductListWithQuantity
 };
