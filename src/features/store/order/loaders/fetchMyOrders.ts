@@ -1,4 +1,4 @@
-import { orderService } from '../service';
+import { orderService } from '@/shared/services';
 
 const fetchMyOrders = async () => {
   try {

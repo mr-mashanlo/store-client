@@ -1,4 +1,4 @@
-import { authService } from '../service';
+import { authService } from '@/shared/services';
 import { useAuthStore } from '@/features/auth/store';
 
 const logoutUser = async () => {

@@ -1,4 +1,9 @@
-import CreateCategoryForm from './createCategoryForm';
 import CategoryList from './categoryList';
+import CreateCategoryForm from './createCategoryForm';
+import DeleteCategoryForm from './deleteCategoryForm';
 
-export { CreateCategoryForm, CategoryList };
+export {
+  CategoryList,
+  CreateCategoryForm,
+  DeleteCategoryForm
+};

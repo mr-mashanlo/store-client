@@ -1,5 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { authService } from '../service';
+import { authService } from '@/shared/services';
 import { decodeToken } from '@/shared/helpers';
 import { useAuthStore } from '@/features/auth/store';
 

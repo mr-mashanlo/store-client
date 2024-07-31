@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { Form, Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 import { IProductResponse } from '@/entities/product/types';
-import { CreateProductForm } from '@/features/store/product/ui';
-import { Button } from '@/shared/widgets';
+import { CreateProductForm } from '@/features/dashboard/product/ui';
+import { DeleteForm } from '@/shared/widgets';
 
 const DashboardProductPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: { product: IProductResponse, categories: Array<ICategory>, images: Array<IMedia> } };
@@ -16,9 +16,7 @@ const DashboardProductPage: FC = () => {
         <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Edit page</h1>
       </div>
       <CreateProductForm action="" categories={loaderData.data.categories} images={loaderData.data.images} product={loaderData.data.product} />
-      <Form method="delete" action={`/dashboard/products/${loaderData.data.product._id}/delete`}>
-        <Button className="w-full">Delete</Button>
-      </Form>
+      <DeleteForm action={`/dashboard/products/${loaderData.data.product._id}/delete`} />
     </div>
   );
 };

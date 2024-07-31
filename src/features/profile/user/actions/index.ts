@@ -1,7 +1,3 @@
-import deleteUser from './deleteUser';
-import updateUser from './updateUser';
+import updateMe from './updateMe';
 
-export {
-  deleteUser,
-  updateUser
-};
+export { updateMe };

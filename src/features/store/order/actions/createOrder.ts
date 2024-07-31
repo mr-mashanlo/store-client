@@ -1,7 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { orderService } from '../service';
-import { addressService } from '@/features/profile/address/service';
-import { userService } from '@/features/profile/user/service';
+import { addressService, orderService, userService } from '@/shared/services';
 import { IProductResponse } from '@/entities/product/types';
 
 const createOrder = async ( { request }: ActionFunctionArgs ) => {

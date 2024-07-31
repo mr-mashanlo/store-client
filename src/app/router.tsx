@@ -15,28 +15,35 @@ import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, Dashb
 import { ProfileAboutPage, ProfileAddressPage, ProfileOrderPage, ProfileOrdersPage } from '@/pages/profile';
 import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } from '@/pages/store';
 
-import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
-import { fetchMe } from '@/features/auth/loaders';
+import { logoutUser, signinAction, signupAction } from '@/features/auth/actions';
 
 import { addToCart, removeFromCart } from '@/features/store/cart/actions';
 
-import { createProduct, deleteProduct, updateProduct } from '@/features/store/product/actions';
-import { fetchProduct, fetchProductWithMetadata, fetchProducts, fetchProductsWithMetadata } from '@/features/store/product/loaders';
+import { fetchProduct, fetchProducts } from '@/features/store/product/loaders';
 
-import { createOrder, deleteOrder, updateOrder } from '@/features/store/order/actions';
-import { fetchAllOrders, fetchMyOrders, fetchOrder } from '@/features/store/order/loaders';
+import { createOrder } from '@/features/store/order/actions';
+import { fetchMyOrders, fetchOrder } from '@/features/store/order/loaders';
 
 import { createAddress } from '@/features/profile/address/actions';
 import { fetchAddress } from '@/features/profile/address/loadres';
 
-import { fetchUserWithMetadata, fetchUsers } from '@/features/profile/user/loaders';
-import { deleteUser, updateUser } from '@/features/profile/user/actions';
+import { updateMe } from '@/features/profile/user/actions';
+import { fetchMe } from '@/features/profile/user/loaders';
 
 import { deleteImage, uploadImage } from '@/features/dashboard/media/actions';
 import { fetchImages } from '@/features/dashboard/media/loaders';
 
+import { deleteUser, updateUser } from '@/features/dashboard/user/actions';
+import { fetchUserWithMetadata, fetchUsers } from '@/features/dashboard/user/loader';
+
 import { createCategory, deleteCategory, updateCategory } from '@/features/dashboard/category/actions';
 import { fetchCategories, fetchCategory } from '@/features/dashboard/category/loaders';
+
+import { createProduct, deleteProduct, updateProduct } from '@/features/dashboard/product/actions';
+import { fetchProductWithMetadata, fetchProductsWithMetadata } from '@/features/dashboard/product/loaders';
+
+import { deleteOrder, updateOrder } from '@/features/dashboard/order/actions';
+import { fetchAllOrders } from '@/features/dashboard/order/loaders';
 
 const router = createBrowserRouter( [
   {

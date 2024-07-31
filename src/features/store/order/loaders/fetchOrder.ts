@@ -1,13 +1,11 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { orderService } from '../service';
+import { orderService } from '@/shared/services';
 
 const fetchOrder = async ( { params }: ActionFunctionArgs ) => {
-  if ( typeof params.id !== 'string' ) {
-    return { success: false };
-  }
+  const id = params.id as string;
 
   try {
-    const order = await orderService.getOne( params.id );
+    const order = await orderService.getOne( id );
     return { success: true, data: order };
   } catch ( error ) {
     return { success: false, error };

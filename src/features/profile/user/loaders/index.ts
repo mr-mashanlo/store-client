@@ -1,7 +1,3 @@
-import fetchUsers from './fetchUsers';
-import fetchUserWithMetadata from './fetchUserWithMetadata';
+import fetchMe from './fetchMe';
 
-export {
-  fetchUsers,
-  fetchUserWithMetadata
-};
+export { fetchMe };

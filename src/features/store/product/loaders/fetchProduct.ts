@@ -1,5 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { productService } from '../service';
+import { productService } from '@/shared/services';
 
 const fetchProduct = async ( { params }: ActionFunctionArgs ) => {
   const id = params.id as string;

@@ -1,5 +1,5 @@
+import { mediaService } from '@/shared/services';
 import { ActionFunctionArgs } from 'react-router-dom';
-import { mediaService } from '../service';
 
 const uploadImage = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();
