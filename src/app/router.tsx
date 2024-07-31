@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { MainLayout } from './layouts/main';
-import { AuthLayout } from './layouts/auth';
-import { DashboardLayout } from './layouts/dashboard';
-import { AccountLayout } from './layouts/account';
+import { MainLayout } from '../shared/layouts/main';
+import { AuthLayout } from '../shared/layouts/auth';
+import { DashboardLayout } from '../shared/layouts/dashboard';
+import { AccountLayout } from '../shared/layouts/account';
 
 import { NotRequestAuth } from '@/shared/hoc';
 import { RequestAdmin } from '@/shared/hoc';
@@ -15,22 +15,28 @@ import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, Dashb
 import { ProfileAboutPage, ProfileAddressPage, ProfileOrderPage, ProfileOrdersPage } from '@/pages/profile';
 import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } from '@/pages/store';
 
-import { addToCart, removeFromCart } from '@/features/store/cart/actions';
-import { createAddress } from '@/features/profile/address/actions';
-import { createCategory, deleteCategory, updateCategory } from '@/features/dashboard/category/actions';
-import { createOrder, deleteOrder, updateOrder } from '@/features/dashboard/order/actions';
-import { createProduct, deleteProduct, updateProduct } from '@/features/dashboard/product/actions';
-import { deleteImage, uploadImage } from '@/features/dashboard/media/actions';
-import { deleteUser, updateUser } from '@/features/dashboard/user/actions';
 import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
-
-import { fetchAddress } from '@/features/profile/address/loadres';
-import { fetchCategories, fetchCategory } from '@/features/dashboard/category/loaders';
-import { fetchImages } from '@/features/dashboard/media/loaders';
 import { fetchMe } from '@/features/auth/loaders';
-import { fetchProductWithMetadata, fetchProductsWithMetadata, fetchProducts, fetchProduct } from '@/features/dashboard/product/loaders';
-import { fetchAllOrders, fetchMyOrders, fetchOrder } from '@/features/dashboard/order/loaders';
-import { fetchUsers, fetchUserWithMetadata } from '@/features/dashboard/user/loaders';
+
+import { addToCart, removeFromCart } from '@/features/store/cart/actions';
+
+import { createProduct, deleteProduct, updateProduct } from '@/features/store/product/actions';
+import { fetchProduct, fetchProductWithMetadata, fetchProducts, fetchProductsWithMetadata } from '@/features/store/product/loaders';
+
+import { createOrder, deleteOrder, updateOrder } from '@/features/store/order/actions';
+import { fetchAllOrders, fetchMyOrders, fetchOrder } from '@/features/store/order/loaders';
+
+import { createAddress } from '@/features/profile/address/actions';
+import { fetchAddress } from '@/features/profile/address/loadres';
+
+import { fetchUserWithMetadata, fetchUsers } from '@/features/profile/user/loaders';
+import { deleteUser, updateUser } from '@/features/profile/user/actions';
+
+import { deleteImage, uploadImage } from '@/features/dashboard/media/actions';
+import { fetchImages } from '@/features/dashboard/media/loaders';
+
+import { createCategory, deleteCategory, updateCategory } from '@/features/dashboard/category/actions';
+import { fetchCategories, fetchCategory } from '@/features/dashboard/category/loaders';
 
 const router = createBrowserRouter( [
   {

@@ -2,8 +2,7 @@ import { FC } from 'react';
 import { Form, Link, useLoaderData, useNavigation } from 'react-router-dom';
 import { IAddress } from '@/entities/address/types';
 import { IUser } from '@/entities/auth/types';
-import TextInput from '@/shared/widgets/textInput';
-import Button from '@/shared/widgets/button';
+import { Button, TextInput } from '@/shared/widgets';
 
 const DashboardUserPage: FC = () => {
   const navigation = useNavigation();

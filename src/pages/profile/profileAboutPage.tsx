@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Form, Link, useFetcher, useLoaderData, useNavigation } from 'react-router-dom';
-import TextInput from '@/shared/widgets/textInput';
-import Button from '@/shared/widgets/button';
+import { Button, TextInput } from '@/shared/widgets';
 import { IUser } from '@/entities/auth/types';
 
 const ProfileAboutPage: FC = () => {

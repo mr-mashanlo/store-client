@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Form, useLoaderData, useNavigation } from 'react-router-dom';
-import { MainHeader } from '@/app/layouts/header';
+import { MainHeader } from '@/shared/layouts/header';
+import { Button } from '@/shared/widgets';
 import { IProductResponse } from '@/entities/product/types';
-import Button from '@/shared/widgets/button';
 
 const StoreProductPage: FC = () => {
   const navigation = useNavigation();

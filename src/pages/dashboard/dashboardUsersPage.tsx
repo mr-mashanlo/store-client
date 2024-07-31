@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { UserList } from '@/features/dashboard/user/ui';
+import { UserList } from '@/features/profile/user/ui';
 import { IUser } from '@/entities/auth/types';
 
 const DashboardUsersPage: FC = () => {

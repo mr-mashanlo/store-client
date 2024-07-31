@@ -1,8 +1,8 @@
-import { IOrderResponse } from '@/entities/order/types';
-import Button from '@/shared/widgets/button';
 import { FC } from 'react';
-import { Else, If, Then } from 'react-if';
 import { Form, useLoaderData } from 'react-router-dom';
+import { Else, If, Then } from 'react-if';
+import { Button } from '@/shared/widgets';
+import { IOrderResponse } from '@/entities/order/types';
 
 const DashboardOrderPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: IOrderResponse};

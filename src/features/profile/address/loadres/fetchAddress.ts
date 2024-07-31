@@ -1,4 +1,4 @@
-import { addressService } from '@/shared/service';
+import { addressService } from '../service';
 
 const fetchAddress = async () => {
   try {

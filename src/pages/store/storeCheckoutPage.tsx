@@ -1,12 +1,11 @@
 import { FC, useEffect } from 'react';
 import { Form, useActionData, useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
-import { PageHeader } from '@/app/layouts/header';
-import { useCartStore } from '@/entities/cart/model';
+import { PageHeader } from '@/shared/layouts/header';
+import { useCartStore } from '@/features/store/store';
+import { Button, TextInput } from '@/shared/widgets';
 import { IUser } from '@/entities/auth/types';
 import { IAddress } from '@/entities/address/types';
-import TextInput from '@/shared/widgets/textInput';
-import Button from '@/shared/widgets/button';
 import { IOrderResponse } from '@/entities/order/types';
 
 const StoreCheckoutPage: FC = () => {

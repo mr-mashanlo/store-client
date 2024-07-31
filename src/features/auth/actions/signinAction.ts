@@ -1,7 +1,7 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { authService } from '@/shared/service';
+import { authService } from '../service';
 import { decodeToken } from '@/shared/helpers';
-import { useAuthStore } from '@/entities/auth/model';
+import { useAuthStore } from '@/features/auth/store';
 
 const signinAction = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();

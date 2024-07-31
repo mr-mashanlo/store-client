@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Form, Link, useLoaderData, useNavigation } from 'react-router-dom';
-import TextInput from '@/shared/widgets/textInput';
-import Button from '@/shared/widgets/button';
+import { Button, TextInput } from '@/shared/widgets';
 import { IAddress } from '@/entities/address/types';
 
 const ProfileAddressPage: FC = () => {

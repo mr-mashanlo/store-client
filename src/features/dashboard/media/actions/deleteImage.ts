@@ -1,5 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { mediaService } from '@/shared/service';
+import { mediaService } from '../service';
 
 const deleteImage = async ( { params }: ActionFunctionArgs ) => {
   const id = params.id as string;

@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
-import { PageHeader } from '@/app/layouts/header';
-import { useCartStore } from '@/entities/cart/model';
+import { PageHeader } from '@/shared/layouts/header';
+import { useCartStore } from '@/features/store/store';
 import { IOrderResponse } from '@/entities/order/types';
 
 const StoreSuccessPage: FC = () => {

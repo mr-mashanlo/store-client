@@ -1,4 +1,4 @@
-import { categoryService } from '@/shared/service';
+import { categoryService } from '../service';
 
 const fetchCategories = async () => {
   try {

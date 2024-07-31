@@ -1,5 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { addressService } from '@/shared/service';
+import { addressService } from '../service';
 
 const createAddress = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();

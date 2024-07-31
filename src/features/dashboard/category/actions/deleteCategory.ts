@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
-import { categoryService } from '@/shared/service';
+import { categoryService } from '../service';
 
 const deleteCategory = async ( { params }: ActionFunctionArgs ) => {
   const id = params.id as string;

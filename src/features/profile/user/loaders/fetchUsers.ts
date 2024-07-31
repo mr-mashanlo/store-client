@@ -1,4 +1,4 @@
-import { userService } from '@/shared/service';
+import { userService } from '../service';
 
 const fetchUsers = async () => {
   try {

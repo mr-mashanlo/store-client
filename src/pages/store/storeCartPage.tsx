@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Form, Link } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
-import { PageHeader } from '@/app/layouts/header';
-import { useCartStore } from '@/entities/cart/model';
-import { useAuthStore } from '@/entities/auth/model';
+import { PageHeader } from '@/shared/layouts/header';
+import { useCartStore } from '@/features/store/store';
+import { useAuthStore } from '@/features/auth/store';
 
 const StoreCartPage: FC = () => {
   const { products, getTotalPrice } = useCartStore();

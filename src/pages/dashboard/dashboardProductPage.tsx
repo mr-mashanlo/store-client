@@ -3,8 +3,8 @@ import { Form, Link, useLoaderData } from 'react-router-dom';
 import { ICategory } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 import { IProductResponse } from '@/entities/product/types';
-import { CreateProductForm } from '@/features/dashboard/product/ui';
-import Button from '@/shared/widgets/button';
+import { CreateProductForm } from '@/features/store/product/ui';
+import { Button } from '@/shared/widgets';
 
 const DashboardProductPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: { product: IProductResponse, categories: Array<ICategory>, images: Array<IMedia> } };

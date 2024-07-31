@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
-import { MainHeader } from '@/app/layouts/header';
+import { MainHeader } from '@/shared/layouts/header';
 import { IProductResponse } from '@/entities/product/types';
 
 const HomePage: FC = () => {

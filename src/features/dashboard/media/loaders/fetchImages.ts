@@ -1,4 +1,4 @@
-import { mediaService } from '@/shared/service';
+import { mediaService } from '../service';
 
 const fetchImages = async () => {
   try {

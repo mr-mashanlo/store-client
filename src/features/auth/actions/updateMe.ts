@@ -1,14 +1,10 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { userService } from '@/shared/service';
+import { userService } from '@/features/profile/user/service';
 
 const updateMe = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();
-  const fullname = formData.get( 'fullname' );
-  const phone = formData.get( 'phone' );
-
-  if ( typeof fullname !== 'string' || typeof phone !== 'string' ) {
-    return { success: false };
-  }
+  const fullname = formData.get( 'fullname' ) as string;
+  const phone = formData.get( 'phone' ) as string;
 
   try {
     await userService.update( { fullname, phone } );
