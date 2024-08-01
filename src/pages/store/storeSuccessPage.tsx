@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { Else, If, Then } from 'react-if';
-import { PageHeader } from '@/app/layouts/header';
-import { useCartStore } from '@/entities/cart/model';
+import { PageHeader } from '@/shared/layouts/header';
+import { useCartStore } from '@/features/store/store';
 import { IOrderResponse } from '@/entities/order/types';
+import { ProductListWithQuantity } from '@/shared/widgets';
 
 const StoreSuccessPage: FC = () => {
   const { resetCart } = useCartStore();
@@ -19,20 +19,7 @@ const StoreSuccessPage: FC = () => {
           <div className="grid gap-14">
             <div>
               <h2 className="text-2xl font-bold uppercase">Products</h2>
-              <ul className="mt-5">
-                {loaderData.data.products.map( item => (
-                  <li key={item.product._id} className="p-3 flex gap-4 items-center justify-between odd:bg-[#363636]">
-                    <span className="flex gap-3 items-center">
-                      <If condition={Boolean( item.product.images[0] )}>
-                        <Then><img src={item.product.images[0] ? item.product.images[0].url : ''} alt="" className="w-10 h-10 object-cover" /></Then>
-                        <Else><div className="w-10 h-10 bg-[#363636]"></div></Else>
-                      </If>
-                      <span className="col-span-2 line-clamp-1">{item.product.name}</span>
-                    </span>
-                    <span>{item.quantity}</span>
-                  </li>
-                ) )}
-              </ul>
+              <ProductListWithQuantity products={loaderData.data.products} />
             </div>
             <div>
               <h2 className="text-2xl font-bold uppercase">Address</h2>

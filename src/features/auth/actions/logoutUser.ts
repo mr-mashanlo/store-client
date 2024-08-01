@@ -1,5 +1,5 @@
-import { authService } from '@/features/auth/services';
-import { useAuthStore } from '@/entities/auth/model';
+import { authService } from '@/shared/services';
+import { useAuthStore } from '@/features/auth/store';
 
 const logoutUser = async () => {
   try {

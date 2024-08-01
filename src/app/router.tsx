@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { MainLayout } from './layouts/main';
-import { AuthLayout } from './layouts/auth';
-import { DashboardLayout } from './layouts/dashboard';
-import { AccountLayout } from './layouts/account';
+import { MainLayout } from '../shared/layouts/main';
+import { AuthLayout } from '../shared/layouts/auth';
+import { DashboardLayout } from '../shared/layouts/dashboard';
+import { AccountLayout } from '../shared/layouts/account';
 
 import { NotRequestAuth } from '@/shared/hoc';
 import { RequestAdmin } from '@/shared/hoc';
@@ -12,25 +12,38 @@ import { RequestAuth } from '@/shared/hoc';
 import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
 import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage, DashboardUserPage, DashboardCategoryPage } from '@/pages/dashboard';
-import { AccountAddressPage, AccountOrderPage, AccountOrdersPage, AccountProfilePage } from '@/pages/account';
+import { ProfileAboutPage, ProfileAddressPage, ProfileOrderPage, ProfileOrdersPage } from '@/pages/profile';
 import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } from '@/pages/store';
 
-import { addToCart, removeFromCart } from '@/features/cart/actions';
-import { createAddress } from '@/features/address/actions';
-import { createCategory, deleteCategory, updateCategory } from '@/features/category/actions';
-import { createOrder, deleteOrder, updateOrder } from '@/features/order/actions';
-import { createProduct, deleteProduct, updateProduct } from '@/features/product/actions';
-import { deleteImage, uploadImage } from '@/features/media/actions';
-import { deleteUser, updateUser } from '@/features/user/actions';
-import { logoutUser, signinAction, signupAction, updateMe } from '@/features/auth/actions';
+import { logoutUser, signinAction, signupAction } from '@/features/auth/actions';
 
-import { fetchAddress } from '@/features/address/loadres';
-import { fetchCategories, fetchCategory } from '@/features/category/loaders';
-import { fetchImages } from '@/features/media/loaders';
-import { fetchMe } from '@/features/auth/loaders';
-import { fetchProductWithMetadata, fetchProductsWithMetadata, fetchProducts, fetchProduct } from '@/features/product/loaders';
-import { fetchAllOrders, fetchMyOrders, fetchOrder } from '@/features/order/loaders';
-import { fetchUsers, fetchUserWithMetadata } from '@/features/user/loaders';
+import { addToCart, removeFromCart } from '@/features/store/cart/actions';
+
+import { fetchProduct, fetchProducts } from '@/features/store/product/loaders';
+
+import { createOrder } from '@/features/store/order/actions';
+import { fetchMyOrders, fetchOrder } from '@/features/store/order/loaders';
+
+import { createAddress } from '@/features/profile/address/actions';
+import { fetchAddress } from '@/features/profile/address/loadres';
+
+import { updateMe } from '@/features/profile/user/actions';
+import { fetchMe } from '@/features/profile/user/loaders';
+
+import { deleteImage, uploadImage } from '@/features/dashboard/media/actions';
+import { fetchImages } from '@/features/dashboard/media/loaders';
+
+import { deleteUser, updateUser } from '@/features/dashboard/user/actions';
+import { fetchUserWithMetadata, fetchUsers } from '@/features/dashboard/user/loader';
+
+import { createCategory, deleteCategory, updateCategory } from '@/features/dashboard/category/actions';
+import { fetchCategories, fetchCategory } from '@/features/dashboard/category/loaders';
+
+import { createProduct, deleteProduct, updateProduct } from '@/features/dashboard/product/actions';
+import { fetchProductWithMetadata, fetchProductsWithMetadata } from '@/features/dashboard/product/loaders';
+
+import { deleteOrder, updateOrder } from '@/features/dashboard/order/actions';
+import { fetchAllOrders } from '@/features/dashboard/order/loaders';
 
 const router = createBrowserRouter( [
   {
@@ -183,24 +196,24 @@ const router = createBrowserRouter( [
     children: [
       {
         path: 'me',
-        element: <AccountProfilePage />,
+        element: <ProfileAboutPage />,
         loader: fetchMe,
         action: updateMe
       },
       {
         path: 'address',
-        element: <AccountAddressPage />,
+        element: <ProfileAddressPage />,
         loader: fetchAddress,
         action: createAddress
       },
       {
         path: 'orders',
-        element: <AccountOrdersPage />,
+        element: <ProfileOrdersPage />,
         loader: fetchMyOrders
       },
       {
         path: 'orders/:id',
-        element: <AccountOrderPage />,
+        element: <ProfileOrderPage />,
         loader: fetchOrder
       },
       {

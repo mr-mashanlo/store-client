@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuthStore } from '@/entities/auth/model';
+import { useAuthStore } from '@/features/auth/store';
 
 interface Props {
   children: ReactNode

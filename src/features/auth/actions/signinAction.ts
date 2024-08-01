@@ -1,16 +1,12 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { authService } from '../services';
-import { useAuthStore } from '@/entities/auth/model';
+import { authService } from '@/shared/services';
 import { decodeToken } from '@/shared/helpers';
+import { useAuthStore } from '@/features/auth/store';
 
 const signinAction = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();
-  const email = formData.get( 'email' );
-  const password = formData.get( 'password' );
-
-  if ( typeof email !== 'string' || typeof password !== 'string' ) {
-    return { success: false };
-  }
+  const email = formData.get( 'email' ) as string;
+  const password = formData.get( 'password' ) as string;
 
   try {
     const user = await authService.signin( email, password );

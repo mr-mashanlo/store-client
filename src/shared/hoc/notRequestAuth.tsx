@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuthStore } from '@/entities/auth/model';
-import { useCartStore } from '@/entities/cart/model';
+import { useAuthStore } from '@/features/auth/store';
+import { useCartStore } from '@/features/store/store';
 
 interface Props {
   children: ReactNode
