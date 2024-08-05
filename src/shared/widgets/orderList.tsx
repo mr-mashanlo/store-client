@@ -13,8 +13,8 @@ const OrderList: FC<Props> = ( { orders, prefix, className } ) => {
   return (
     <ul className={twMerge( 'overflow-auto', className )}>
       {orders.map( order => (
-        <li key={order._id} className="p-3 flex gap-4 items-center justify-between odd:bg-[#363636]">
-          <Link to={`/${prefix}/${order._id}`} className="hover:text-white hover:underline">{order._id}</Link>
+        <li key={order._id} className="p-3 flex gap-4 items-center justify-between odd:bg-gray-100">
+          <Link to={`/${prefix}/${order._id}`} className="hover:text-black hover:underline">{order._id}</Link>
           <span className="text-center">{order.status}</span>
         </li>
       ) )}

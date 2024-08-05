@@ -12,8 +12,8 @@ const DashboardProductPage: FC = () => {
   return (
     <div className="grid gap-10 sm:gap-14">
       <div className="flex items-center gap-5">
-        <Link to="/dashboard/products" className="w-6 h-6 rounded-full bg-[#505050] sm:hidden"></Link>
-        <h1 className="text-3xl font-bold uppercase text-[#FFCCCC]">Edit page</h1>
+        <Link to="/dashboard/products" className="w-6 h-6 rounded-full bg-black"></Link>
+        <h1 className="text-3xl font-bold uppercase text-black">Edit page</h1>
       </div>
       <CreateProductForm action="" categories={loaderData.data.categories} images={loaderData.data.images} product={loaderData.data.product} />
       <DeleteForm action={`/dashboard/products/${loaderData.data.product._id}/delete`} />

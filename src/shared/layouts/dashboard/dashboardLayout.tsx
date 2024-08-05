@@ -27,14 +27,13 @@ const DashboardLayout: FC = () => {
           </div>
         </Then>
         <Else>
-          <div className="min-h-screen p-14 col-span-1 bg-[#363636] relative">
+          <div className="min-h-screen p-14 col-span-1 bg-gray-200 relative">
             <ul className="flex flex-col gap-5 sticky top-14 left-0">
-              <li className="text-3xl font-bold uppercase text-[#FFCCCC]"><NavLink to="/">Back</NavLink></li>
-              <li><NavLink to="/dashboard/media" className="aria-[current=page]:text-[#FFCCCC]">Media</NavLink></li>
-              <li><NavLink to="/dashboard/users" className="aria-[current=page]:text-[#FFCCCC]">Users</NavLink></li>
-              <li><NavLink to="/dashboard/products" className="aria-[current=page]:text-[#FFCCCC]">Products</NavLink></li>
-              <li><NavLink to="/dashboard/categories" className="aria-[current=page]:text-[#FFCCCC]">Categories</NavLink></li>
-              <li><NavLink to="/dashboard/orders" className="aria-[current=page]:text-[#FFCCCC]">Orders</NavLink></li>
+              <li><NavLink to="/dashboard/media" className="aria-[current=page]:text-black">Media</NavLink></li>
+              <li><NavLink to="/dashboard/users" className="aria-[current=page]:text-black">Users</NavLink></li>
+              <li><NavLink to="/dashboard/products" className="aria-[current=page]:text-black">Products</NavLink></li>
+              <li><NavLink to="/dashboard/categories" className="aria-[current=page]:text-black">Categories</NavLink></li>
+              <li><NavLink to="/dashboard/orders" className="aria-[current=page]:text-black">Orders</NavLink></li>
             </ul>
           </div>
         </Else>

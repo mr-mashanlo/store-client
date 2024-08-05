@@ -15,7 +15,7 @@ const StoreCartPage: FC = () => {
     <>
       <PageHeader title="Cart Page" />
       <section className="py-5 sm:py-14">
-        <div className="container-block container-block--normal">
+        <div className="container-block">
           <When condition={products.length}>
             <ProductListWithQuantity products={products} />
             <div className="mt-10 sm:mt-20 text-right">

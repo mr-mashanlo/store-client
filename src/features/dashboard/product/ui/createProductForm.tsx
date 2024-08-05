@@ -57,49 +57,60 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
             <TextInput id="price" name="price" label="Price" type="text" defaultValue={product?.price} required />
             <Select id="category" name="category" label="Category" options={categories} defaultValue={product?.category._id} required />
           </div>
-          <div className="grid grid-cols-4 gap-7">
+          <div className="grid grid-cols-5 gap-7">
             <If condition={Boolean( gallery[0] )}>
               <Then>
                 <div className="relative">
                   <button onClick={() => removeImage( gallery[0] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                  <img src={gallery[0] ? gallery[0].url : ''} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                  <img src={gallery[0] ? gallery[0].url : ''} alt="" className="w-full aspect-square object-cover" />
                 </div>
               </Then>
               <Else>
-                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square rounded-xl border-4 border-dashed border-[#363636] flex items-center justify-center text-4xl">+</button>
+                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square border-2 border-dashed border-gray-300 flex items-center justify-center text-3xl">+</button>
               </Else>
             </If>
             <If condition={Boolean( gallery[1] )}>
               <Then>
                 <div className="relative">
                   <button onClick={() => removeImage( gallery[1] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                  <img src={gallery[1] ? gallery[1].url : ''} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                  <img src={gallery[1] ? gallery[1].url : ''} alt="" className="w-full aspect-square object-cover" />
                 </div>
               </Then>
               <Else>
-                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square rounded-xl border-4 border-dashed border-[#363636] flex items-center justify-center text-4xl">+</button>
+                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square border-2 border-dashed border-gray-300 flex items-center justify-center text-3xl">+</button>
               </Else>
             </If>
             <If condition={Boolean( gallery[2] )}>
               <Then>
                 <div className="relative">
                   <button onClick={() => removeImage( gallery[2] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                  <img src={gallery[2] ? gallery[2].url : ''} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                  <img src={gallery[2] ? gallery[2].url : ''} alt="" className="w-full aspect-square object-cover" />
                 </div>
               </Then>
               <Else>
-                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square rounded-xl border-4 border-dashed border-[#363636] flex items-center justify-center text-4xl">+</button>
+                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square border-2 border-dashed border-gray-300 flex items-center justify-center text-3xl">+</button>
               </Else>
             </If>
             <If condition={Boolean( gallery[3] )}>
               <Then>
                 <div className="relative">
                   <button onClick={() => removeImage( gallery[3] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                  <img src={gallery[3] ? gallery[3].url : ''} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                  <img src={gallery[3] ? gallery[3].url : ''} alt="" className="w-full aspect-square object-cover" />
                 </div>
               </Then>
               <Else>
-                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square rounded-xl border-4 border-dashed border-[#363636] flex items-center justify-center text-4xl">+</button>
+                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square border-2 border-dashed border-gray-300 flex items-center justify-center text-3xl">+</button>
+              </Else>
+            </If>
+            <If condition={Boolean( gallery[3] )}>
+              <Then>
+                <div className="relative">
+                  <button onClick={() => removeImage( gallery[3] )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
+                  <img src={gallery[3] ? gallery[3].url : ''} alt="" className="w-full aspect-square object-cover" />
+                </div>
+              </Then>
+              <Else>
+                <button onClick={() => setIsShowImages( true )} type="button" className="w-full aspect-square border-2 border-dashed border-gray-300 flex items-center justify-center text-3xl">+</button>
               </Else>
             </If>
           </div>
@@ -116,7 +127,7 @@ const CreateProductForm: FC<Props> = ( { categories, images, product, action } )
               ) )}
             </div>
           </div>
-          <Textarea id="about" name="about" label="About" rows={8} defaultValue={product?.about} className={twMerge( isShowImages ? 'hidden' : '' )} required />
+          <Textarea id="about" name="about" label="About" rows={10} defaultValue={product?.about} className={twMerge( isShowImages ? 'hidden' : '' )} required />
         </div>
       </div>
       <div className="mt-7 text-center">

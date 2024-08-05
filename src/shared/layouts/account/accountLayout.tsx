@@ -24,12 +24,11 @@ const AccountLayout: FC = () => {
           </div>
         </Then>
         <Else>
-          <div className="sm:min-h-screen p-5 sm:p-14 sm:col-span-1 bg-[#363636] relative">
+          <div className="sm:min-h-screen p-5 sm:p-14 sm:col-span-1 bg-gray-200 relative">
             <ul className="flex flex-col gap-5 sticky top-14 left-0">
-              <li className="text-3xl font-bold uppercase text-[#FFCCCC]"><NavLink to="/">Back</NavLink></li>
-              <li><NavLink to="/account/me" className="aria-[current=page]:text-[#FFCCCC]">User</NavLink></li>
-              <li><NavLink to="/account/address" className="aria-[current=page]:text-[#FFCCCC]">Address</NavLink></li>
-              <li><NavLink to="/account/orders" className="aria-[current=page]:text-[#FFCCCC]">Orders</NavLink></li>
+              <li><NavLink to="/account/me" className="aria-[current=page]:text-black">User</NavLink></li>
+              <li><NavLink to="/account/address" className="aria-[current=page]:text-black">Address</NavLink></li>
+              <li><NavLink to="/account/orders" className="aria-[current=page]:text-black">Orders</NavLink></li>
             </ul>
           </div>
         </Else>

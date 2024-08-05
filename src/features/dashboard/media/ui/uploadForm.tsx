@@ -61,7 +61,7 @@ const UploadForm: FC = () => {
 
   return (
     <Form method="POST" action="/dashboard/media" encType="multipart/form-data">
-      <div onDragOver={( event ) => handleDragOver( event )} onDragLeave={( event ) => handleDragLeave( event )} onDrop={( event ) => handleDrop( event )} className={twMerge( 'h-80 mx-auto p-4 rounded-xl flex items-center justify-center border-dashed border-4', isDragging ? 'border-[#FFCCCC]' : 'border-[#363636]', image && 'border-[#FFCCCC]' )}>
+      <div onDragOver={( event ) => handleDragOver( event )} onDragLeave={( event ) => handleDragLeave( event )} onDrop={( event ) => handleDrop( event )} className={twMerge( 'h-80 mx-auto p-4 flex items-center justify-center border-dashed border-2', isDragging ? 'border-black' : 'border-gray-300', image && 'border-black' )}>
         <If condition={image !== null}>
           <Then>
             <div className="text-center">
