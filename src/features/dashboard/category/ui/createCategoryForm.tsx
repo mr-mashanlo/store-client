@@ -1,18 +1,23 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
 import { Button, Popup, TextInput } from '@/shared/widgets';
 import { ICategory } from '@/entities/category/types';
 import { Else, If, Then } from 'react-if';
+import { IMedia } from '@/entities/media/types';
 
 interface Props {
   action: string
+  images: Array<IMedia>
   category?: ICategory
 }
 
-const CreateCategoryForm: FC<Props> = ( { action, category } ) => {
+const CreateCategoryForm: FC<Props> = ( { action, images, category } ) => {
   const navigation = useNavigation();
   const actionData = useActionData() as { success: boolean, msg: string };
   const form = useRef<HTMLFormElement>( null );
+
+  const [ isPopupVisible, setIsPopupVisible ] = useState<boolean>( false );
+  const [ image, setImage ] = useState<IMedia | null>();
 
   useEffect( () => {
     if ( form.current ) {
@@ -24,15 +29,15 @@ const CreateCategoryForm: FC<Props> = ( { action, category } ) => {
     <>
       <Form ref={form} method="post" action={action}>
         <div className="grid sm:grid-cols-7 gap-7">
-          <If condition={false}>
+          <If condition={Boolean( image )}>
             <Then>
               <div className="relative">
-                <button type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
-                <img src={''} alt="" className="w-full aspect-square rounded-xl object-cover" />
+                <button onClick={() => setImage( null )} type="button" className="w-8 h-8 rounded-full bg-red-400 text-white font-bold flex items-center justify-center absolute -top-4 -right-4">×</button>
+                <img src={image?.url} alt="" className="w-full aspect-square object-cover" />
               </div>
             </Then>
             <Else>
-              <button type="button" className="w-full aspect-square border-2 border-dashed border-gray-300 flex items-center justify-center text-2xl">+</button>
+              <button onClick={() => setIsPopupVisible( true )} type="button" className="open-popup w-full aspect-square border-2 border-dashed border-gray-300 flex items-center justify-center text-2xl">+</button>
             </Else>
           </If>
           <div className="grid sm:grid-cols-2 gap-7 sm:col-span-6">
@@ -42,8 +47,10 @@ const CreateCategoryForm: FC<Props> = ( { action, category } ) => {
           </div>
         </div>
       </Form>
-      <Popup visible={false}>
-        images
+      <Popup visible={isPopupVisible} setVisible={setIsPopupVisible}>
+        <div className="grid gap-3 grid-cols-4">
+          {images.map( image => ( <button onClick={() => setImage( image )} key={image._id}><img src={image.url} alt="" className="aspect-square " /></button> ) )}
+        </div>
       </Popup>
     </>
   );
