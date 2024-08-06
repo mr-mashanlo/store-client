@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 import { Link } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
 
 interface Props {
-  categories: Array<ICategory>
+  categories: Array<ICategoryResponse>
 }
 
 const CategoryGrid: FC<Props> = ( { categories } ) => {
@@ -14,7 +14,7 @@ const CategoryGrid: FC<Props> = ( { categories } ) => {
         <li key={category._id}>
           <Link to={`/category/${category.slug}`}>
             <If condition={Boolean( category.image )} >
-              <Then><div className="w-full aspect-square bg-zinc-100"></div></Then>
+              <Then><img src={category.image.url} alt="" className="w-full aspect-square"/></Then>
               <Else><div className="w-full aspect-square bg-zinc-100"></div></Else>
             </If>
           </Link>

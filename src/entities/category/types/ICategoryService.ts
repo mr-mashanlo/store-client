@@ -1,9 +1,9 @@
-import { ICategory } from './ICategory';
+import { ICategoryResponse } from './ICategory';
 
 export interface ICategoryService {
-  getAll: () => Promise<Array<ICategory>>,
-  getOne: ( id: string ) => Promise<ICategory>,
-  create: ( title: string, slug: string ) => Promise<ICategory>,
-  update: ( updates: Partial<ICategory>, id: string ) => Promise<ICategory>,
+  getAll: () => Promise<Array<ICategoryResponse>>,
+  getOne: ( id: string ) => Promise<ICategoryResponse>,
+  create: ( image: string, title: string, slug: string ) => Promise<ICategoryResponse>,
+  update: ( updates: Partial<ICategoryResponse>, id: string ) => Promise<ICategoryResponse>,
   delete: ( id: string ) => Promise<{ success: boolean, msg: string }>,
 }

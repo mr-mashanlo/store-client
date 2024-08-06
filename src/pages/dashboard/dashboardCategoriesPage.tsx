@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { CreateCategoryForm } from '@/features/dashboard/category/ui';
 import { CategoryList } from '@/shared/widgets';
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 
 const DashboardCategoriesPage: FC = () => {
-  const loaderData = useLoaderData() as { success: boolean, data: { categories: Array<ICategory>, images: Array<IMedia> } };
+  const loaderData = useLoaderData() as { success: boolean, data: { categories: Array<ICategoryResponse>, images: Array<IMedia> } };
 
   return (
     <div className="grid gap-10 sm:gap-14">

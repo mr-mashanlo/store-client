@@ -1,11 +1,11 @@
 import { DetailedHTMLProps, FC, SelectHTMLAttributes } from 'react';
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 
 interface Props extends DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
   id: string
   name: string
   label: string
-  options: Array<ICategory>
+  options: Array<ICategoryResponse>
 }
 
 const Select: FC<Props> = ( { id, name, label, options, ...others } ) => {

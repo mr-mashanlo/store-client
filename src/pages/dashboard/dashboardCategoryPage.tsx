@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { CreateCategoryForm, DeleteCategoryForm } from '@/features/dashboard/category/ui';
-import { ICategory } from '@/entities/category/types';
+import { CreateCategoryForm } from '@/features/dashboard/category/ui';
+import { ICategoryResponse } from '@/entities/category/types';
+import { IMedia } from '@/entities/media/types';
+import { DeleteForm } from '@/shared/widgets';
 
 const DashboardCategoryPage: FC = () => {
-  const loaderData = useLoaderData() as { success: boolean, data: ICategory };
+  const loaderData = useLoaderData() as { success: boolean, data: {category: ICategoryResponse, images: Array<IMedia>} };
 
   return (
     <div className="grid gap-10 sm:gap-14">
@@ -12,8 +14,8 @@ const DashboardCategoryPage: FC = () => {
         <Link to="/dashboard/categories" className="w-6 h-6 rounded-full bg-black"></Link>
         <h1 className="text-3xl font-bold uppercase text-[#-black">Category page</h1>
       </div>
-      <CreateCategoryForm action={`/dashboard/categories/${loaderData.data._id}`} category={loaderData.data} />
-      <DeleteCategoryForm />
+      <CreateCategoryForm action={`/dashboard/categories/${loaderData.data.category._id}`} images={loaderData.data.images} category={loaderData.data.category} />
+      <DeleteForm action={`/dashboard/categories/${loaderData.data.category._id}/delete`}/>
     </div>
   );
 };

@@ -1,29 +1,38 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
 import { Button, Popup, TextInput } from '@/shared/widgets';
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 import { Else, If, Then } from 'react-if';
 import { IMedia } from '@/entities/media/types';
 
 interface Props {
   action: string
   images: Array<IMedia>
-  category?: ICategory
+  category?: ICategoryResponse
 }
 
 const CreateCategoryForm: FC<Props> = ( { action, images, category } ) => {
   const navigation = useNavigation();
-  const actionData = useActionData() as { success: boolean, msg: string };
+  const actionData = useActionData() as { success: boolean };
   const form = useRef<HTMLFormElement>( null );
 
   const [ isPopupVisible, setIsPopupVisible ] = useState<boolean>( false );
-  const [ image, setImage ] = useState<IMedia | null>();
+  const [ image, setImage ] = useState<IMedia | null>( category ? category.image : null );
 
   useEffect( () => {
+    if ( actionData && actionData.success ) {
+      setImage( null );
+    }
     if ( form.current ) {
       form.current.reset();
     }
   }, [ actionData ] );
+
+  useEffect( () => {
+    if ( category ) {
+      setImage( category.image );
+    }
+  }, [ category ] );
 
   return (
     <>
@@ -46,6 +55,7 @@ const CreateCategoryForm: FC<Props> = ( { action, images, category } ) => {
             <Button loading={navigation.state === 'submitting'} disabled={navigation.state === 'submitting'} className="sm:col-span-2">{category ? 'Update' : 'Create'}</Button>
           </div>
         </div>
+        <input id="image" name="image" type="text" defaultValue={image?._id} hidden />
       </Form>
       <Popup visible={isPopupVisible} setVisible={setIsPopupVisible}>
         <div className="grid gap-3 grid-cols-4">

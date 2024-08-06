@@ -19,7 +19,7 @@ const Popup: FC<Props> = ( { visible, setVisible, children } ) => {
   }, [ visible, setVisible ] );
 
   return (
-    <div className={twMerge( 'popup w-[30rem] p-5 fixed top-5 bottom-5 right-5 bg-gray-100 transition-transform duration-500 overflow-x-auto hidden-scrollbar', visible ? 'translate-x-0' : 'translate-x-[110%]' )}>
+    <div className={twMerge( 'popup w-[30rem] p-5 fixed top-5 bottom-5 right-5 z-20 bg-gray-100 transition-transform duration-500 overflow-x-auto hidden-scrollbar', visible ? 'translate-x-0' : 'translate-x-[110%]' )}>
       {children}
     </div>
   );

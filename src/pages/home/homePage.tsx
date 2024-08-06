@@ -3,10 +3,10 @@ import { Await, useLoaderData } from 'react-router-dom';
 import { MainHeader } from '@/shared/layouts/header';
 import { IProductResponse } from '@/entities/product/types';
 import { CategoryGrid, CategoryGridSkeleton, ProductGrid, ProductGridSkeleton } from '@/shared/widgets';
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 
 const HomePage: FC = () => {
-  const loaderData = useLoaderData() as { success: boolean, data: { products: Array<IProductResponse>, categories: Array<ICategory>} };
+  const loaderData = useLoaderData() as { success: boolean, data: { products: Array<IProductResponse>, categories: Array<ICategoryResponse>} };
 
   return (
     <>

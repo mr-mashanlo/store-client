@@ -3,12 +3,12 @@ import { Form, useActionData, useNavigation } from 'react-router-dom';
 import { If, Then, Else } from 'react-if';
 import { twMerge } from 'tailwind-merge';
 import { Button, Select, TextInput, Textarea } from '@/shared/widgets';
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 import { IProductResponse } from '@/entities/product/types';
 
 interface Props {
-  categories: Array<ICategory>
+  categories: Array<ICategoryResponse>
   images: Array<IMedia>
   product?: IProductResponse
   action: string

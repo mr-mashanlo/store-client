@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 import { IProductResponse } from '@/entities/product/types';
 import { CreateProductForm } from '@/features/dashboard/product/ui';
 import { DeleteForm } from '@/shared/widgets';
 
 const DashboardProductPage: FC = () => {
-  const loaderData = useLoaderData() as { success: boolean, data: { product: IProductResponse, categories: Array<ICategory>, images: Array<IMedia> } };
+  const loaderData = useLoaderData() as { success: boolean, data: { product: IProductResponse, categories: Array<ICategoryResponse>, images: Array<IMedia> } };
 
   return (
     <div className="grid gap-10 sm:gap-14">

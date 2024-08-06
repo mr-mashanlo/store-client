@@ -1,4 +1,4 @@
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 
 export interface IProductResponse {
@@ -6,6 +6,6 @@ export interface IProductResponse {
   name: string,
   price: string,
   about: string,
-  category: ICategory,
+  category: ICategoryResponse,
   images: Array<IMedia>,
 }
