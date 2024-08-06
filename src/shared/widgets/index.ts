@@ -8,6 +8,7 @@ import CategoryList from './categoryList';
 import CategoryGridSkeleton from './categoryGridSkeleton';
 import DeleteForm from './deleteForm';
 import OrderList from './orderList';
+import Popup from './popup';
 import ProductGrid from './productGrid';
 import ProductGridSkeleton from './productGridSkeleton';
 import ProductList from './productList';
@@ -27,6 +28,7 @@ export {
   CategoryGridSkeleton,
   DeleteForm,
   OrderList,
+  Popup,
   ProductGrid,
   ProductGridSkeleton,
   ProductList,
