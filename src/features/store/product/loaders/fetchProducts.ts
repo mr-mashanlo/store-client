@@ -1,9 +1,9 @@
-import { productService } from '@/shared/services';
+import { defer } from 'react-router-dom';
+import { categoryService, productService } from '@/shared/services';
 
 const fetchProducts = async () => {
   try {
-    const products = await productService.getAll();
-    return { success: true, data: products };
+    return defer( { success: true, data: { products: productService.getAll(), categories: categoryService.getAll() } } );
   } catch ( error ) {
     return { success: false, error };
   }

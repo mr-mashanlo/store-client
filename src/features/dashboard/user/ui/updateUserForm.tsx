@@ -16,8 +16,8 @@ const UpdateUserForm: FC = () => {
           <TextInput id="phone" name="phone" label="Phone" type="text" placeholder="+7 777 77 77 777" defaultValue={loaderData.data.user.phone} required />
           <TextInput id="email" name="email" label="Email" type="text" placeholder="name@company.com" defaultValue={loaderData.data.user.email} required />
           <div className="relative">
-            <label htmlFor="role" className="px-2 text-sm font-medium absolute -top-[0.55rem] left-5 bg-[#202020]">Role</label>
-            <select name="role" id="role" defaultValue={loaderData.data.user.role} className="w-full px-3 py-2 bg-transparent text-white border-2 border-[#909090] outline-none focus:border-white rounded-lg placeholder:text-[#909090] appearance-none">
+            <label htmlFor="role" className="px-2 text-sm font-medium absolute -top-[0.55rem] left-5 bg-white">Role</label>
+            <select name="role" id="role" defaultValue={loaderData.data.user.role} className="w-full px-3 py-3 bg-transparent border border-gray-300 outline-none focus:border-black placeholder:text-[#909090] appearance-none">
               <option value="USER" className="text-[#202020]">User</option>
               <option value="ADMIN" className="text-[#202020]">Admin</option>
             </select>

@@ -15,7 +15,7 @@ const StoreSuccessPage: FC = () => {
     <>
       <PageHeader title="Success Page" />
       <section className="py-5 sm:py-14">
-        <div className="container-block container-block--normal">
+        <div className="container-block">
           <div className="grid gap-14">
             <div>
               <h2 className="text-2xl font-bold uppercase">Products</h2>

@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { Form, useLoaderData } from 'react-router-dom';
 import { Button, Select } from '@/shared/widgets';
 import { IOrderResponse } from '@/entities/order/types';
-import { ICategory } from '@/entities/category/types';
+import { ICategoryResponse } from '@/entities/category/types';
 
 const UpdateStatusForm: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: IOrderResponse};
-  const categories: Array<ICategory> = [
+  const categories: Array<ICategoryResponse> = [
     { _id: 'Processing', slug: 'Processing', title: 'Processing' },
     { _id: 'Delivering', slug: 'Delivering', title: 'Delivering' },
     { _id: 'Done', slug: 'Done', title: 'Done' }

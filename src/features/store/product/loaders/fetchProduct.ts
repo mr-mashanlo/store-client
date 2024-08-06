@@ -1,12 +1,11 @@
-import { ActionFunctionArgs } from 'react-router-dom';
+import { ActionFunctionArgs, defer } from 'react-router-dom';
 import { productService } from '@/shared/services';
 
 const fetchProduct = async ( { params }: ActionFunctionArgs ) => {
   const id = params.id as string;
 
   try {
-    const product = await productService.getOne( id );
-    return { success: true, data: product };
+    return defer( { success: true, data: productService.getOne( id ) } );
   } catch ( error ) {
     return { success: false, error };
   }
