@@ -1,4 +1,5 @@
 import { ActionFunctionArgs, defer } from 'react-router-dom';
+
 import { productService } from '@/shared/services';
 
 const fetchProduct = async ( { params }: ActionFunctionArgs ) => {

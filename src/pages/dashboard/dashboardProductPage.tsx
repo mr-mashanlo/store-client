@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+
 import { ICategoryResponse } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
 import { IProductResponse } from '@/entities/product/types';

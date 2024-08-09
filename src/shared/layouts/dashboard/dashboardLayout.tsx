@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const DashboardLayout: FC = () => {
   const [ width, setWidth ] = useState( window.innerWidth );
@@ -10,7 +10,6 @@ const DashboardLayout: FC = () => {
     window.addEventListener( 'resize', handleResize );
     return () => { window.removeEventListener( 'resize', handleResize ); };
   }, [] );
-
 
   return (
     <div className="pb-16 sm:pb-0 sm:grid sm:grid-cols-5">

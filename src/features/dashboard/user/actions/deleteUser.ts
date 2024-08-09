@@ -1,4 +1,5 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
+
 import { userService } from '@/shared/services';
 
 const deleteUser = async ( { params }: ActionFunctionArgs ) => {

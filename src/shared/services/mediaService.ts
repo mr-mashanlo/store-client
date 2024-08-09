@@ -1,5 +1,5 @@
-import { authInstance } from '@/shared/api';
 import { IMedia, IMediaService } from '@/entities/media/types';
+import { authInstance } from '@/shared/api';
 
 class MediaService implements IMediaService {
 

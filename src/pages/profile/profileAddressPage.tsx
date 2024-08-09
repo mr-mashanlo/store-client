@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+
 import { UpdateAddressForm } from '@/features/profile/address/ui';
 
 const ProfileAddressPage: FC = () => {

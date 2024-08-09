@@ -5,7 +5,7 @@ interface Props extends DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaEle
   id: string
   name: string
   label: string
-  className: string
+  className?: string
 }
 
 const Textarea: FC<Props> = ( { id, name, label, className, ...others } ) => {

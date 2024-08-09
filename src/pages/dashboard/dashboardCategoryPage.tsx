@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { CreateCategoryForm } from '@/features/dashboard/category/ui';
+
 import { ICategoryResponse } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
+import { CreateCategoryForm } from '@/features/dashboard/category/ui';
 import { DeleteForm } from '@/shared/widgets';
 
 const DashboardCategoryPage: FC = () => {

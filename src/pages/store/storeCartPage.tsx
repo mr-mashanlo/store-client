@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
 import { When } from 'react-if';
-import { PageHeader } from '@/shared/layouts/header';
-import { useCartStore } from '@/features/store/store';
+import { Link } from 'react-router-dom';
+
 import { useAuthStore } from '@/features/auth/store';
-import { ProductListWithQuantity } from '@/shared/widgets';
+import { useCartStore } from '@/features/store/store';
+import { PageHeader, ProductListWithQuantity } from '@/shared/widgets';
 
 const StoreCartPage: FC = () => {
   const { products, getTotalPrice } = useCartStore();
@@ -15,7 +15,7 @@ const StoreCartPage: FC = () => {
     <>
       <PageHeader title="Cart Page" />
       <section className="py-5 sm:py-14">
-        <div className="container-block">
+        <div className="container-block px-9">
           <When condition={products.length}>
             <ProductListWithQuantity products={products} />
             <div className="mt-10 sm:mt-20 text-right">

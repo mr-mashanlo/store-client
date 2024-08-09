@@ -1,5 +1,6 @@
-import { categoryService } from '@/shared/services';
 import { ActionFunctionArgs } from 'react-router-dom';
+
+import { categoryService } from '@/shared/services';
 
 const createCategory = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();

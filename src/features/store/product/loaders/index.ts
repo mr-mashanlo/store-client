@@ -1,5 +1,5 @@
-import fetchProducts from './fetchProducts';
 import fetchProduct from './fetchProduct';
+import fetchProducts from './fetchProducts';
 
 export {
   fetchProducts,

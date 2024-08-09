@@ -1,18 +1,22 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
+  extends: [ 'eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended', ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'import'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
+    ],
+    'import/order': [
+      'error',
+      {
+        'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+        'newlines-between': 'always-and-inside-groups',
+        'alphabetize': { 'order': 'asc', 'caseInsensitive': true }
+      }
     ],
     indent: [
       'error',
@@ -56,6 +60,10 @@ module.exports = {
     'comma-dangle': [
       'error',
       { arrays: 'never', objects: 'never', imports: 'never', exports: 'never', functions: 'never' }
+    ],
+    'no-multiple-empty-lines': [
+      'error',
+      { 'max': 1, 'maxEOF': 0, 'maxBOF': 0 }
     ]
   },
 }

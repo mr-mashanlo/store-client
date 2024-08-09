@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
 import { ICartStore } from '@/entities/cart/types';
 
 const useCartStore = create( persist<ICartStore>( ( set, get ) => ( {

@@ -1,8 +1,8 @@
 import { FC, Suspense } from 'react';
 import { Await, useLoaderData } from 'react-router-dom';
+
 import { IProductResponse } from '@/entities/product/types';
-import { MainHeader } from '@/shared/layouts/header';
-import { ProductOverview, ProductOverviewSkeleton } from '@/shared/widgets';
+import { MainHeader, ProductOverview, ProductOverviewSkeleton } from '@/shared/widgets';
 
 const StoreProductPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: IProductResponse };

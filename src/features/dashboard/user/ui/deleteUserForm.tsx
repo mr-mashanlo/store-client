@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { Form, useLoaderData } from 'react-router-dom';
-import { Button } from '@/shared/widgets';
-import { IUser } from '@/entities/auth/types';
+
 import { IAddress } from '@/entities/address/types';
+import { IUser } from '@/entities/auth/types';
+import { Button } from '@/shared/widgets';
 
 const DeleteUserForm: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: { user: IUser, address: IAddress } };

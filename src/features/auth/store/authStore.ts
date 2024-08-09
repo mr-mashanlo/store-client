@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
 import { IAuthStore } from '@/entities/auth/types';
 
 const useAuthStore = create( persist<IAuthStore>( set => ( {

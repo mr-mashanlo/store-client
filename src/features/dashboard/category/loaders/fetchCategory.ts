@@ -1,5 +1,6 @@
-import { categoryService, mediaService } from '@/shared/services';
 import { ActionFunctionArgs } from 'react-router-dom';
+
+import { categoryService, mediaService } from '@/shared/services';
 
 const fetchCategory = async ( { params }: ActionFunctionArgs ) => {
   const id = params.id as string;

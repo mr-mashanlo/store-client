@@ -1,6 +1,7 @@
 import { ActionFunctionArgs } from 'react-router-dom';
-import { addressService, orderService, userService } from '@/shared/services';
+
 import { IProductResponse } from '@/entities/product/types';
+import { addressService, orderService, userService } from '@/shared/services';
 
 const createOrder = async ( { request }: ActionFunctionArgs ) => {
   const formData = await request.formData();

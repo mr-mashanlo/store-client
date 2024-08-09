@@ -1,49 +1,39 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { MainLayout } from '../shared/layouts/main';
-import { AuthLayout } from '../shared/layouts/auth';
-import { DashboardLayout } from '../shared/layouts/dashboard';
-import { AccountLayout } from '../shared/layouts/account';
+import { logoutUser, signinAction, signupAction } from '@/features/auth/actions';
+import { createCategory, deleteCategory, updateCategory } from '@/features/dashboard/category/actions';
+import { fetchCategories, fetchCategory } from '@/features/dashboard/category/loaders';
+import { deleteImage, uploadImage } from '@/features/dashboard/media/actions';
+import { fetchImages } from '@/features/dashboard/media/loaders';
+import { deleteOrder, updateOrder } from '@/features/dashboard/order/actions';
+import { fetchAllOrders } from '@/features/dashboard/order/loaders';
+import { createProduct, deleteProduct, updateProduct } from '@/features/dashboard/product/actions';
+import { fetchProductWithMetadata, fetchProductsWithMetadata } from '@/features/dashboard/product/loaders';
+import { deleteUser, updateUser } from '@/features/dashboard/user/actions';
+import { fetchUserWithMetadata, fetchUsers } from '@/features/dashboard/user/loader';
+import { createAddress } from '@/features/profile/address/actions';
+import { fetchAddress } from '@/features/profile/address/loadres';
+import { updateMe } from '@/features/profile/user/actions';
+import { fetchMe } from '@/features/profile/user/loaders';
+import { addToCart, removeFromCart } from '@/features/store/cart/actions';
+import { createOrder } from '@/features/store/order/actions';
+import { fetchMyOrders, fetchOrder } from '@/features/store/order/loaders';
+import { fetchProduct, fetchProducts } from '@/features/store/product/loaders';
 
-import { NotRequestAuth } from '@/shared/hoc';
-import { RequestAdmin } from '@/shared/hoc';
-import { RequestAuth } from '@/shared/hoc';
-
-import { HomePage } from '@/pages/home';
 import { SigninPage, SignupPage } from '@/pages/auth';
 import { DashboardCategoriesPage, DashboardMediaPage, DashboardOrdersPage, DashboardProductsPage, DashboardOrderPage, DashboardProductPage, DashboardUsersPage, DashboardUserPage, DashboardCategoryPage } from '@/pages/dashboard';
+import { HomePage } from '@/pages/home';
 import { ProfileAboutPage, ProfileAddressPage, ProfileOrderPage, ProfileOrdersPage } from '@/pages/profile';
 import { StoreCartPage, StoreCheckoutPage, StoreProductPage, StoreSuccessPage } from '@/pages/store';
 
-import { logoutUser, signinAction, signupAction } from '@/features/auth/actions';
+import { RequestAuth } from '@/shared/hoc';
+import { RequestAdmin } from '@/shared/hoc';
+import { NotRequestAuth } from '@/shared/hoc';
 
-import { addToCart, removeFromCart } from '@/features/store/cart/actions';
-
-import { fetchProduct, fetchProducts } from '@/features/store/product/loaders';
-
-import { createOrder } from '@/features/store/order/actions';
-import { fetchMyOrders, fetchOrder } from '@/features/store/order/loaders';
-
-import { createAddress } from '@/features/profile/address/actions';
-import { fetchAddress } from '@/features/profile/address/loadres';
-
-import { updateMe } from '@/features/profile/user/actions';
-import { fetchMe } from '@/features/profile/user/loaders';
-
-import { deleteImage, uploadImage } from '@/features/dashboard/media/actions';
-import { fetchImages } from '@/features/dashboard/media/loaders';
-
-import { deleteUser, updateUser } from '@/features/dashboard/user/actions';
-import { fetchUserWithMetadata, fetchUsers } from '@/features/dashboard/user/loader';
-
-import { createCategory, deleteCategory, updateCategory } from '@/features/dashboard/category/actions';
-import { fetchCategories, fetchCategory } from '@/features/dashboard/category/loaders';
-
-import { createProduct, deleteProduct, updateProduct } from '@/features/dashboard/product/actions';
-import { fetchProductWithMetadata, fetchProductsWithMetadata } from '@/features/dashboard/product/loaders';
-
-import { deleteOrder, updateOrder } from '@/features/dashboard/order/actions';
-import { fetchAllOrders } from '@/features/dashboard/order/loaders';
+import { AccountLayout } from '@/shared/layouts/account';
+import { AuthLayout } from '@/shared/layouts/auth';
+import { DashboardLayout } from '@/shared/layouts/dashboard';
+import { MainLayout } from '@/shared/layouts/main';
 
 const router = createBrowserRouter( [
   {

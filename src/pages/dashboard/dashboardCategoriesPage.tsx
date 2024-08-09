@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { CreateCategoryForm } from '@/features/dashboard/category/ui';
-import { CategoryList } from '@/shared/widgets';
+
 import { ICategoryResponse } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
+import { CreateCategoryForm } from '@/features/dashboard/category/ui';
+import { CategoryList } from '@/shared/widgets';
 
 const DashboardCategoriesPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: { categories: Array<ICategoryResponse>, images: Array<IMedia> } };

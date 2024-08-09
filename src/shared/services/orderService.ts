@@ -1,5 +1,5 @@
-import { authInstance } from '@/shared/api';
 import { IOrderResponse, IOrderRequest, IOrderService } from '@/entities/order/types';
+import { authInstance } from '@/shared/api';
 
 class OrderService implements IOrderService {
 

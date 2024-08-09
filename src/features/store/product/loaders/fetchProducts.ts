@@ -1,4 +1,5 @@
 import { defer } from 'react-router-dom';
+
 import { categoryService, productService } from '@/shared/services';
 
 const fetchProducts = async () => {

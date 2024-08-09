@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
 import { When } from 'react-if';
+import { Link, useLoaderData } from 'react-router-dom';
+
 import { IOrderResponse } from '@/entities/order/types';
 import { OrderList } from '@/shared/widgets';
 

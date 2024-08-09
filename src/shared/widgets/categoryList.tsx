@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { ICategoryResponse } from '@/entities/category/types';
-import { Link } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
+import { Link } from 'react-router-dom';
+
+import { ICategoryResponse } from '@/entities/category/types';
 
 interface Props {
   categories: Array<ICategoryResponse>

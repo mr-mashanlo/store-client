@@ -1,5 +1,5 @@
-import fetchProductWithMetadata from './fetchProductWithMetadata';
 import fetchProductsWithMetadata from './fetchProductsWithMetadata';
+import fetchProductWithMetadata from './fetchProductWithMetadata';
 
 export {
   fetchProductWithMetadata,

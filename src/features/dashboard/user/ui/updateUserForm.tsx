@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { Form, useLoaderData, useNavigation } from 'react-router-dom';
-import { Button, TextInput } from '@/shared/widgets';
+
 import { IAddress } from '@/entities/address/types';
 import { IUser } from '@/entities/auth/types';
+import { Button, TextInput } from '@/shared/widgets';
 
 const UpdateUserForm: FC = () => {
   const navigation = useNavigation();

@@ -1,7 +1,8 @@
 import { FC, DragEvent, useState, useRef, ChangeEvent, useEffect } from 'react';
-import { Form, useActionData, useNavigation } from 'react-router-dom';
 import { If, Then, Else } from 'react-if';
+import { Form, useActionData, useNavigation } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
+
 import { Button } from '@/shared/widgets';
 
 const UploadForm: FC = () => {

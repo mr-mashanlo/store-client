@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const AccountLayout: FC = () => {
   const [ width, setWidth ] = useState( window.innerWidth );

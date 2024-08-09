@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { CreateProductForm } from '@/features/dashboard/product/ui';
-import { ProductList } from '@/shared/widgets';
-import { IProductResponse } from '@/entities/product/types';
+
 import { ICategoryResponse } from '@/entities/category/types';
 import { IMedia } from '@/entities/media/types';
+import { IProductResponse } from '@/entities/product/types';
+import { CreateProductForm } from '@/features/dashboard/product/ui';
+import { ProductList } from '@/shared/widgets';
 
 const DashboardProductsPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: { products: Array<IProductResponse>, categories: Array<ICategoryResponse>, images: Array<IMedia> }};

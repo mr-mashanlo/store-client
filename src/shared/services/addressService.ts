@@ -1,5 +1,5 @@
-import { authInstance } from '@/shared/api';
 import { IAddress, IAddressService } from '@/entities/address/types';
+import { authInstance } from '@/shared/api';
 
 class AddressService implements IAddressService {
 
