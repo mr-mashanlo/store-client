@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { PageHeader } from '@/shared/layouts/header';
-import { useCartStore } from '@/features/store/store';
+
 import { IOrderResponse } from '@/entities/order/types';
-import { ProductListWithQuantity } from '@/shared/widgets';
+import { useCartStore } from '@/features/store/store';
+import { PageHeader, ProductListWithQuantity } from '@/shared/widgets';
 
 const StoreSuccessPage: FC = () => {
   const { resetCart } = useCartStore();
@@ -15,7 +15,7 @@ const StoreSuccessPage: FC = () => {
     <>
       <PageHeader title="Success Page" />
       <section className="py-5 sm:py-14">
-        <div className="container-block">
+        <div className="container-block px-9">
           <div className="grid gap-14">
             <div>
               <h2 className="text-2xl font-bold uppercase">Products</h2>

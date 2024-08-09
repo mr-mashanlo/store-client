@@ -1,4 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
+
 import { categoryService, mediaService, productService } from '@/shared/services';
 
 const fetchProductWithMetadata = async ( { params }: ActionFunctionArgs ) => {

@@ -1,4 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
+
 import { userService } from '@/shared/services';
 
 const updateMe = async ( { request }: ActionFunctionArgs ) => {

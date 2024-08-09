@@ -1,7 +1,8 @@
-import { IProductResponse } from '@/entities/product/types';
 import { FC } from 'react';
 import { Else, If, Then } from 'react-if';
 import { Link } from 'react-router-dom';
+
+import { IProductResponse } from '@/entities/product/types';
 
 interface Props {
   products: Array<IProductResponse>

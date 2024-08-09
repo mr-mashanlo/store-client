@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import { Else, If, Then } from 'react-if';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
-import { Else, If, Then } from 'react-if';
+
 import MainNav from './mainNav';
 
 interface Props {

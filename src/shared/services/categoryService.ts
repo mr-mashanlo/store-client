@@ -1,5 +1,5 @@
-import { authInstance } from '@/shared/api';
 import { ICategoryRequest, ICategoryResponse, ICategoryService } from '@/entities/category/types';
+import { authInstance } from '@/shared/api';
 
 class CategoryService implements ICategoryService {
 

@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { UserList } from '@/shared/widgets';
+
 import { IUser } from '@/entities/auth/types';
+import { UserList } from '@/shared/widgets';
 
 const DashboardUsersPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data?: Array<IUser> };

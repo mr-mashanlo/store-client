@@ -1,5 +1,5 @@
-import { authInstance } from '@/shared/api';
 import { IProductResponse, IProductRequest, IProductService } from '@/entities/product/types';
+import { authInstance } from '@/shared/api';
 
 class ProductService implements IProductService {
 

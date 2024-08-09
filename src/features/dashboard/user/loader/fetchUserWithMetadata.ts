@@ -1,4 +1,5 @@
 import { ActionFunctionArgs } from 'react-router-dom';
+
 import { addressService, userService } from '@/shared/services';
 
 const fetchUserWithMetadata = async ( { params }: ActionFunctionArgs ) => {

@@ -1,4 +1,5 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
+
 import { productService } from '@/shared/services';
 
 const deleteProduct = async ( { params }: ActionFunctionArgs ) => {

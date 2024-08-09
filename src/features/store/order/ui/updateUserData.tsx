@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import { Form, useLoaderData, useNavigation } from 'react-router-dom';
-import { Button, TextInput } from '@/shared/widgets';
-import { IUser } from '@/entities/auth/types';
-import { IAddress } from '@/entities/address/types';
+
 import { useCartStore } from '../../store';
+
+import { IAddress } from '@/entities/address/types';
+import { IUser } from '@/entities/auth/types';
+import { Button, TextInput } from '@/shared/widgets';
 
 const UpdateUserData: FC = () => {
   const navigation = useNavigation();

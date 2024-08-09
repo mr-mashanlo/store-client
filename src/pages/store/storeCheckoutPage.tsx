@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react';
-import { useActionData, useNavigate } from 'react-router-dom';
 import { When } from 'react-if';
-import { PageHeader } from '@/shared/layouts/header';
+import { useActionData, useNavigate } from 'react-router-dom';
+
+import { IOrderResponse } from '@/entities/order/types';
 import { UpdateUserData } from '@/features/store/order/ui';
 import { useCartStore } from '@/features/store/store';
-import { ProductListWithQuantity } from '@/shared/widgets';
-import { IOrderResponse } from '@/entities/order/types';
+import { PageHeader, ProductListWithQuantity } from '@/shared/widgets';
 
 const StoreCheckoutPage: FC = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const StoreCheckoutPage: FC = () => {
     <>
       <PageHeader title="Checkout Page" />
       <section className="py-5 sm:py-14">
-        <div className="container-block">
+        <div className="container-block px-9">
           <div className="grid gap-20">
             <div>
               <h2 className="text-2xl font-bold uppercase">Products</h2>

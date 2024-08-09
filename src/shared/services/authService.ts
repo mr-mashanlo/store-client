@@ -1,5 +1,5 @@
-import { authInstance, defaultInstance } from '@/shared/api';
 import { IAuthService } from '@/entities/auth/types';
+import { authInstance, defaultInstance } from '@/shared/api';
 
 class AuthService implements IAuthService {
 

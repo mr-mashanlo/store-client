@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Form, useLoaderData } from 'react-router-dom';
-import { Button } from '@/shared/widgets';
+
 import { ICategoryResponse } from '@/entities/category/types';
+import { Button } from '@/shared/widgets';
 
 const DeleteCategoryForm: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: ICategoryResponse };

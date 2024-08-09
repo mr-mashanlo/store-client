@@ -1,4 +1,4 @@
-import { ICategoryResponse } from './ICategory';
+import { ICategoryResponse } from './ICategoryResponse';
 
 export interface ICategoryService {
   getAll: () => Promise<Array<ICategoryResponse>>,

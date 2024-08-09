@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { ProductListWithQuantity } from '@/shared/widgets';
+
 import { IOrderResponse } from '@/entities/order/types';
+import { ProductListWithQuantity } from '@/shared/widgets';
 
 const ProfileOrderPage: FC = () => {
   const loaderData = useLoaderData() as { success: boolean, data: IOrderResponse };

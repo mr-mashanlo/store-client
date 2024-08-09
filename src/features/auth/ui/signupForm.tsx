@@ -1,6 +1,7 @@
-import { Button, TextInput } from '@/shared/widgets';
 import { FC, useEffect, useState } from 'react';
 import { Form, Link, useActionData, useNavigate, useNavigation } from 'react-router-dom';
+
+import { Button, TextInput } from '@/shared/widgets';
 
 const SignupForm: FC = () => {
   const navigation = useNavigation();

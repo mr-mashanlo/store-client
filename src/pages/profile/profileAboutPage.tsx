@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Link, useFetcher } from 'react-router-dom';
-import { Button } from '@/shared/widgets';
+
 import { UpdateUserForm } from '@/features/profile/user/ui';
+import { Button } from '@/shared/widgets';
 
 const ProfileAboutPage: FC = () => {
   const logoutFetcher = useFetcher();
