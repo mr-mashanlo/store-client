@@ -1,3 +1,3 @@
-import HomePage from './homePage';
+import { homeRouter } from './model/router';
 
-export { HomePage };
+export { homeRouter };
