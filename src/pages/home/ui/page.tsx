@@ -1,11 +1,19 @@
 import { FC } from 'react';
 
-const HomePage: FC = () => {
+import { ProductList } from '@/features/product-list';
 
+const HomePage: FC = () => {
   return (
-    <div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, est?</p>
-    </div>
+    <>
+      <main aria-labelledby="products-heading">
+        <div className="pt-59 pb-9 bg-zinc-200">
+          <h2 id="products-heading" className="font-bold text-center text-xs">Our Products</h2>
+        </div>
+        <div className="py-9 px-2 sm:px-10">
+          <ProductList />
+        </div>
+      </main>
+    </>
   );
 };
 
