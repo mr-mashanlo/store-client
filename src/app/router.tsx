@@ -5,19 +5,23 @@ import { productRouter } from '@/pages/product';
 import { signinRouter } from '@/pages/sign-in';
 import { signupRouter } from '@/pages/sign-up';
 
-import { AuthLayout, MainLayout } from './layouts';
+import { AuthLayout, MainLayout, ProductLayout } from './layouts';
 
 const router = createBrowserRouter( [
   {
     path: '/',
     children: [
       {
-        element: <MainLayout />,
-        children: [ homeRouter, productRouter ]
-      },
-      {
         element: <AuthLayout />,
         children: [ signinRouter, signupRouter ]
+      },
+      {
+        element: <MainLayout />,
+        children: [ homeRouter ]
+      },
+      {
+        element: <ProductLayout />,
+        children: [ productRouter ]
       }
     ]
   }

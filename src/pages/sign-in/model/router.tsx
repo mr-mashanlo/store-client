@@ -1,6 +1,9 @@
 import { RouteObject } from 'react-router-dom';
+import loadable from '@loadable/component';
 
-import SigninPage from '../ui/page';
+import { Loader } from '@/shared/ui';
+
+const SigninPage = loadable( () => import( '../ui/page' ), { fallback: <Loader /> } );
 
 export const signinRouter: RouteObject = {
   path: '/signin',

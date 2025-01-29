@@ -1,15 +1,12 @@
-import productController from './api/controller';
-import { addProductToCart, getProductsFromCart } from './models/mediator';
-import { ProductResponseSchema, ProductResponseType, ProductsResponseType } from './models/schema';
-import useCartStore from './models/store';
-import { validateProductResponseData, validateProductsResponseData } from './models/validator';
+import productController from './api/product';
+import { ProductResponseSchema, ProductResponseType, ProductsResponseType } from './model/schema';
+import { validateProductResponseData, validateProductsResponseData } from './model/validator';
+import cartController from '../cart/api/cart';
 
 export {
-  addProductToCart,
-  getProductsFromCart,
+  cartController,
   productController,
   ProductResponseSchema,
-  useCartStore,
   validateProductResponseData,
   validateProductsResponseData
 };

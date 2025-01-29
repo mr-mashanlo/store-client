@@ -1,14 +1,8 @@
 import { z } from 'zod';
 
-export const ProductResponseSchema = z.object( {
-  _id: z.string(),
-  images: z.array( z.string() ),
-  name: z.string(),
-  price: z.number(),
-  discount: z.number(),
-  description: z.string(),
-  categories: z.array( z.string() ).optional()
-} );
+import { ProductSchema } from '@/entities/shared';
+
+export const ProductResponseSchema = ProductSchema;
 
 export const ProductsResponseSchema = z.array( ProductResponseSchema );
 

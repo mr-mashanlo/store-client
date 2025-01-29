@@ -1,6 +1,6 @@
-import { GeneralController } from '@/shared/api/controller';
+import { GeneralController } from '@/entities/shared';
 
-import { ProductResponseType } from '../models/schema';
+import { ProductResponseType } from '../model/schema';
 
 class ProductController extends GeneralController<ProductResponseType> {}
 
