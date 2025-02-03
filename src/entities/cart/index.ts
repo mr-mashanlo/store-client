@@ -1,11 +1,16 @@
-import { CartResponseSchema, CartResponseType } from './model/schema';
+import { CartResponseSchema, CartResponseType, CartSchema, CartType } from './model/schema';
+import { validateCartData, validateCartResponseData } from './model/validator';
 import { cartController } from '../product';
 
 export {
   cartController,
-  CartResponseSchema
+  CartResponseSchema,
+  CartSchema,
+  validateCartData,
+  validateCartResponseData
 };
 
 export type {
-  CartResponseType
+  CartResponseType,
+  CartType
 };

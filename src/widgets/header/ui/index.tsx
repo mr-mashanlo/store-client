@@ -8,8 +8,8 @@ const Header: FC = () => {
         <h1 id="header-heading"><Link to="/" aria-label="Home">Logo</Link></h1>
         <nav aria-label="Main Navigation">
           <ul className="flex gap-10 items-center">
-            <li><a href="/">Account</a></li>
-            <li><button>Cart</button></li>
+            <li><Link to="/account">Account</Link></li>
+            <li><Link to="/cart">Cart</Link></li>
           </ul>
         </nav>
       </div>

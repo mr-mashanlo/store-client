@@ -1,9 +1,9 @@
-import AuthLayout from './auth/layout';
-import MainLayout from './main/layout';
-import ProductLayout from './product/layout';
+import AuthLayout from './auth';
+import CartLayout from './cart';
+import MainLayout from './main';
 
 export {
   AuthLayout,
-  MainLayout,
-  ProductLayout
+  CartLayout,
+  MainLayout
 };

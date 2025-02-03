@@ -4,11 +4,9 @@ import { ProductItem } from '@/features/product-item';
 
 const ProductPage: FC = () => {
   return (
-    <>
-      <main aria-labelledby="product-heading">
-        <ProductItem />
-      </main>
-    </>
+    <main aria-labelledby="product-heading">
+      <ProductItem />
+    </main>
   );
 };
 

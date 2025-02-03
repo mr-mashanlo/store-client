@@ -3,13 +3,13 @@ import { Outlet } from 'react-router-dom';
 
 import { Header } from '@/widgets/header';
 
-const ProductLayout: FC = () => {
+const MainLayout: FC = () => {
   return (
     <div className="page">
       <Header />
-      <main className="main"><Outlet /></main>
+      <Outlet />
     </div>
   );
 };
 
-export default ProductLayout;
+export default MainLayout;

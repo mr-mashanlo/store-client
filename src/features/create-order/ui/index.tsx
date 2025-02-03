@@ -5,27 +5,27 @@ import { cartController } from '@/entities/product';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   id: string,
-  children?: ReactNode
+  children: ReactNode
 }
 
-const AddToCartButton: FC<Props> = ( { id, children, ...others } ) => {
+const CreateOrderButton: FC<Props> = ( { id, children, ...others } ) => {
   const queryClient = useQueryClient();
   const mutation = useMutation( {
-    mutationFn: cartController.push,
+    mutationFn: cartController.pull,
     onSuccess: () => queryClient.invalidateQueries( { queryKey: [ 'cart' ] } )
   } );
 
   function handleButtonClick( id: string ) {
     try {
-      mutation.mutate( { product: id, quantity: 1 } );
+      mutation.mutate( id );
     } catch ( error ) {
       console.log( error );
     }
   }
 
   return (
-    <button onClick={() => handleButtonClick( id )}  disabled={mutation.isLoading} {...others}>{children}</button>
+    <button onClick={() => handleButtonClick( id )} {...others}>{children}</button>
   );
 };
 
-export default AddToCartButton;
+export default CreateOrderButton;

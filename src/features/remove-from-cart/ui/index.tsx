@@ -8,24 +8,24 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode
 }
 
-const AddToCartButton: FC<Props> = ( { id, children, ...others } ) => {
+const RemoveFromCartButton: FC<Props> = ( { id, children, ...others } ) => {
   const queryClient = useQueryClient();
   const mutation = useMutation( {
-    mutationFn: cartController.push,
+    mutationFn: cartController.pull,
     onSuccess: () => queryClient.invalidateQueries( { queryKey: [ 'cart' ] } )
   } );
 
   function handleButtonClick( id: string ) {
     try {
-      mutation.mutate( { product: id, quantity: 1 } );
+      mutation.mutate( id );
     } catch ( error ) {
       console.log( error );
     }
   }
 
   return (
-    <button onClick={() => handleButtonClick( id )}  disabled={mutation.isLoading} {...others}>{children}</button>
+    <button onClick={() => handleButtonClick( id )} disabled={mutation.isLoading} {...others}>{children}</button>
   );
 };
 
-export default AddToCartButton;
+export default RemoveFromCartButton;
