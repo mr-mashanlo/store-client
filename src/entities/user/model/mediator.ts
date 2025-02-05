@@ -1,6 +1,6 @@
 import useUserStore from './store';
 
-export function getUserID() {
+export function getUserID(): string | null {
   return useUserStore.getState().userID;
 }
 

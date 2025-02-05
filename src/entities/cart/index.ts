@@ -1,13 +1,21 @@
+import cartController from './api/cart';
+import { useCartQuery } from './model/hook';
 import { CartResponseSchema, CartResponseType, CartSchema, CartType } from './model/schema';
 import { validateCartData, validateCartResponseData } from './model/validator';
-import { cartController } from '../product';
 
 export {
   cartController,
   CartResponseSchema,
-  CartSchema,
+  CartSchema
+};
+
+export {
   validateCartData,
   validateCartResponseData
+};
+
+export {
+  useCartQuery
 };
 
 export type {

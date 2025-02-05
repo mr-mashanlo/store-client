@@ -1,14 +1,12 @@
 import { FC } from 'react';
 
-import { ProductList } from '@/features/product-list';
+import { ProductGrid } from '@/widgets/product-grid';
 
 const HomePage: FC = () => {
   return (
     <main aria-labelledby="products-heading">
       <h2 id="products-heading" className="sr-only">Our Products</h2>
-      <div>
-        <ProductList />
-      </div>
+      <ProductGrid />
     </main>
   );
 };

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { cartRouter } from '@/pages/cart';
+import { checkoutRouter } from '@/pages/checkout';
 import { homeRouter } from '@/pages/home';
 import { productRouter } from '@/pages/product';
 import { signinRouter } from '@/pages/sign-in';
@@ -22,7 +23,7 @@ const router = createBrowserRouter( [
       },
       {
         element: <CartLayout />,
-        children: [ cartRouter ]
+        children: [ cartRouter, checkoutRouter ]
       }
     ]
   }

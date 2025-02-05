@@ -13,23 +13,36 @@ export class GeneralController<T> {
     return await response.json();
   };
 
-  delete = async( id: string ): Promise<{ ok: boolean}> => {
-    const response = await authInstance( `${this.slug}/delete/${id}`, { method: 'delete' } );
+  delete = async ( query: Record<string, string> ): Promise<{ ok: boolean }> => {
+    const queryString = new URLSearchParams( query ).toString();
+    const response = await authInstance( `${this.slug}/delete?${queryString}`, { method: 'delete' } );
     return await response.json();
   };
 
-  getOne = async ( id: string ): Promise<T> => {
-    const response = await authInstance( `${this.slug}/getone/${id}` );
+  getMy = async (): Promise<T> => {
+    const response = await authInstance( `${this.slug}/getmy` );
     return await response.json();
   };
 
-  getMany = async ( query: object ): Promise<Array<T>> => {
-    const response = await authInstance( `${this.slug}/getmany`, { method: 'post', body: JSON.stringify( query ) } );
+  getOne = async ( query: Record<string, string> ): Promise<T> => {
+    const queryString = new URLSearchParams( query ).toString();
+    const response = await authInstance( `${this.slug}/getone?${queryString}` );
     return await response.json();
   };
 
-  update = async ( query: object, updates: Partial<T> ): Promise<T> => {
+  getMany = async ( query: Record<string, string> ): Promise<Array<T>> => {
+    const queryString = new URLSearchParams( query ).toString();
+    const response = await authInstance( `${this.slug}/getmany?${queryString}` );
+    return await response.json();
+  };
+
+  update = async ( { query, updates }: { query: object, updates: Partial<T> } ): Promise<T> => {
     const response = await authInstance( `${this.slug}/update`, { method: 'put', body: JSON.stringify( { query, updates } ) } );
+    return await response.json();
+  };
+
+  upsert = async ( { query, updates }: { query: object, updates: Partial<T> } ): Promise<T> => {
+    const response = await authInstance( `${this.slug}/upsert`, { method: 'put', body: JSON.stringify( { query, updates } ) } );
     return await response.json();
   };
 

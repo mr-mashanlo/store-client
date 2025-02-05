@@ -6,7 +6,7 @@ import { CartRequestType, CartResponseType } from '../model/schema';
 class CartController extends GeneralController<CartResponseType> {
 
   getOne = async (): Promise<CartResponseType> => {
-    const response = await authInstance( `${this.slug}/getone` );
+    const response = await authInstance( `${this.slug}/getmy` );
     return await response.json();
   };
 

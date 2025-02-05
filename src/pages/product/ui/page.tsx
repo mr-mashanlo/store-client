@@ -1,11 +1,14 @@
 import { FC } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { ProductItem } from '@/features/product-item';
+import { ProductDetail } from '@/widgets/product-detail';
 
 const ProductPage: FC = () => {
+  const { id } = useParams();
+
   return (
     <main aria-labelledby="product-heading">
-      <ProductItem />
+      <ProductDetail id={id || ''} />
     </main>
   );
 };
