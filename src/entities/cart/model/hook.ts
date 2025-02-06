@@ -17,6 +17,7 @@ export const useCartQuery = () => {
 
   function validateResponseData( data: unknown ) {
     try {
+      if ( !data ) return;
       const result = validateCartResponseData( data );
       setCart( result );
     } catch ( error ) {

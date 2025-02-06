@@ -19,11 +19,6 @@ export class GeneralController<T> {
     return await response.json();
   };
 
-  getMy = async (): Promise<T> => {
-    const response = await authInstance( `${this.slug}/getmy` );
-    return await response.json();
-  };
-
   getOne = async ( query: Record<string, string> ): Promise<T> => {
     const queryString = new URLSearchParams( query ).toString();
     const response = await authInstance( `${this.slug}/getone?${queryString}` );

@@ -17,6 +17,7 @@ export const useProductsQuery = () => {
 
   function validateResponseData( data: unknown ) {
     try {
+      if ( !data ) return;
       const result = validateProductsResponseData( data );
       setProducts( result );
     } catch ( error ) {

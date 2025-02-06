@@ -21,6 +21,7 @@ export const useProductQuery = ( id: string ) => {
 
   function validateResponseData( data: unknown ) {
     try {
+      if ( !data ) return;
       const result = validateProductResponseData( data );
       setProduct( result );
     } catch ( error ) {

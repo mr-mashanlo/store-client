@@ -10,7 +10,7 @@ import ReceiptLink from '@/shared/ui/receipt/receiptLink';
 const ReceiptBox: FC = () => {
   const { cart } = useCartQuery();
   return (
-    <Receipt button={<ReceiptLink to="/checkout" >Checkout</ReceiptLink>}>
+    <Receipt button={<ReceiptLink to="/checkout">Checkout</ReceiptLink>}>
       <ReceiptHeader title="Store name" subtitle="Address, street location" />
       <ReceiptDivide />
       <ReceiptList

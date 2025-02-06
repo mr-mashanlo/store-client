@@ -2,6 +2,7 @@ import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 
 import { cartController } from '@/entities/cart';
+import { validateResponseError } from '@/entities/shared';
 
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,17 +12,15 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const DecreaseProductButton: FC<Props> = ( { id, children, ...others } ) => {
   const queryClient = useQueryClient();
+  const mutation = useMutation( cartController.pull );
 
-  const mutation = useMutation( {
-    mutationFn: cartController.pull,
-    onSuccess: () => queryClient.invalidateQueries( { queryKey: [ 'cart' ] } )
-  } );
-
-  function handleButtonClick( id: string ) {
+  async function handleButtonClick( id: string ) {
     try {
-      mutation.mutate( id );
+      await mutation.mutateAsync( id );
+      queryClient.invalidateQueries( { queryKey: [ 'cart' ] } );
     } catch ( error ) {
-      console.log( error );
+      const response = await validateResponseError( error );
+      console.log( response );
     }
   }
 

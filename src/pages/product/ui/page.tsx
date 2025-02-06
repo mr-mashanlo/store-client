@@ -7,7 +7,7 @@ const ProductPage: FC = () => {
   const { id } = useParams();
 
   return (
-    <main aria-labelledby="product-heading">
+    <main aria-labelledby="heading">
       <ProductDetail id={id || ''} />
     </main>
   );
