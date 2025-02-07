@@ -2,13 +2,13 @@ import { FC } from 'react';
 
 import { useCartQuery } from '@/entities/cart';
 
+import Component from './component';
 import Empty from './empty';
-import ReceiptBox from './receipt';
 import Skeleton from './skeleton';
 
 const CartReceipt: FC = () => {
-  const { cart, isSuccess } = useCartQuery();
-  return isSuccess ? cart.products.length ? <ReceiptBox /> : <Empty /> : <Skeleton />;
+  const { data, isLoading } = useCartQuery();
+  return isLoading ? <Skeleton /> : data?.products.length ? <Component cart={data} /> : <Empty />;
 };
 
 export default CartReceipt;

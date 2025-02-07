@@ -6,7 +6,7 @@ import { calculateTotalQuantity } from '@/entities/shared/libs/price';
 import { getUserID } from '@/entities/user';
 
 const Header: FC = () => {
-  const { cart } = useCartQuery();
+  const { data } = useCartQuery();
   const user = getUserID();
   return (
     <header className="py-6 fixed top-0 left-0 right-0 z-10" aria-labelledby="header-heading">
@@ -19,7 +19,7 @@ const Header: FC = () => {
                 ?
                 <>
                   <li><Link to="/account">Account</Link></li>
-                  <li><Link to="/cart">Cart ({calculateTotalQuantity( cart.products )})</Link></li>
+                  <li><Link to="/cart">Cart ({calculateTotalQuantity( data?.products || [] )})</Link></li>
                 </>
                 :
                 <li><Link to="/signin">Sign in</Link></li>

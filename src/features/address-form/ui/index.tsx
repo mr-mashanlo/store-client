@@ -11,7 +11,7 @@ type Props = FormHTMLAttributes<HTMLFormElement>
 
 const AddressForm: FC<Props> = ( { ...others } ) => {
   const mutation = useMutation( addressController.upsert );
-  const { address } = useAddressQuery();
+  const { data } = useAddressQuery();
   const [ error, setError ] = useState( { name: '', message: '' } );
 
   async function handleFormSubmit( e: FormEvent<HTMLFormElement> ) {
@@ -32,8 +32,8 @@ const AddressForm: FC<Props> = ( { ...others } ) => {
     <form onSubmit={e => handleFormSubmit( e )} className="w-full sm:max-w-96" {...others}>
       <Fieldset>
         <Legend className="font-semibold text-center">Adderss</Legend>
-        <CustomInput defaultValue={address.city} type="text" name="city" label="City" error={error} placeholder="Moscow" className="mt-8" />
-        <CustomInput defaultValue={address.street} type="text" name="street" label="Street" error={error} placeholder="Somestreet, 31" className="mt-8" />
+        <CustomInput defaultValue={data?.city} type="text" name="city" label="City" error={error} placeholder="Moscow" className="mt-8" />
+        <CustomInput defaultValue={data?.street} type="text" name="street" label="Street" error={error} placeholder="Somestreet, 31" className="mt-8" />
         <CustomButton isLoading={mutation.isLoading} disabled={mutation.isLoading} type="submit" className="mt-8">Update</CustomButton>
         {
           error.name

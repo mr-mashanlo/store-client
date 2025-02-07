@@ -9,7 +9,7 @@ import { CustomButton, CustomInput } from '@/shared/ui';
 type Props = FormHTMLAttributes<HTMLFormElement>
 
 const UpdateUserForm: FC<Props> = ( { ...others } ) => {
-  const { user } = useUserQuery();
+  const { data } = useUserQuery();
   const mutation = useMutation( userController.update );
   const [ error, setError ] = useState( { name: '', message: '' } );
 
@@ -31,8 +31,8 @@ const UpdateUserForm: FC<Props> = ( { ...others } ) => {
     <form onSubmit={e => handleFormSubmit( e )} className="w-full sm:max-w-96" {...others}>
       <Fieldset>
         <Legend className="font-semibold text-center">User</Legend>
-        <CustomInput defaultValue={user.email} type="email" name="email" label="Email" error={error} placeholder="name@company.com" className="mt-8" disabled />
-        <CustomInput defaultValue={user.fullname} type="text" name="fullname" label="Fullname" error={error} placeholder="Jonh Doe" className="mt-8" />
+        <CustomInput defaultValue={data?.email} type="email" name="email" label="Email" error={error} placeholder="name@company.com" className="mt-8" disabled />
+        <CustomInput defaultValue={data?.fullname} type="text" name="fullname" label="Fullname" error={error} placeholder="Jonh Doe" className="mt-8" />
         <CustomButton isLoading={mutation.isLoading} disabled={mutation.isLoading} type="submit" className="mt-8">Update</CustomButton>
         {
           error.name

@@ -14,6 +14,7 @@ export const CartRequestSchema = z.object( {
 
 export const CartResponseSchema = z.object( {
   _id: z.string(),
+  user: z.string(),
   products: z.array( CartSchema )
 } );
 

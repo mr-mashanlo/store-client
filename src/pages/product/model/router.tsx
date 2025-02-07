@@ -1,10 +1,10 @@
-import pMinDelay from 'p-min-delay';
+// import pMinDelay from 'p-min-delay';
 import { RouteObject } from 'react-router-dom';
 import loadable from '@loadable/component';
 
-import { Loader } from '@/shared/ui';
+// import { Loader } from '@/shared/ui';
 
-const ProductPage = loadable( () => pMinDelay( import( '../ui/page' ), 200 ), { fallback: <Loader /> } );
+const ProductPage = loadable( () => import( '../ui/page' ) );
 
 export const productRouter: RouteObject = {
   path: '/:id',

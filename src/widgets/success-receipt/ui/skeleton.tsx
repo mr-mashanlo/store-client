@@ -11,6 +11,12 @@ const Skeleton: FC = () => {
         <div className="h-[1.5rem] py-1.5"><div className="h-full bg-zinc-200" /></div>
         <div className="h-[1.5rem] py-1.5"><div className="h-full bg-zinc-200" /></div>
         <div className="h-1 my-4 ticket-d"></div>
+        <div className="h-[1.5rem] py-1.5"><div className="h-full bg-zinc-200" /></div>
+        <div className="h-[1.5rem] py-1.5"><div className="h-full bg-zinc-200" /></div>
+        <div className="h-1 my-4 ticket-d"></div>
+        <div className="h-[1.5rem] py-1.5"><div className="h-full bg-zinc-200" /></div>
+        <div className="h-[1.5rem] py-1.5"><div className="h-full bg-zinc-200" /></div>
+        <div className="h-1 my-4 ticket-d"></div>
       </div>
       <div className="h-[3.25rem] flex items-center justify-center bg-zinc-100">
         <div className="h-[1.5rem] py-1.5"><div className="h-full bg-zinc-200" /></div>
