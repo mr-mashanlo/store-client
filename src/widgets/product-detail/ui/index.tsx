@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import IncreaseProductButton from '@/features/increase-product/ui';
+import { IncreaseProductButton } from '@/features/increase-product';
 import { ProductDescription, ProductGallery, useProductQuery } from '@/entities/product';
 
 interface Props {
