@@ -1,9 +1,12 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useCartQuery } from '@/entities/cart';
+import { calculateTotalQuantity } from '@/entities/shared/libs/price';
 import { getUserID } from '@/entities/user';
 
 const Header: FC = () => {
+  const { cart } = useCartQuery();
   const user = getUserID();
   return (
     <header className="py-6 fixed top-0 left-0 right-0 z-10" aria-labelledby="header-heading">
@@ -14,11 +17,13 @@ const Header: FC = () => {
             {
               user?.length
                 ?
-                <li><Link to="/account">Account</Link></li>
+                <>
+                  <li><Link to="/account">Account</Link></li>
+                  <li><Link to="/cart">Cart ({calculateTotalQuantity( cart.products )})</Link></li>
+                </>
                 :
                 <li><Link to="/signin">Sign in</Link></li>
             }
-            <li><Link to="/cart">Cart</Link></li>
           </ul>
         </nav>
       </div>

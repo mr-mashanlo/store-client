@@ -4,9 +4,11 @@ import { CartResponseSchema, CartResponseType, CartSchema, CartType } from './mo
 import { validateCartData, validateCartResponseData } from './model/validator';
 
 export {
-  cartController,
-  CartResponseSchema,
-  CartSchema
+  cartController
+};
+
+export {
+  useCartQuery
 };
 
 export {
@@ -15,7 +17,8 @@ export {
 };
 
 export {
-  useCartQuery
+  CartResponseSchema,
+  CartSchema
 };
 
 export type {

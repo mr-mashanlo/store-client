@@ -1,8 +1,9 @@
-import { authInstance, defaultInstance } from '@/shared/api';
+import { GeneralController } from '@/entities/shared';
+import { defaultInstance } from '@/shared/api';
 
-import { AuthRequestType } from '../model/authSchema';
+import { UserResponseType } from '../model/userSchema';
 
-class UserController {
+class UserController extends GeneralController<UserResponseType> {
 
   signIn = async ( email: string, password: string ) => {
     const response = await defaultInstance( 'user/signin', { method: 'post', body: JSON.stringify( { email, password } ) } );
@@ -24,18 +25,8 @@ class UserController {
     return await response.json();
   };
 
-  delete = async () => {
-    const response = await authInstance( 'user/delete' );
-    return await response.json();
-  };
-
-  update = async ( updates: Partial<AuthRequestType> ) => {
-    const response = await authInstance( 'user/update', { method: 'post', body: JSON.stringify( updates ) } );
-    return await response.json();
-  };
-
 }
 
-const userController = new UserController();
+const userController = new UserController( 'user' );
 
 export default userController;

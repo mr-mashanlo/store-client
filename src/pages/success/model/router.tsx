@@ -7,6 +7,6 @@ import { Loader } from '@/shared/ui';
 const SuccessPage = loadable( () => pMinDelay( import( '../ui/page' ), 200 ), { fallback: <Loader /> } );
 
 export const successRouter: RouteObject = {
-  path: '/success',
+  path: '/success/:id',
   element: <SuccessPage />
 };

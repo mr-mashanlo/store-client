@@ -23,15 +23,15 @@ const CreateOrderButton: FC<Props> = ( { user, address, products, children } ) =
     user,
     address,
     status: 'Processing',
-    created: Date.now(),
+    created: String( Date.now() ),
     products: products.map( item => ( { product: item.product._id, price: item.product.price, quantity: item.quantity } ) )
   };
 
   async function handleButtonClick() {
     try {
-      await orderMutation.mutateAsync( order );
+      const orderResponse = await orderMutation.mutateAsync( order );
       await cartMutation.mutateAsync( { user } );
-      navigate( '/success' );
+      navigate( `/success/${orderResponse._id}` );
     } catch ( error ) {
       console.log( error );
     }

@@ -4,18 +4,21 @@ import { AddressRequestSchema, AddressRequestType, AddressResponseSchema, Addres
 import { validateAddressRequestData, validateAddressResponseData } from './model/validator';
 
 export {
-  addressController,
-  useAddressQuery
+  addressController
 };
 
 export {
-  AddressRequestSchema,
-  AddressResponseSchema
+  useAddressQuery
 };
 
 export {
   validateAddressRequestData,
   validateAddressResponseData
+};
+
+export {
+  AddressRequestSchema,
+  AddressResponseSchema
 };
 
 export type {

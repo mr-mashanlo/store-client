@@ -8,10 +8,7 @@ import ProductGallery from './ui/gallery';
 import ProductList from './ui/list';
 
 export {
-  productController,
-  ProductResponseSchema,
-  validateProductResponseData,
-  validateProductsResponseData
+  productController
 };
 
 export {
@@ -23,6 +20,15 @@ export {
   ProductDescription,
   ProductGallery,
   ProductList
+};
+
+export {
+  validateProductResponseData,
+  validateProductsResponseData
+};
+
+export {
+  ProductResponseSchema
 };
 
 export type {

@@ -19,8 +19,8 @@ const DecreaseProductButton: FC<Props> = ( { id, children, ...others } ) => {
       await mutation.mutateAsync( id );
       queryClient.invalidateQueries( { queryKey: [ 'cart' ] } );
     } catch ( error ) {
-      const response = await validateResponseError( error );
-      console.log( response );
+      const result = await validateResponseError( error );
+      console.log( result );
     }
   }
 

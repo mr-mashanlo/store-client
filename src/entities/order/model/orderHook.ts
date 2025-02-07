@@ -3,26 +3,25 @@ import { useQuery, useQueryClient } from 'react-query';
 
 import { validateResponseError } from '@/entities/shared';
 
-import cartController from '../api/cart';
-import { CartResponseType } from './schema';
-import { validateCartResponseData } from './validator';
+import orderController from '../api/order';
+import { OrderResponseType } from './schema';
+import { validateOrderResponseData } from './validator';
 
-export const useCartQuery = () => {
+export const useOrderQuery = ( id: string ) => {
   const queryClient = useQueryClient();
-  const [ cart, setCart ] = useState<CartResponseType>( { _id: '', products: [] } );
+  const [ order, setOrder ] = useState<OrderResponseType>();
 
   const { data, isLoading, isError, isSuccess } = useQuery( {
-    queryKey: [ 'cart' ],
-    queryFn: () => cartController.getOne(),
+    queryKey: [ 'order' ],
+    queryFn: () => orderController.getOne( { _id: id } ),
     onError: async error => {
       const result = await validateResponseError( error );
       console.log( result );
     },
     onSuccess: async data => {
       try {
-        if ( !data ) return;
-        const result = validateCartResponseData( data );
-        setCart( result );
+        const result = validateOrderResponseData( data );
+        setOrder( result );
       } catch ( error ) {
         const result = await validateResponseError( error );
         console.log( result );
@@ -30,5 +29,5 @@ export const useCartQuery = () => {
     }
   } );
 
-  return { cart, data, isLoading, isError, isSuccess, queryClient };
+  return { order, data, isLoading, isError, isSuccess, queryClient };
 };

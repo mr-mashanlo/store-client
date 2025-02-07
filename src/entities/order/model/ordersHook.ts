@@ -4,30 +4,25 @@ import { useQuery, useQueryClient } from 'react-query';
 import { validateResponseError } from '@/entities/shared';
 import { getUserID } from '@/entities/user';
 
-import addressController from '../api/address';
-import { AddressResponseType } from './schema';
-import { validateAddressResponseData } from './validator';
+import orderController from '../api/order';
+import { OrdersResponseType } from './schema';
+import { validateOrdersResponseData } from './validator';
 
-export const useAddressQuery = () => {
+export const useOrdersQuery = () => {
   const queryClient = useQueryClient();
-  const [ address, setAddress ] = useState<AddressResponseType>( {
-    _id: '',
-    user: '',
-    city: '',
-    street: ''
-  } );
+  const [ orders, setOrders ] = useState<OrdersResponseType>( [] );
 
   const { data, isLoading, isError, isSuccess } = useQuery( {
-    queryKey: [ 'address' ],
-    queryFn: () => addressController.getOne( { user: getUserID() || '' } ),
+    queryKey: [ 'orders' ],
+    queryFn: () => orderController.getMany( { user: getUserID() || '' } ),
     onError: async error => {
       const result = await validateResponseError( error );
       console.log( result );
     },
     onSuccess: async data => {
       try {
-        const result = validateAddressResponseData( data );
-        setAddress( result );
+        const result = validateOrdersResponseData( data );
+        setOrders( result );
       } catch ( error ) {
         const result = await validateResponseError( error );
         console.log( result );
@@ -35,5 +30,5 @@ export const useAddressQuery = () => {
     }
   } );
 
-  return { address, data, isLoading, isError, isSuccess, queryClient };
+  return { orders, data, isLoading, isError, isSuccess, queryClient };
 };

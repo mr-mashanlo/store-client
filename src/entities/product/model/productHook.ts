@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 
+import { validateResponseError } from '@/entities/shared';
+
 import productController from '../api/product';
 import { ProductResponseType } from './schema';
 import { validateProductResponseData } from './validator';
@@ -16,18 +18,20 @@ export const useProductQuery = ( id: string ) => {
   const { data, isLoading, isError, isSuccess } = useQuery( {
     queryKey: [ 'product', id ],
     queryFn: () => productController.getOne( { _id: id } ),
-    onSuccess: data => validateResponseData( data )
-  } );
-
-  function validateResponseData( data: unknown ) {
-    try {
-      if ( !data ) return;
-      const result = validateProductResponseData( data );
-      setProduct( result );
-    } catch ( error ) {
-      console.log( error );
+    onError: async error => {
+      const result = await validateResponseError( error );
+      console.log( result );
+    },
+    onSuccess: async data => {
+      try {
+        const result = validateProductResponseData( data );
+        setProduct( result );
+      } catch ( error ) {
+        const result = await validateResponseError( error );
+        console.log( result );
+      }
     }
-  }
+  } );
 
   return { product, data, isLoading, isError, isSuccess, queryClient };
 };

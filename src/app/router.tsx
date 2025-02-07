@@ -9,8 +9,7 @@ import { signinRouter } from '@/pages/sign-in';
 import { signupRouter } from '@/pages/sign-up';
 import { successRouter } from '@/pages/success';
 
-import AccountLayout from './layouts/account';
-import { AuthLayout, CartLayout, MainLayout } from './layouts';
+import { AccountLayout, AuthLayout, CartLayout, MainLayout, ProtectedLayout } from './layouts';
 
 const router = createBrowserRouter( [
   {
@@ -25,12 +24,17 @@ const router = createBrowserRouter( [
         children: [ homeRouter, productRouter ]
       },
       {
-        element: <CartLayout />,
-        children: [ cartRouter, checkoutRouter ]
-      },
-      {
-        element: <AccountLayout />,
-        children: [ accountRouter, successRouter ]
+        element: <ProtectedLayout />,
+        children: [
+          {
+            element: <CartLayout />,
+            children: [ cartRouter, checkoutRouter ]
+          },
+          {
+            element: <AccountLayout />,
+            children: [ accountRouter, successRouter ]
+          }
+        ]
       }
     ]
   }

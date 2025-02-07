@@ -1,14 +1,26 @@
 import { FC } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { Receipt, ReceiptButton, ReceiptDivide, ReceiptHeader } from '@/shared/ui/receipt';
+import { useAddressQuery } from '@/entities/address';
+import { useOrderQuery } from '@/entities/order';
+import { calculateTotalPrice, calculateTotalQuantity } from '@/entities/shared/libs/price';
+import { Receipt, ReceiptAddress, ReceiptDivide, ReceiptFooter, ReceiptHeader, ReceiptLink, ReceiptList, ReceiptStatus } from '@/shared/ui/receipt';
 
 const SucceessReceipt: FC = () => {
+  const { id } = useParams();
+  const { order } = useOrderQuery( id || '' );
+  const { address } = useAddressQuery();
+
   return (
-    <Receipt button={<ReceiptButton to="/t" >Back to home</ReceiptButton>}>
+    <Receipt button={<ReceiptLink to="/" >Back to home</ReceiptLink>}>
       <ReceiptHeader title="Store name" subtitle="Address, street location" />
       <ReceiptDivide />
-      {/* <ReceiptList products={cart.products}/>
-      <ReceiptFooter total={calculateTotalPrice( cart.products )} quantity={calculateTotalQuantity( cart.products )} /> */}
+      <ReceiptStatus uid={order?._id || ''} status={order?.status || ''} created={order?.created || ''} />
+      <ReceiptDivide />
+      <ReceiptAddress city={address.city} address={address.street} />
+      <ReceiptDivide />
+      <ReceiptList products={order?.products || []}/>
+      <ReceiptFooter total={calculateTotalPrice( order?.products || [] )} quantity={calculateTotalQuantity( order?.products || [] )} />
       <ReceiptDivide />
     </Receipt>
   );

@@ -4,8 +4,7 @@ import DecreaseProductButton from '@/features/decrease-product/ui';
 import IncreaseProductButton from '@/features/increase-product/ui';
 import { useCartQuery } from '@/entities/cart';
 import { calculateTotalPrice, calculateTotalQuantity } from '@/entities/shared/libs/price';
-import { Receipt, ReceiptDivide, ReceiptFooter, ReceiptHeader, ReceiptList } from '@/shared/ui/receipt';
-import ReceiptLink from '@/shared/ui/receipt/receiptLink';
+import { Receipt, ReceiptDivide, ReceiptFooter, ReceiptHeader, ReceiptLink, ReceiptList } from '@/shared/ui/receipt';
 
 const ReceiptBox: FC = () => {
   const { cart } = useCartQuery();

@@ -23,8 +23,8 @@ const SigninForm: FC<Props> = ( { ...others } ) => {
       setUserID( result.id );
       navigate( '/' );
     } catch ( error ) {
-      const response = await validateResponseError( error );
-      setError( response );
+      const result = await validateResponseError( error );
+      setError( result );
     }
   };
 
@@ -40,7 +40,7 @@ const SigninForm: FC<Props> = ( { ...others } ) => {
             ?
             <p className="mt-8 text-center text-red-400 leading-6">{error.message}</p>
             :
-            <p className="mt-8 text-center leading-6">Dont have an account? <Link to="/signup" className="hover:underline"><b>Register</b></Link>, <br /> or go back to the <Link to="/" className="hover:underline"><b>Home page</b></Link></p>
+            <p className="mt-8 text-center leading-6">Dont have an account? <Link to="/signup" className="font-bold hover:underline">Register</Link>, <br /> or go back to the <Link to="/" className="font-bold hover:underline">Home page</Link></p>
         }
       </Fieldset>
     </form>
