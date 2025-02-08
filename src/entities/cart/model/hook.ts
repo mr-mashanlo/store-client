@@ -9,7 +9,7 @@ import { validateCartResponseData } from './validator';
 
 export const useCartQuery = () => {
   const queryClient = useQueryClient();
-  const [ cart, setCart ] = useState<CartResponseType>( { _id: '', products: [] } );
+  const [ cart, setCart ] = useState<CartResponseType>( { _id: '', user: '', products: [] } );
 
   const { data, isLoading, isError, isSuccess } = useQuery( {
     queryKey: [ 'cart' ],
