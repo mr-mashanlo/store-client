@@ -28,6 +28,8 @@ const CreateOrderButton: FC<Props> = ( { user, address, products, children } ) =
   };
 
   async function handleButtonClick() {
+    console.log( !address );
+
     try {
       const orderResponse = await orderMutation.mutateAsync( order );
       await cartMutation.mutateAsync( { user } );
@@ -38,7 +40,7 @@ const CreateOrderButton: FC<Props> = ( { user, address, products, children } ) =
   }
 
   return (
-    <ReceiptButton onClick={() => handleButtonClick()} isLoading={orderMutation.isLoading || cartMutation.isLoading} disabled={orderMutation.isLoading || cartMutation.isLoading}>
+    <ReceiptButton onClick={() => handleButtonClick()} isLoading={orderMutation.isLoading || cartMutation.isLoading} disabled={!address || orderMutation.isLoading || cartMutation.isLoading}>
       {children}
     </ReceiptButton>
   );
