@@ -28,8 +28,6 @@ const CreateOrderButton: FC<Props> = ( { user, address, products, children } ) =
   };
 
   async function handleButtonClick() {
-    console.log( !address );
-
     try {
       const orderResponse = await orderMutation.mutateAsync( order );
       await cartMutation.mutateAsync( { user } );
