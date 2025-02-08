@@ -1,5 +1,5 @@
 import { FC, FormEvent, FormHTMLAttributes, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { Fieldset, Legend } from '@headlessui/react';
 
 import { validateResponseError } from '@/entities/shared';
@@ -10,6 +10,7 @@ type Props = FormHTMLAttributes<HTMLFormElement>
 
 const UpdateUserForm: FC<Props> = ( { ...others } ) => {
   const { data } = useUserQuery();
+  const queryClient = useQueryClient();
   const mutation = useMutation( userController.update );
   const [ error, setError ] = useState( { name: '', message: '' } );
 
@@ -21,6 +22,7 @@ const UpdateUserForm: FC<Props> = ( { ...others } ) => {
       const { fullname } = validateUserRequestData( fields );
       const response = await mutation.mutateAsync( { query: { _id: getUserID() || '' }, updates: { fullname } } );
       validateUserResponseData( response );
+      queryClient.invalidateQueries( { queryKey: [ 'user' ] } );
     } catch ( error ) {
       const result = await validateResponseError( error );
       setError( result );

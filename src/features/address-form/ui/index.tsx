@@ -1,5 +1,5 @@
 import { FC, FormEvent, FormHTMLAttributes, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { Fieldset, Legend } from '@headlessui/react';
 
 import { addressController, useAddressQuery, validateAddressRequestData, validateAddressResponseData } from '@/entities/address';
@@ -10,6 +10,7 @@ import { CustomButton, CustomInput } from '@/shared/ui';
 type Props = FormHTMLAttributes<HTMLFormElement>
 
 const AddressForm: FC<Props> = ( { ...others } ) => {
+  const queryClient = useQueryClient();
   const mutation = useMutation( addressController.upsert );
   const { data } = useAddressQuery();
   const [ error, setError ] = useState( { name: '', message: '' } );
@@ -22,6 +23,7 @@ const AddressForm: FC<Props> = ( { ...others } ) => {
       const { city, street } = validateAddressRequestData( fields );
       const response = await mutation.mutateAsync( { query: { user: getUserID() }, updates: { city, street } } );
       validateAddressResponseData( response );
+      queryClient.invalidateQueries( { queryKey: [ 'address' ] } );
     } catch ( error ) {
       const result = await validateResponseError( error );
       setError( result );
