@@ -21,6 +21,7 @@ export const useOrdersQuery = () => {
     },
     onSuccess: async data => {
       try {
+        if ( !data ) return;
         const result = validateOrdersResponseData( data );
         setOrders( result );
       } catch ( error ) {

@@ -20,6 +20,7 @@ export const useOrderQuery = ( id: string ) => {
     },
     onSuccess: async data => {
       try {
+        if ( !data ) return;
         const result = validateOrderResponseData( data );
         setOrder( result );
       } catch ( error ) {

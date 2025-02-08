@@ -27,6 +27,7 @@ export const useUserQuery = () => {
     },
     onSuccess: async data => {
       try {
+        if ( !data ) return;
         const result = validateUserResponseData( data );
         setUser( result );
       } catch ( error ) {
