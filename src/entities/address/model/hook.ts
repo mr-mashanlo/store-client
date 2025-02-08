@@ -26,6 +26,7 @@ export const useAddressQuery = () => {
     },
     onSuccess: async data => {
       try {
+        if ( !data ) return;
         const result = validateAddressResponseData( data );
         setAddress( result );
       } catch ( error ) {

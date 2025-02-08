@@ -20,6 +20,7 @@ export const useProductsQuery = () => {
     },
     onSuccess: async data => {
       try {
+        if ( !data ) return;
         const result = validateProductsResponseData( data );
         setProducts( result );
       } catch ( error ) {

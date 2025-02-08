@@ -24,6 +24,7 @@ export const useProductQuery = ( id: string ) => {
     },
     onSuccess: async data => {
       try {
+        if ( !data ) return;
         const result = validateProductResponseData( data );
         setProduct( result );
       } catch ( error ) {
