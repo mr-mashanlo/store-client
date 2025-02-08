@@ -1,4 +1,3 @@
-import authInstance from './authInstance';
-import defaultInstance from './defaultInstance';
+import { authInstance, defaultInstance } from './ky';
 
-export { defaultInstance, authInstance };
+export { authInstance, defaultInstance };
