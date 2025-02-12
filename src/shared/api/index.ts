@@ -1,3 +1,11 @@
+import { GeneralController } from './controller';
 import { authInstance, defaultInstance } from './ky';
 
-export { authInstance, defaultInstance };
+export {
+  GeneralController
+};
+
+export {
+  authInstance,
+  defaultInstance
+};

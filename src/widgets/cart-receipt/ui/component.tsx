@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { DecreaseProductButton } from '@/features/decrease-product';
 import { IncreaseProductButton } from '@/features/increase-product';
 import { CartResponseType } from '@/entities/cart';
-import { calculateTotalPrice, calculateTotalQuantity } from '@/entities/shared/libs/price';
+import { calculateTotalPrice, calculateTotalQuantity } from '@/shared/libs';
 import { Receipt, ReceiptDivide, ReceiptFooter, ReceiptHeader, ReceiptLink, ReceiptList } from '@/shared/ui/receipt';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 const Component: FC<Props> = ( { cart } ) => {
   return (
     <Receipt button={<ReceiptLink to="/checkout">Checkout</ReceiptLink>}>
-      <ReceiptHeader title="Store name" subtitle="Address, street location" />
+      <ReceiptHeader icon={<img src="/logo.svg" alt="Company logo" className="w-12 mx-auto mb-2" />} subtitle="Kazakhstan, Almaty, Somestreet, #30" />
       <ReceiptDivide />
       <ReceiptList
         products={cart?.products || []}

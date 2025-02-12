@@ -1,4 +1,4 @@
-import { GeneralController } from '@/entities/shared';
+import { GeneralController } from '@/shared/api';
 
 import { AddressResponseType } from '../model/schema';
 

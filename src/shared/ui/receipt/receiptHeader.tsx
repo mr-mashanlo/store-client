@@ -1,14 +1,15 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 interface Props {
-  title: string,
+  icon?: ReactNode,
+  title?: string,
   subtitle: string
 }
 
-const ReceiptHeader: FC<Props> = ( { title, subtitle } ) => {
+const ReceiptHeader: FC<Props> = ( { icon, title, subtitle } ) => {
   return (
     <>
-      <h2 className="text-center font-bold">{title}</h2>
+      <h2 className="text-center font-bold">{icon}{title}</h2>
       <p className="text-center text-zinc-500">{subtitle}</p>
     </>
   );

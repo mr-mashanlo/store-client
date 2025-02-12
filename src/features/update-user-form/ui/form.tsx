@@ -2,8 +2,8 @@ import { FC, FormEvent, FormHTMLAttributes, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { Fieldset, Legend } from '@headlessui/react';
 
-import { validateResponseError } from '@/entities/shared';
 import { getUserID, userController, useUserQuery, validateUserRequestData, validateUserResponseData } from '@/entities/user';
+import { validateResponseError } from '@/shared/libs';
 import { CustomButton, CustomInput } from '@/shared/ui';
 
 type Props = FormHTMLAttributes<HTMLFormElement>

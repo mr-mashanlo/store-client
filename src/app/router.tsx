@@ -9,29 +9,34 @@ import { signinRouter } from '@/pages/sign-in';
 import { signupRouter } from '@/pages/sign-up';
 import { successRouter } from '@/pages/success';
 
-import { AccountLayout, AuthLayout, CartLayout, MainLayout, ProtectedLayout } from './layouts';
+import { ClearLayout, GuestLayout, MainLayout, ProtectedLayout } from './layouts';
 
 const router = createBrowserRouter( [
   {
     path: '/',
     children: [
       {
-        element: <AuthLayout />,
-        children: [ signinRouter, signupRouter ]
-      },
-      {
         element: <MainLayout />,
         children: [ homeRouter, productRouter ]
+      },
+      {
+        element: <GuestLayout />,
+        children: [
+          {
+            element: <ClearLayout />,
+            children: [ signinRouter, signupRouter ]
+          }
+        ]
       },
       {
         element: <ProtectedLayout />,
         children: [
           {
-            element: <CartLayout />,
+            element: <ClearLayout />,
             children: [ cartRouter, checkoutRouter ]
           },
           {
-            element: <AccountLayout />,
+            element: <ClearLayout />,
             children: [ accountRouter, successRouter ]
           }
         ]

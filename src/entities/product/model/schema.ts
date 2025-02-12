@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { ProductSchema } from '@/entities/shared';
+import { ProductSchema } from '@/shared/shemas';
 
 export const ProductResponseSchema = ProductSchema;
 

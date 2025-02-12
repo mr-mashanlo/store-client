@@ -3,9 +3,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import { getUserID } from '@/entities/user';
 
-const ProtectedLayout: FC = () => {
+const GuestLayout: FC = () => {
   const user = getUserID();
-  return user ? <Outlet /> : <Navigate to="/signin" replace />;
+  return user ? <Navigate to="/" replace /> : <Outlet />;
 };
 
-export default ProtectedLayout;
+export default GuestLayout;

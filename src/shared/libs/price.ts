@@ -1,11 +1,12 @@
-import { CartType } from '@/entities/cart';
 import { ProductResponseType } from '@/entities/product';
 
 export function calculatePrice( price: number, discount: number = 0 ) {
   return price - price * discount / 100;
 }
 
-export function calculateTotalPrice( products: Array<CartType> ) {
+export function calculateTotalPrice( products: Array<{ product: ProductResponseType, quantity: number }> | [] ) {
+  if ( !products.length ) return 0;
+
   return products.reduce( ( acc, product ) => {
     const { price, discount = 0 } = product.product;
     const { quantity } = product;

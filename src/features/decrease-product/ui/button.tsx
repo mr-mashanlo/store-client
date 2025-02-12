@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 
 import { cartController } from '@/entities/cart';
-import { validateResponseError } from '@/entities/shared';
+import { validateResponseError } from '@/shared/libs';
 
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
