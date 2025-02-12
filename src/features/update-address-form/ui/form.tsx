@@ -3,13 +3,13 @@ import { useMutation, useQueryClient } from 'react-query';
 import { Fieldset, Legend } from '@headlessui/react';
 
 import { addressController, useAddressQuery, validateAddressRequestData, validateAddressResponseData } from '@/entities/address';
-import { validateResponseError } from '@/entities/shared';
 import { getUserID } from '@/entities/user';
+import { validateResponseError } from '@/shared/libs';
 import { CustomButton, CustomInput } from '@/shared/ui';
 
 type Props = FormHTMLAttributes<HTMLFormElement>
 
-const AddressForm: FC<Props> = ( { ...others } ) => {
+const UpdateAddressForm: FC<Props> = ( { ...others } ) => {
   const queryClient = useQueryClient();
   const mutation = useMutation( addressController.upsert );
   const { data } = useAddressQuery();
@@ -47,4 +47,4 @@ const AddressForm: FC<Props> = ( { ...others } ) => {
   );
 };
 
-export default AddressForm;
+export default UpdateAddressForm;

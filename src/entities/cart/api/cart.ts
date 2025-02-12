@@ -1,4 +1,4 @@
-import { GeneralController } from '@/entities/shared';
+import { GeneralController } from '@/shared/api';
 import { authInstance } from '@/shared/api';
 
 import { CartRequestType, CartResponseType } from '../model/schema';

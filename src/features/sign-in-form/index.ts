@@ -1,3 +1,3 @@
-import SigninForm from './ui';
+import SigninForm from './ui/form';
 
 export { SigninForm };

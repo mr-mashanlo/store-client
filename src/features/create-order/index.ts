@@ -1,3 +1,3 @@
-import CreateOrderButton from './ui';
+import CreateOrderButton from './ui/button';
 
 export { CreateOrderButton };

@@ -1,3 +1,3 @@
-import IncreaseProductButton from './ui';
+import IncreaseProductButton from './ui/button';
 
 export { IncreaseProductButton };

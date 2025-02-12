@@ -1,3 +1,3 @@
-import UpdateUserForm from './ui';
+import UpdateUserForm from './ui/form';
 
 export { UpdateUserForm };

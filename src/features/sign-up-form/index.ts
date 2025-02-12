@@ -1,3 +1,3 @@
-import SignupForm from './ui';
+import SignupForm from './ui/form';
 
 export { SignupForm };

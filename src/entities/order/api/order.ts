@@ -1,4 +1,4 @@
-import { GeneralController } from '@/entities/shared';
+import { GeneralController } from '@/shared/api';
 
 import { OrderResponseType } from '../model/schema';
 

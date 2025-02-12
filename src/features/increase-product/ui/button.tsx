@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 
 import { cartController } from '@/entities/cart';
-import { validateResponseError } from '@/entities/shared';
 import { getUserID } from '@/entities/user';
+import { validateResponseError } from '@/shared/libs';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   id: string,

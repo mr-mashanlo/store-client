@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 
-import { validateResponseError } from '@/entities/shared';
+import { validateResponseError } from '@/shared/libs';
 
 import orderController from '../api/order';
 import { OrderResponseType } from './schema';

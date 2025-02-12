@@ -1,13 +1,11 @@
-import AccountLayout from './account';
-import AuthLayout from './auth';
-import CartLayout from './cart';
+import ClearLayout from './clear';
+import GuestLayout from './guest';
 import MainLayout from './main';
 import ProtectedLayout from './protected';
 
 export {
-  AccountLayout,
-  AuthLayout,
-  CartLayout,
+  ClearLayout,
+  GuestLayout,
   MainLayout,
   ProtectedLayout
 };
