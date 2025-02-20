@@ -1,41 +1,16 @@
-import { useState } from 'react';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 
 import { validateResponseError } from '@/shared/libs';
 
-import userController from '../api/controller';
-import { getUserID } from './mediator';
-import { UserResponseType } from './userSchema';
-import { validateUserResponseData } from './validator';
+import userController from '../api/api';
+import useUserStore from './store';
 
 export const useUserQuery = () => {
-  const queryClient = useQueryClient();
-  const [ user, setUser ] = useState<UserResponseType>( {
-    _id: '',
-    email: '',
-    password: '',
-    fullname: ''
-  } );
-
+  const userID = useUserStore( state => state.userID );
   const { data, isLoading, isError, isSuccess } = useQuery( {
     queryKey: [ 'user' ],
-    queryFn: () => userController.getOne( { _id: getUserID() || '' } ),
-    onError: async error => {
-      console.log( error );
-      const result = await validateResponseError( error );
-      console.log( result );
-    },
-    onSuccess: async data => {
-      try {
-        if ( !data ) return;
-        const result = validateUserResponseData( data );
-        setUser( result );
-      } catch ( error ) {
-        const result = await validateResponseError( error );
-        console.log( result );
-      }
-    }
+    queryFn: () => userController.getOne( { _id: userID || '' } ),
+    onError: async error => { console.log( await validateResponseError( error ) ); }
   } );
-
-  return { user, data, isLoading, isError, isSuccess, queryClient };
+  return { data, isLoading, isError, isSuccess };
 };

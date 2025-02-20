@@ -2,12 +2,13 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useCartQuery } from '@/entities/cart';
-import { getUserID } from '@/entities/user';
+import { useUserStore } from '@/entities/user';
 import { calculateTotalQuantity } from '@/shared/libs/price';
 
 const Header: FC = () => {
-  const user = getUserID();
-  if ( !user ) {
+  const userID = useUserStore( state => state.userID );
+
+  if ( !userID ) {
     return (
       <header className="py-6 fixed top-0 left-0 right-0 z-10" aria-labelledby="header-heading">
         <div className="px-2 sm:px-10 flex gap-10 items-center justify-between">

@@ -2,7 +2,7 @@ import { GeneralController } from '@/shared/api';
 
 import { AddressResponseType } from '../model/schema';
 
-class AddressController extends GeneralController<AddressResponseType> {}
+class AddressController extends GeneralController<AddressResponseType, Array<AddressResponseType>> {}
 
 const addressController = new AddressController( 'address' );
 

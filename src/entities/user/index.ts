@@ -1,8 +1,8 @@
-import userController from './api/controller';
-import { AuthRequestSchema, AuthRequestType, AuthResponseSchema, AuthResponseType } from './model/authSchema';
+import userController from './api/api';
 import { useUserQuery } from './model/hook';
-import { getUserID, setUserID } from './model/mediator';
-import { UserRequestSchema, UserRequestType, UserResponseSchema, UserResponseType } from './model/userSchema';
+import { AuthRequestSchema, AuthResponseSchema, UserRequestSchema, UserResponseSchema } from './model/schema';
+import useUserStore from './model/store';
+import { AuthRequestType, AuthResponseType, UserRequestType, UserResponseType } from './model/type';
 import { validateAuthRequestData, validateAuthResponseData, validateUserRequestData, validateUserResponseData } from './model/validator';
 
 export {
@@ -14,8 +14,7 @@ export {
 };
 
 export {
-  getUserID,
-  setUserID
+  useUserStore
 };
 
 export {

@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { Fieldset, Legend } from '@headlessui/react';
 
 import { addressController, useAddressQuery, validateAddressRequestData, validateAddressResponseData } from '@/entities/address';
-import { getUserID } from '@/entities/user';
+import { useUserStore } from '@/entities/user';
 import { validateResponseError } from '@/shared/libs';
 import { CustomButton, CustomInput } from '@/shared/ui';
 
@@ -13,6 +13,7 @@ const UpdateAddressForm: FC<Props> = ( { ...others } ) => {
   const queryClient = useQueryClient();
   const mutation = useMutation( addressController.upsert );
   const { data } = useAddressQuery();
+  const userID = useUserStore( state => state.userID );
   const [ error, setError ] = useState( { name: '', message: '' } );
 
   async function handleFormSubmit( e: FormEvent<HTMLFormElement> ) {
@@ -21,7 +22,7 @@ const UpdateAddressForm: FC<Props> = ( { ...others } ) => {
       const formData = new FormData( e.currentTarget );
       const fields = Object.fromEntries( formData.entries() );
       const { city, street } = validateAddressRequestData( fields );
-      const response = await mutation.mutateAsync( { query: { user: getUserID() }, updates: { city, street } } );
+      const response = await mutation.mutateAsync( { query: { user: userID }, updates: { city, street } } );
       validateAddressResponseData( response );
       queryClient.invalidateQueries( { queryKey: [ 'address' ] } );
     } catch ( error ) {

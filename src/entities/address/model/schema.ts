@@ -11,7 +11,3 @@ export const AddressResponseSchema = z.object( {
   city: z.string(),
   street: z.string()
 } );
-
-export type AddressRequestType = z.infer<typeof AddressRequestSchema>;
-
-export type AddressResponseType = z.infer<typeof AddressResponseSchema>;

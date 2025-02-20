@@ -2,7 +2,7 @@ import { FC, FormEvent, FormHTMLAttributes, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Fieldset, Legend } from '@headlessui/react';
 
-import { setUserID, userController, validateAuthRequestData, validateAuthResponseData } from '@/entities/user';
+import { userController, useUserStore, validateAuthRequestData, validateAuthResponseData } from '@/entities/user';
 import { validateResponseError } from '@/shared/libs';
 import { CustomButton, CustomInput } from '@/shared/ui';
 
@@ -10,6 +10,7 @@ type Props = FormHTMLAttributes<HTMLFormElement>
 
 const SigninForm: FC<Props> = ( { ...others } ) => {
   const navigate = useNavigate();
+  const setUserID = useUserStore( state => state.setUserID );
   const [ error, setError ] = useState( { name: '', message: '' } );
 
   async function handleFormSubmit( e: FormEvent<HTMLFormElement> ) {

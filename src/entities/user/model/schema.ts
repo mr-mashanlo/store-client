@@ -11,6 +11,13 @@ export const AuthResponseSchema = z.object( {
   at: z.string()
 } );
 
-export type AuthRequestType = z.infer<typeof AuthRequestSchema>;
+export const UserRequestSchema = z.object( {
+  fullname: z.string().min( 3 )
+} );
 
-export type AuthResponseType = z.infer<typeof AuthResponseSchema>;
+export const UserResponseSchema = z.object( {
+  _id: z.string(),
+  email: z.string().email(),
+  password: z.string(),
+  fullname: z.string().optional()
+} );

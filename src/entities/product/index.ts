@@ -1,8 +1,9 @@
-import productController from './api/product';
-import { useProductQuery } from './model/productHook';
-import { useProductsQuery } from './model/productsHook';
-import { ProductResponseSchema, ProductResponseType, ProductsResponseType } from './model/schema';
-import { validateProductResponseData, validateProductsResponseData } from './model/validator';
+import productController from './api/api';
+import { useProductQuery, useProductsQuery } from './model/hook';
+import { ProductResponseSchema } from './model/schema';
+import useFilterStore from './model/store';
+import { ProductResponseType, ProductsResponseType, SearchRequestType } from './model/type';
+import { validateProductResponseData, validateProductsResponseData, validateSearchRequestData } from './model/validator';
 import ProductDescription from './ui/description';
 import ProductGallery from './ui/gallery';
 import ProductList from './ui/list';
@@ -17,6 +18,10 @@ export {
 };
 
 export {
+  useFilterStore
+};
+
+export {
   ProductDescription,
   ProductGallery,
   ProductList
@@ -24,7 +29,8 @@ export {
 
 export {
   validateProductResponseData,
-  validateProductsResponseData
+  validateProductsResponseData,
+  validateSearchRequestData
 };
 
 export {
@@ -33,5 +39,6 @@ export {
 
 export type {
   ProductResponseType,
-  ProductsResponseType
+  ProductsResponseType,
+  SearchRequestType
 };

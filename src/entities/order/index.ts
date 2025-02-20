@@ -1,7 +1,7 @@
-import orderController from './api/order';
-import { useOrderQuery } from './model/orderHook';
-import { useOrdersQuery } from './model/ordersHook';
-import { OrderRequestSchema, OrderRequestType, OrderResponseSchema, OrderResponseType, OrdersRequestSchema, OrdersRequestType, OrdersResponseSchema, OrdersResponseType } from './model/schema';
+import orderController from './api/api';
+import { useOrderQuery, useOrdersQuery } from './model/hook';
+import { OrderRequestSchema, OrderResponseSchema, OrdersRequestSchema, OrdersResponseSchema } from './model/schema';
+import { OrderRequestType, OrderResponseType, OrdersRequestType, OrdersResponseType } from './model/type';
 import { validateOrderRequestData, validateOrderResponseData, validateOrdersRequestData, validateOrdersResponseData } from './model/validator';
 
 export {
