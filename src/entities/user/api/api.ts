@@ -3,7 +3,7 @@ import { defaultInstance } from '@/shared/api';
 
 import { UserResponseType } from '../model/userSchema';
 
-class UserController extends GeneralController<UserResponseType> {
+class UserController extends GeneralController<UserResponseType, Array<UserResponseType>> {
 
   signIn = async ( email: string, password: string ) => {
     const response = await defaultInstance( 'user/signin', { method: 'post', body: JSON.stringify( { email, password } ) } );

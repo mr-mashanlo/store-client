@@ -1,4 +1,4 @@
-import { ProductResponseSchema, ProductsResponseSchema } from './schema';
+import { ProductResponseSchema, ProductsResponseSchema, SearchRequestSchema } from './schema';
 
 export function validateProductResponseData( data: unknown ) {
   return ProductResponseSchema.parse( data );
@@ -6,4 +6,8 @@ export function validateProductResponseData( data: unknown ) {
 
 export function validateProductsResponseData( data: unknown ) {
   return ProductsResponseSchema.parse( data );
+}
+
+export function validateSearchRequestData( data: unknown ) {
+  return SearchRequestSchema.parse( data );
 }

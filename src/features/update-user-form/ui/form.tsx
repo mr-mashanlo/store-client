@@ -2,7 +2,7 @@ import { FC, FormEvent, FormHTMLAttributes, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { Fieldset, Legend } from '@headlessui/react';
 
-import { getUserID, userController, useUserQuery, validateUserRequestData, validateUserResponseData } from '@/entities/user';
+import { userController, useUserQuery, useUserStore, validateUserRequestData, validateUserResponseData } from '@/entities/user';
 import { validateResponseError } from '@/shared/libs';
 import { CustomButton, CustomInput } from '@/shared/ui';
 
@@ -12,6 +12,7 @@ const UpdateUserForm: FC<Props> = ( { ...others } ) => {
   const { data } = useUserQuery();
   const queryClient = useQueryClient();
   const mutation = useMutation( userController.update );
+  const userID = useUserStore( state => state.userID );
   const [ error, setError ] = useState( { name: '', message: '' } );
 
   async function handleFormSubmit( e: FormEvent<HTMLFormElement> ) {
@@ -20,7 +21,7 @@ const UpdateUserForm: FC<Props> = ( { ...others } ) => {
       const formData = new FormData( e.currentTarget );
       const fields = Object.fromEntries( formData.entries() );
       const { fullname } = validateUserRequestData( fields );
-      const response = await mutation.mutateAsync( { query: { _id: getUserID() || '' }, updates: { fullname } } );
+      const response = await mutation.mutateAsync( { query: { _id: userID }, updates: { fullname } } );
       validateUserResponseData( response );
       queryClient.invalidateQueries( { queryKey: [ 'user' ] } );
     } catch ( error ) {

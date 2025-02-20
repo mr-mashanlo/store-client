@@ -31,11 +31,3 @@ export const OrderResponseSchema = z.object( {
 export const OrdersRequestSchema = z.array( OrderRequestSchema );
 
 export const OrdersResponseSchema = z.array( OrderResponseSchema );
-
-export type OrderRequestType = z.infer<typeof OrderRequestSchema>;
-
-export type OrderResponseType = z.infer<typeof OrderResponseSchema>;
-
-export type OrdersRequestType = z.infer<typeof OrdersRequestSchema>;
-
-export type OrdersResponseType = z.infer<typeof OrdersResponseSchema>;

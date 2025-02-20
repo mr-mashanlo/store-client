@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 
 import { cartController } from '@/entities/cart';
-import { getUserID } from '@/entities/user';
+import { useUserStore } from '@/entities/user';
 import { validateResponseError } from '@/shared/libs';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -16,7 +16,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 const IncreaseProductButton: FC<Props> = ( { id, className, children, ...others } ) => {
   const queryClient = useQueryClient();
   const mutation = useMutation( cartController.push );
-  const user = getUserID();
+  const userID = useUserStore( state => state.userID );
 
   async function handleButtonClick( id: string ) {
     try {
@@ -29,7 +29,7 @@ const IncreaseProductButton: FC<Props> = ( { id, className, children, ...others 
   }
 
   return (
-    user
+    userID
       ?
       <button onClick={() => handleButtonClick( id )} disabled={mutation.isLoading} className={twMerge( 'font-bold', mutation.isLoading ? 'animate-pulse' : '', className )} {...others}>
         {children}

@@ -1,6 +1,6 @@
 import { authInstance } from '@/shared/api';
 
-export class GeneralController<T> {
+export class GeneralController<T, R> {
 
   protected  slug = '';
 
@@ -25,7 +25,7 @@ export class GeneralController<T> {
     return await response.json();
   };
 
-  getMany = async ( query: Record<string, string> ): Promise<Array<T>> => {
+  getMany = async ( query: Record<string, string> ): Promise<R> => {
     const queryString = new URLSearchParams( query ).toString();
     const response = await authInstance( `${this.slug}/getmany?${queryString}` );
     return await response.json();

@@ -1,5 +1,4 @@
-import { AuthRequestSchema, AuthResponseSchema } from './authSchema';
-import { UserRequestSchema, UserResponseSchema } from './userSchema';
+import { AuthRequestSchema, AuthResponseSchema, UserRequestSchema, UserResponseSchema } from './schema';
 
 export function validateAuthRequestData( data: unknown ) {
   return AuthRequestSchema.parse( data );

@@ -1,6 +1,7 @@
-import cartController from './api/cart';
+import cartController from './api/api';
 import { useCartQuery } from './model/hook';
-import { CartResponseSchema, CartResponseType, CartSchema, CartType } from './model/schema';
+import { CartResponseSchema, CartSchema } from './model/schema';
+import { CartResponseType, CartType } from './model/type';
 import { validateCartData, validateCartResponseData } from './model/validator';
 
 export {
