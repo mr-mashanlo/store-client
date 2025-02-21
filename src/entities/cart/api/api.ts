@@ -1,7 +1,7 @@
 import { GeneralController } from '@/shared/api';
 import { authInstance } from '@/shared/api';
 
-import { CartRequestType, CartResponseType } from '../model/schema';
+import { CartRequestType, CartResponseType } from '../model/type';
 
 class CartController extends GeneralController<CartResponseType, Array<CartResponseType>> {
 

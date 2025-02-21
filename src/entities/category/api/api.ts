@@ -1,6 +1,6 @@
 import { GeneralController } from '@/shared/api';
 
-import { CategoryResponseType } from '../model/schema';
+import { CategoryResponseType } from '../model/type';
 
 class CategoryController extends GeneralController<CategoryResponseType, Array<CategoryResponseType>> {}
 

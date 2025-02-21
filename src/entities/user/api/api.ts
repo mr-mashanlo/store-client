@@ -1,7 +1,7 @@
 import { GeneralController } from '@/shared/api';
 import { defaultInstance } from '@/shared/api';
 
-import { UserResponseType } from '../model/userSchema';
+import { UserResponseType } from '../model/type';
 
 class UserController extends GeneralController<UserResponseType, Array<UserResponseType>> {
 
