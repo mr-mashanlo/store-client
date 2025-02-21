@@ -1,6 +1,6 @@
 import { GeneralController } from '@/shared/api';
 
-import { AddressResponseType } from '../model/schema';
+import { AddressResponseType } from '../model/type';
 
 class AddressController extends GeneralController<AddressResponseType, Array<AddressResponseType>> {}
 

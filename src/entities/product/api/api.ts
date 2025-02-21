@@ -1,6 +1,6 @@
 import { GeneralController } from '@/shared/api';
 
-import { ProductResponseType } from '../model/schema';
+import { ProductResponseType } from '../model/type';
 
 class ProductController extends GeneralController<ProductResponseType, { count: number, documents: Array<ProductResponseType> }> {}
 

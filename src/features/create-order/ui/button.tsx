@@ -3,8 +3,7 @@ import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
 import { cartController, CartType } from '@/entities/cart';
-import { orderController } from '@/entities/order';
-import { OrderRequestType } from '@/entities/order/model/schema';
+import { orderController, OrderRequestType } from '@/entities/order';
 import { ReceiptButton } from '@/shared/ui/receipt';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {

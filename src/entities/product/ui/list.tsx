@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { ProductsResponseType } from '../model/schema';
+import { ProductsResponseType } from '../model/type';
 import ProductCard from './card';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { ProductSchema } from '@/shared/shemas';
+import { ProductSchema } from '@/shared/schemas';
 
 export const CartSchema = z.object( {
   product: ProductSchema,
