@@ -9,7 +9,7 @@ const HomePage: FC = () => {
     <main aria-labelledby="heading">
       <h2 id="heading" className="sr-only">Our Products</h2>
       <ProductGrid />
-      <div className="p-2 flex items-center gap-4 bg-white fixed bottom-0 left-[50%] -translate-[50%]">
+      <div className="p-1 sm:p-2 flex items-center gap-1 sm:gap-4 bg-white fixed bottom-0 left-[50%] -translate-[50%]">
         <Filter />
         <Pagination />
       </div>

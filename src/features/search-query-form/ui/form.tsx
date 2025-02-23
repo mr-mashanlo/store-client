@@ -1,5 +1,5 @@
 import { FC, FormEvent, useState } from 'react';
-import { Search, X } from 'lucide-react';
+import { Check, Search, X } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import { Button, Field, Input } from '@headlessui/react';
 
@@ -44,7 +44,15 @@ const SearchQueryForm: FC = () => {
         <Button onClick={() => handleCloseButtonClick()} type="reset" className="w-6 h-6 flex items-center justify-center bg-zinc-200/50 cursor-pointer"><X className="w-3" /></Button>
         <Input defaultValue={query} type="text" name="query" placeholder="grey teapot" className={twMerge( 'w-40 h-6 px-2 text-xs outline-none border border-zinc-200/50' )} />
       </Field>
-      <Button onClick={() => handleSubmitButtonClick()} type={type} className="w-6 h-6 flex items-center justify-center bg-zinc-200/50 cursor-pointer"><Search className="w-3" /></Button>
+      <Button onClick={() => handleSubmitButtonClick()} type={type} className="w-6 h-6 flex items-center justify-center bg-zinc-200/50 cursor-pointer">
+        {
+          isSearchable
+            ?
+            <Check className="w-3" />
+            :
+            <Search className="w-3" />
+        }
+      </Button>
     </form>
   );
 };

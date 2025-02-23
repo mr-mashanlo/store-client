@@ -9,9 +9,9 @@ interface Props {
 
 const Component: FC<Props> = ( { product } ) => {
   return (
-    <article itemScope itemType="https://schema.org/Product" className="grid grid-cols-3 gap-2">
-      <ProductGallery name={product.name} images={product.images || []} />
-      <div className="px-10 py-30 relative">
+    <article itemScope itemType="https://schema.org/Product" className="grid sm:grid-cols-3 sm:gap-2">
+      <ProductGallery name={product.name} images={product.images || []} className="sm:col-span-2" />
+      <div className="px-4 sm:px-10 py-10 sm:py-30 relative">
         <div className="sticky top-30">
           <ProductDescription
             id={product._id}
