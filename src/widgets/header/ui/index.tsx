@@ -10,7 +10,7 @@ const Header: FC = () => {
 
   if ( !userID ) {
     return (
-      <header className="py-6 fixed top-0 left-0 right-0 z-10" aria-labelledby="header-heading">
+      <header className="py-4 sm:py-6 fixed top-0 left-0 right-0 z-10" aria-labelledby="header-heading">
         <div className="px-2 sm:px-10 flex gap-10 items-center justify-between">
           <h1 id="header-heading">
             <Link to="/" aria-label="Home">
@@ -28,7 +28,7 @@ const Header: FC = () => {
   }
   const { data } = useCartQuery();
   return (
-    <header className="py-6 fixed top-0 left-0 right-0 z-10" aria-labelledby="header-heading">
+    <header className="py-4 sm:py-6 fixed top-0 left-0 right-0 z-10" aria-labelledby="header-heading">
       <div className="px-2 sm:px-10 flex gap-10 items-center justify-between">
         <h1 id="header-heading">
           <Link to="/" aria-label="Home">

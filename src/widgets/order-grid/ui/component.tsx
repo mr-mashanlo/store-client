@@ -12,9 +12,9 @@ interface Props {
 
 const Component: FC<Props> = ( { orders, address } ) => {
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid sm:grid-cols-3 gap-2">
       {orders?.map( order => (
-        <div key={order._id} className="px-5 pb-30 flex justify-center items-start">
+        <div key={order._id} className="px-5 pb-15 sm:pb-30 flex justify-center items-start">
           <Receipt button={<p className="block w-full h-13 bg-zinc-100"></p>}>
             <ReceiptHeader icon={<img src="/logo.svg" alt="Company logo" className="w-12 mx-auto mb-2" />} subtitle="Kazakhstan, Almaty, Somestreet, #30" />
             <ReceiptDivide />

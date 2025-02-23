@@ -1,5 +1,5 @@
 import { FC, FormEvent, useState } from 'react';
-import { Settings2, X } from 'lucide-react';
+import { Check, Settings2, X } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import { Button, Field, Select } from '@headlessui/react';
 
@@ -48,7 +48,15 @@ const SearchCategoryForm: FC = () => {
           {data?.map( category => <option key={category._id} value={category._id}>{category.name}</option> )}
         </Select>
       </Field>
-      <Button onClick={() => handleSubmitButtonClick()} type={type} className="w-6 h-6 flex items-center justify-center bg-zinc-200/50 cursor-pointer"><Settings2 className="w-3" /></Button>
+      <Button onClick={() => handleSubmitButtonClick()} type={type} className="w-6 h-6 flex items-center justify-center bg-zinc-200/50 cursor-pointer">
+        {
+          isSearchable
+            ?
+            <Check className="w-3" />
+            :
+            <Settings2 className="w-3" />
+        }
+      </Button>
     </form>
   );
 };
